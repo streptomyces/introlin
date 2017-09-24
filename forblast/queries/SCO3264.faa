@@ -1,0 +1,6 @@
+>SCO3264 SCO3264, SCE39.14c   SCO3264 CAB40322.1 SCE39.14c SCO3264 SCE39.14c, possible gntR-family regulator, len: 243aa; weak similarity to many egs. SW:FARR_ECOLI fatty acyl responsive regulator from Escherichia coli (240 aa) fasta scores; opt: 196, z-score: 243.9, E(): 2.8e-06, (24.3% identity in 243 aa overlap) and SW:KORA_STRLI KorA protein found to control plasmid transfer in the Streptomyces lividans plasmid pIJ101 (241 aa) fasta scores; opt: 158, z-score: 198.3, E(): 0.00098, (22.0% identity in 227 aa overlap). Contains Pfam match to entry PF00392 gntR, Bacterial regulatory proteins, gntR family and Prosite match to PS00043 Bacterial regulatory proteins, gntR family signature. Also contains probable helix-turn-helix (+3.94 SD) 29-50aa AL645882 3250
+MRSRHHEIADDLRHQITGGRILPSERLPSEAALADRYRVSTVTLRRALAVLQTEGLVEKI
+QGKGNFVRRPHRKIMYIGGWGTLDPWTAAEPDLRVTIRSTAVQAQAHLATLLEVPTGTSI
+VEFTCLSHEGESPHSLARVYMPHDLVPPEALDDASTSREAATRFAFLGPPPTAARETVSA
+RLPAPDEASALRIGIASIVLSITRIATNSAGRVVEAALLAFPGDRVDAVFTTHHVIDERQ
+SKG*

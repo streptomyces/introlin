@@ -1,0 +1,5 @@
+>SCO6254 SCO6254, SCAH10.19   SCO6254 CAB60173.1 SCAH10.19 SCO6254 SCAH10.19, possible two-component system response regulator, 229 aa; similar to TR:Q53894 (EMBL:U51332) Streptomyces coelicolor AbsA2, 222 aa; fasta scores: opt: 573 z-score: 662.7 E(): 1.5e-29; 45.7% identity in 221 aa overlap, to SW:NARL_ECOLI (EMBL:X13360) Escherichia coli nitrate/nitrite response regulator protein 216 aa; fasta scores: opt: 457 z-score: 531.1 E(): 3.3e-22; 36.1% identity in 208 aa overlap and to TR:CAB40929 (EMBL:SCE126) Streptomyces coelicolor SCE126.07c, 224 aa; fasta scores: opt: 664 z-score: 584.6 E(): 3.1e-27; 48.4% identity in 219 aa overlap. Contains two matches to Pfam entries PF00072 response_reg, Response regulator receiver domain and PF00196 GerE, Bacterial regulatory proteins, luxR family AL645882 6237
+MTAIRLLLVDDDPLVRAGLSLMLGGAEDVEIVGEAADGDEVVALVDRTRPDVVLMDIRMP
+GTDGLTATERLRSRPDAPQVVVLTTFHADEQVLRALRAGAAGFVLKDTPPAEILHAVRRV
+AAGDPVLSPAVTRRLMEQAAGTAPDARHARRTRARARVDTLNDREREVAVAVGRGMANAD
+IASHLFMSVATVKAHVSRILAGLDLDNRVQIALLAYDAGLLDDYHDDTP*

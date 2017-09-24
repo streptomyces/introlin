@@ -1,0 +1,6 @@
+>SCO6256 SCO6256, SCAH10.21   SCO6256 CAB60175.1 SCAH10.21 SCO6256 SCAH10.21, possible transcriptional regulator, len: 245 aa; similar to SW:YURK_BACSU (EMBL:Z99120) Bacillus subtilis hypothetical transcriptional regulator in hom-MrgA intergenic region YurK, 242 aa; fasta scores: opt: 333 z-score: 402.6 E(): 4.7e-15; 26.8% identity in 235 aa overlap and to SW:FARR_ECOLI (EMBL:X15790) Escherichia coli, response regulator FarR, 240 aa; fasta scores: opt: 270 z-score: 328.3 E(): 6.5e-11; 26.1% identity in 226 aa overlap. Contains match to Pfam entry PF00392 gntR, bacterial regulatory proteins, gntR family and a possible helix-turn-helix motif at residues 18458..18523 AL645882 6239
+VSLDLSVDRSSPVPLYFQLSQQLEAAIEHGALTPGSLLGNEIELAARLGLSRPTVRQAIQ
+SLVDKGLLVRRRGVGTQVVHSKVRRPLELSSLYDDLEAAGQRPATKVLVNTVVPATAEIA
+AALGVAEDSEVHRIERLRLTHGEPMAYLCNYLPPGLVDLDTGQLEATGLYRLMRAAGITL
+HSARQSIGARAATSGEAERLGEDAGAPLLTMERTTFDDTGRAVEFGTHTYRPSRYSFEFQ
+LLVRP*

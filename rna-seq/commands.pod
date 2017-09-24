@@ -1,0 +1,35 @@
+=head1 Training
+
+=head2 Mon 31 Oct 2016
+
+
+ cp alconc/LG-1_S2_L001_1.fastq fastq/W1_1.fastq
+ cp alconc/LG-1_S2_L001_2.fastq fastq/W1_2.fastq
+ cp alconc/LG-1_S2_L002_1.fastq fastq/W2_1.fastq
+ cp alconc/LG-1_S2_L002_2.fastq fastq/W2_2.fastq
+ cp alconc/LG-4_S1_L001_1.fastq fastq/M1_1.fastq
+ cp alconc/LG-4_S1_L001_2.fastq fastq/M1_2.fastq
+ cp alconc/LG-4_S1_L002_1.fastq fastq/M2_1.fastq
+ cp alconc/LG-4_S1_L002_2.fastq fastq/M2_2.fastq
+
+
+ bwt2ndx="bowtie2indexes/Str26"
+ reportdir="bowtie2reports/"
+ samdir="sam/"
+ for ifn in $(ls --color=never fastq/*_1.fastq);
+   do
+     bn=$(basename $ifn _1.fastq);
+     r1="fastq/"$bn"_1.fastq";
+     r2="fastq/"$bn"_2.fastq";
+     samfn=${samdir}${bn}".sam";
+     echo $ifn $bn $r1 $r2 $samfn
+     /usr/local/bin/bowtie2 --phred33 -x $bwt2ndx \
+     -I 100 -X 400 -p 12 --no-unal \
+     -1 $r1 -2 $r2 -S $samfn 2> ${reportdir}${bn}".bwt2repo";
+     echo $(date); echo;
+   done
+
+
+
+=cut
+

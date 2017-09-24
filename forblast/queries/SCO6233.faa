@@ -1,0 +1,7 @@
+>SCO6233 SCO6233, SC2H4.15   SCO6233 CAA20609.1 SC2H4.15 SCO6233 SC2H4.15, probable transcriptional regulator, len: 342 aa; similar to many members of the lacI family e.g. CCPA_BACME glucose-resistance amylase regulator (Bacillus megaterium) (332 aa), fasta scores; opt: 448 z-score: 548.6 E(): 2.6e-23, 29.8% identity in 336 aa overlap. Contains helix-turn-helix motif from aa 9-30 (Score 1778, +5.24 SD) and Pfam matches to entry PF00356 lacI, Bacterial regulatory proteins, lacI family, score 30.40, E-value 4.7e-07 and to entry PF00532 Peripla_BP_like, Periplasmic binding proteins and LacI family, score 44.00, E-value 3.4e-09 AL645882 6216
+VSTPSVRVTIKDVAAAAGVSKGAVSLAFNDKPGVSDATRERIFAVARQLGWAPNSSARSL
+SRQSVDTVGLAICRPARLLGLEPFYMEFVSGIESVLAERDCSLLLRLVGSLEEEIGLQER
+WWRERQVGGSILVDFHQEDPRIGPLGRIGLPAVAVGHPSLTGGFPSVWTDDAAAVAEAVR
+YLAVLGHRRIAHVGGPRGLGHSAIRTTAFERTLSELGLDRGPHVETGFSGEDGARATRSL
+LLSAERPTAILYDNDIMAVAGLGVAAEMGVSVPDDLSLLAWDDSQLCRLTHPTLSAMSHD
+VHGFGAQVTRVLFDVLAGKDVTSRPVATPSLVPRASTASPRS*

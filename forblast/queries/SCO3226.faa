@@ -1,0 +1,5 @@
+>SCO3226 SCO3226, SCE8.19, absA2   SCO3226 CAB38597.1 SCE8.19 SCO3226 SCE8.19, absA2, two component system response regulator, len: 222aa; sequenced previously therefore identical to TR:Q53894 (EMBL:U51332) AbsA2, predicted response regulator which acts as part of a two component signal transduction system in the global regulation of antibiotic synthesis in Streptomyces coelicolor (222 aa) fasta scores; opt: 1376, z-score: 1584.1, E(): 0, (100.0% identity in 222 aa overlap). Contains Pfam matches to entries PF00072 response_reg, Response regulator receiver domain, score 138.20, E-value 1.5e-37 and PF00196 GerE, Bacterial regulatory proteins, luxR family, score 70.90, E-value 2.7e-17. Contains a probable helix-turn-helix motif at 171-192aa (Score 1177 (+3.20 SD)). AL645882 3212
+MIRVLLADDETIIRAGVRSILTTEPGIEVVAEASDGREAVELARKHRPDVALLDIRMPEM
+DGLTAAGEMRTTNPDTAVVVLTTFGEDRYIERALDQGVAGFLLKASDPRDLISGVRAVAS
+GGSCLSPLVARRLMTELRRAPSPRSEVSGERTTLLTKREQEVLGMLGAGLSNAEIAQRLH
+LVEGTIKTYVSAIFTQLEVRNRVQAAIIAYEAGLVKDADLNR*

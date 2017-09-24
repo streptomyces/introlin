@@ -1,0 +1,7 @@
+>SCO6211 SCO6211, SC9G1.01, SC2G5.32   SCO6211 CAD55375.1 SC2G5.32 SCO6211 SC9G1.01, possible uricase (partial CDS), len: >204 aa; similar to SW:URIC_ASPFL (EMBL:X61766) Aspergillus flavus uricase (EC 1.7.3.3) (urate oxidase), Uaz or Uox, 301 aa; fasta scores: opt: 49 z-score: 553.3 E(): 1.9e-23; 41.2% identity in 177 aa overlap. Contains Pfam match to entry PF01014 Uricase, Uricase SC2G5.32, partial CDS, possible oxidoreductase, len: 141 aa; similar to the N-terminal region of many urate oxidases, a eukaryotic peroxisomal enzyme, e.g. SW:URIC_PAPHA urate oxidases from Papio hamadryas (Hamadryas baboon) (303 aa) fasta scores; opt: 282,z-score: 368.8, E(): 3e-13, (36.6% identity in 131 aaoverlap). AL645882 6194
+MTRFVLGQNQYGKAENRVVKITRDGDTHHIKDLNVSVALSGDMEEVHRSGSNANVLPTDT
+TKNTVFAFAKEHGIESAEDLGVKLARHFVDNNEPIHRARIRIEEFGWERIETSKGGARFV
+GAEEIAHSFVRTGQETRVAEITYDGHGIQVLSGFKDLTVLNSTNSEFFGYLKDKYTTLKE
+DYDRILATTVSTWWRHNWDGVDSHAPDWDRSYHGVRKHALQAFAETYSYSLQQTLFEMGV
+RVLNSRDEVDEIRFSMPNKHHFRSDLSPFGIDNEAKDGAVYYAADRPYGLIEATILRDGA
+EQLIPVDMTNL*

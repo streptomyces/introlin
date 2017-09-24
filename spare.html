@@ -1,0 +1,368 @@
+<!DOCTYPE "html"> 
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<!-- {{{ style -->
+<style type="text/css">
+body {
+background: #dddddd;
+font-family: sans-serif;
+font-size: 110%;
+}
+.tta {background: #ffff00}
+.timestamp {font-size: x-small}
+td, table, tr, th {
+border-collapse: collapse;
+border: solid black 1px;
+padding: 3px;
+}
+.species {font-style: italic}
+.genus {font-style: italic}
+a:link, a:visited, a:active {color: blue; text-decoration: none}
+a:hover {color: magenta; text-decoration: none}
+div.code {
+  font-family: monospace; 
+  font-size: 120%;
+  color: #0000aa;
+  white-space: pre;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+h5 {
+  font-size: 97%;
+}
+
+.hashcol {
+color: #008000;
+}
+
+div.slide {
+margin-bottom: 60px;
+}
+
+li { margin-top: 15px; }
+
+code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+pre.code {
+margin-left: 10px;
+margin-bottom: 40px;
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.fn {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #3c6d33;
+}
+
+li.code {
+font-family: monospace;
+white-space: pre;
+color: #0000aa;
+font-size: 120%;
+}
+
+p, li {
+  width: 800px;
+}
+ul {
+  font-size: 110%;
+}
+ul.lev2 {
+  font-size: 100%;
+  list-style-type: square;
+}
+
+hr {
+  margin-top: 10px;
+  border: 3px solid #000000;
+}
+hr.thin {
+  margin-top: 5px;
+  border: 1.5px solid #aabbcc;
+}
+p.red {
+color: #aa0000;
+}
+.medium {
+  font-size: medium
+}
+.small {
+  font-size: small
+}
+em, .blue {
+  color: #0000aa
+}
+.instructor {
+font-family: monospace;
+font-size: small;
+color: #5c1f00;
+white-space: pre;
+}
+
+</style>
+<!-- }}} -->
+
+<!-- {{{ script -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script>
+function detail() {
+$("div.slide").show("fast");
+}
+function outline() {
+$("div.slide").hide("fast");
+}
+function togoutline() {
+$("div.slide").toggle();
+}
+function toginstruct() {
+$(".instructor").toggle();
+}
+</script>
+
+<script>
+jQuery(function() {
+$("h4").text(function(n, current) {
+return (n+1) + ": " + current
+})
+});
+
+jQuery(function() {
+$(".instructor").hide("fast"); return(TRUE);
+});
+
+</script>
+<!-- }}} script -->
+
+<!-- {{{ Title and heading -->
+<title>Bash spares</title>
+</head>
+<body>
+<button type="button" onclick="outline()">Outline</button>
+<button type="button" onclick="detail()">Detail</button>
+<!-- <button type="button" onclick="toginstruct()">
+Instructor hints show / hide</button> -->
+<h2>Introduction to the Linux command line interface</h2>
+<!-- }}} -->
+
+
+<!-- {{{ Command execution environment -->
+<h4>Command Execution Environment</h4>
+<a href="nowhere" onclick='$("#comexe").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="comexe">
+<h5>Information available at the time of running a command.</h5>
+<ul>
+<li>Open files and redirections in effect.</li>
+<li>Current working directory.</li>
+<li>Inherited functions and variables.</li>
+<li>Shell options.</li>
+<li>Builtins and functions have access to aliases.</li>
+</ul>
+<a href="nowhere" onclick='$("#comexe").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ The environment -->
+<h4>The Environment</h4>
+<a href="nowhere" onclick='$("#comenv").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="comenv">
+<h5>Information passed on to the executed command.</h5>
+<ul>
+<li>A list of name=value pairs explicitly exported to the executed command.</li>
+<li>The shell's initial environment give or take any modifications,
+additions or removals made to it.</li>
+</ul>
+<a href="nowhere" onclick='$("#comenv").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Bad file names
+<h4>Bad file names</h4>
+<a href="nowhere" onclick='$("#filenames").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="filenames">
+<ul>
+<li>Examples</li>
+<ul class="lev2">
+<li class="code">cp small.tsv "example of bad fn.tsv"</li>
+<li class="code">ls exam*</li>
+<li class="code">cp small.tsv example\ of\ bad\ fn.tsv</li>
+<li class="code">ls exam*</li>
+<li class="code">rm exam # type this much and press tab for file name completion.</li>
+<li class="code">echo "Some silly text" &gt; -l</li>
+<li class="code">ls</li>
+</ul>
+<li>The option terminator "--" and its use.</li>
+<ul class="lev2">
+<li class="code">rm -- -l</li>
+<li class="code">ls</li>
+</ul>
+<li><span class="code">rm ./-l</span> also works.</li>
+</ul>
+</ul>
+<a href="nowhere" onclick='$("#filenames").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+}}} -->
+
+<!-- {{{ Their fundamental design flaws
+Their fundamental design flaws are
+completely hidden by their superficial
+design flaws.
+}}} -->
+
+<!-- {{{ Commands to be done
+
+Housekeeping: mkdir, cd, ls, cat, head, tail, more, less.
+
+Some more difficult ones: grep, find
+
+Mention: sort, cut, sed, awk
+
+Text files: gedit
+
+Bash scripts?
+
+Reading man pages.
+ 
+}}} -->
+
+<!-- {{{ Brief content overview
+<h4>Brief content overview</h4>
+<ul class="small">
+<li>Operating System basics (briefly). What is an OS?</li>
+<li>The Linux file system: mount points and links, the home directory, moving around the file system</li>
+<li>Shells: Bash.</li>
+<li>Structure of commands: Options, arguments, return values.</li>
+<li>The environment and some important environment variables.</li>
+<li>Plain text files. How plain text files differ from word processing files. Line endings on different platforms. Character encoding.</li>
+<li>More about files; filehandles, redirection and piping.</li>
+<li>File permissions.</li>
+<li>A (very simple) data analysis exercise to demonstrate the use of most of the above concepts.</li>
+</ul>
+}}} -->
+
+<!-- {{{ Bicycle
+I think one of the things that really separates us from the high primates is
+that we’re tool builders. I read a study that measured the efficiency of
+locomotion for various species on the planet. The condor used the least energy
+to move a kilometer. And, humans came in with a rather unimpressive showing,
+about a third of the way down the list. It was not too proud a showing for the
+crown of creation. So, that didn’t look so good. But, then somebody at
+Scientific American had the insight to test the efficiency of locomotion for a
+man on a bicycle. And, a man on a bicycle, a human on a bicycle, blew the
+condor away, completely off the top of the charts.
+
+And that’s what a computer is to me. What a computer is to me is it’s the most
+remarkable tool that we’ve ever come up with, and it’s the equivalent of a
+bicycle for our minds.” ~ Steve Jobs
+}}} -->
+
+</body>
+</html>
+
+<!-- {{{ Notes
+
+   1 Start
+   2 What is an Operating System?
+   3 Logging into your HPC accounts
+   4 Some data to play with
+   5 Bash
+
+   6 The File System
+   7 The present working directory
+     Demonstrate dirs and pushd.
+
+   8 Commands
+   9 Getting help on commands
+  10 Filehandles
+  11 Redirection and pipes
+  12 Pipelines
+
+  13 Yesterday
+     Dealing with filenames with spaces in them.
+     rm -l, rm ./-l, rm ---- -l
+
+  14 Globs
+  15 find
+  16 Data Analysis
+  17 Computation
+  18 Processes
+  19 Environment variables
+
+  20 File ownership and permissions
+     Demonstrate umask
+
+  21 Text files
+  22 A file of Bash commands
+  23 Bash Scripting I
+  24 Bash Scripting II
+  25 What next?
+
+  Fit parallel and screen somewhere.
+
+The problem of parallel processing.
+
+Imagine a single computer with a single processor. It can do only one
+thing at a time. Still it is able to give an impression of
+multi-tasking. What the scheduler is able to do is distribute actual
+processor time between multiple tasks. If this happens fast enough, we
+get the impression of multi-tasking. This scheduler is in the Linux
+kernel. So faster processors have two consequences.
+
+a. Smoother multi-tasking.
+b. Quantitatively more multi-tasking.
+
+Imagine a scheduler that is built into the processor. In this case the
+single processor itself can present itself to the kernel as two
+processors. This is what is known as hyper-threading in processor
+parlance.
+
+Now the processor in your computer can have more than one cores.
+Think of each core as an independent processor. The only difference
+between the  processor and the core being that more than one cores are
+fabricated on a single (physical) chip.
+
+Finally, a given computer can have multiple (physical) processors.
+
+As far as the Linux scheduler is concerned, it sees hyper-threading times
+cores number of processors. And it is able to make each of these
+multi-task several fold depending upon other resources.
+
+linup() {
+for remote in n108377.nbi.ac.uk:/var/www/html/customers/training/ \
+  v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/
+  do
+rsync -irt --exclude '*odp' --exclude '*svg' --exclude '*bak*' \
+--exclude '*sw[op]' --exclude '.*' \
+~/mnt/raspisco/training/linux \
+sco@${remote}
+done
+}
+
+}}} -->
+

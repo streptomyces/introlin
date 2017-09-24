@@ -1,0 +1,5 @@
+>SCO3201 SCO3201, SCE22.18c   SCO3201 CAB90985.1 SCE22.18c SCO3201 SCE22.18c, probable tetR-family transcriptional regulator, len: 236 aa; similar to TR:CAB62751 (EMBL:AL133424) Streptomyces coelicolor putative tetR-family transcriptional regulator SCF56.06, 213 aa; fasta scores: opt: 311 z-score: 346.2 E(): 8e-12; 38.1% identity in 194 aa overlap and to SW:TCMR_STRGA (EMBL:M80674) Streptomyces glaucescens tetracenomycin C transcriptional repressor TcmR, 226 aa; fasta scores: opt: 254 z-score: 284.8 E(): 2.1e-08; 32.2% identity in 214 aa overlap. Contains Pfam match to entry PF00440 tetR, Bacterial regulatory proteins, tetR family and possible helix-turn-helix motif at residues 53..74 (+5.22 SD) AL645882 3187
+VSSTIPALPGPEPGPGPGPAGPVSLTERRKAETRMEIARAAARLFVGQGLRATRAEDIAR
+AAGVAPRTFYRYFATKEEAVAPLYALGAERWVRAVREAPAELSPPEALERAVRHTLTPGA
+GVSAPSWEWARTLIRLAESSPALRKVWAEVCHSTERGLVQALAARMSGGDDNVAVRLAAS
+PRLHFAAAVAGASVRVAAEHWASSSPQGARSPLEQALLNLEVLRGFAWEAGPAEEG*

@@ -1,0 +1,6 @@
+>SCO6299 SCO6299, SCIF3.01c, SCBAC8D1.12   SCO6299 CAD55507.1 SCBAC8D1.12 SCO6299 SCIF3.01c, probable tetR-family transcriptional regulator, len: >248 aa; similar to TR:Q9XDV7 (EMBL:AB023642) Streptomyces griseus DNA-binding protein ORF2, 289 aa; fasta scores: opt: 847 z-score: 994.6 E(): 0; 65.3% identity in 245 aa overlap. Contains Pfam match to entry PF00440 tetR, Bacterial regulatory proteins, tetR family and possible helix-turn-helix motif at residues 28..49 (+3.30 SD) SCBAC8D1.12c, possible DNA-binding protein (fragment), len: >72 aa; similar to TR:Q9XDV7 (EMBL:AB023642) Streptomyces griseus DNA-binding protein ORF2, 289 aa; fasta scores: opt: 247 Z-score: 319.9 bits: 65.1 E(): 3.1e-10; 60.274% identity in 73 aa overlap AL645882 6282
+VETDDVPGGAPNADTAARVREVIAAAGVSQREFARRVVMDPSKLSRSLSGTRRFTVAELA
+RIADEGRIDAGRLLGTRSREKATPPAAHVEGGRPLQIVRETVRLIAEHGFHAVRVADIAR
+ACATSSAAIHYHFPGRAELLEAAVRWCMDEDTARRAARLAEADDAAAELSQLIALQTPRT
+AQQRRQWAVWLDLWAEAARSTTVGRLHSEYYRQWRETVADVVRRGVGQGVFRAGLDPQAA
+ALTLTALIDGLATHVLSVDGTASAGAADAMHAALTTHVNDTILAP*

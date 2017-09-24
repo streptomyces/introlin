@@ -1,0 +1,4 @@
+>SCO3275 SCO3275, SCE39.25c   SCO3275 CAB40333.1 SCE39.25c SCO3275 SCE39.25c, possible merR-family transcriptional regulator, len: 150 aa; similar to many e.g. SW:MERR_BACSR MerR, mercury resistance operon transcriptional regulator from Bacillus subtilis (132 aa) fasta scores; opt: 201, z-score: 245.2, E(): 2.4e-06, (40.3% identity in 77 aa overlap) and SW:TIPA_STRLI TipA, transcriptional activator of a thiostrepton-induced gene in Streptomyces lividans (253 aa) fasta scores; opt: 196, z-score: 235.4, E(): 8.4e-06, (35.5% identity in 107 aa overlap). Contains Pfam match to entry PF00376 merR, Bacterial regulatory proteins, merR family and Prosite match to PS00552 Bacterial regulatory proteins, merR family signature. Also contains probable helix-turn-helix (+3.27 SD) 13-34 aa AL645882 3261
+VDDVDDVDDRHMQIGEVAARTELSLRTIRHYEETGLVIPSARSQGGFRLYTETDVARLMV
+IRRMKPLGFTLEQMRDLLDATDRLDGDARLDPAERAALLERVRTYQQAAAEQVEKLRTQL
+SRAEDFATTLTARLNRTAPPAGTQPDDDTP*

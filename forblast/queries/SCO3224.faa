@@ -1,0 +1,7 @@
+>SCO3224 SCO3224, SCE8.17c   SCO3224 CAB38595.1 SCE8.17c SCO3224 SCE8.17c, probable ABC transporter ATP-binding protein, len: 317aa; similar to many egs. TR:O86629 (EMBL:AL031155) ABC transporter ATP-binding protein from Streptomyces coelicolor (312 aa) fasta scores; opt: 1080, z-score: 1174.5, E(): 0, (57.4% identity in 303 aa overlap) and SW:BCRA_BACLI bacitracin-resistance ABC transporter from Bacillus licheniformis (306 aa) fasta scores; opt: 567, z-score: 621.0, E(): 2.8e-27, (42.4% identity in 217 aa overlap). N-terminal region previously sequenced therefore identical to TR:P72389 (EMBL:U51332) partial, designated D7 (103 aa) fasta scores; opt: 666, z-score: 734.8, E(): 0, (99.0% identity in 103 aa overlap). Contains Pfam match to entry PF00005 ABC_tran, ABC transporter, score 151.20, E-value 1.9e-41 and PS00017 ATP/GTP-binding site motif A (P-loop). AL645882 3210
+MITLDRLTKRYGDKTAVSDLSFEINPGKVTGFLGPNGAGKSTTMRMIVGLDAPTSGRALV
+GGKRYEELRHPLREVGALLDARAGHPGRSARHHLLGLARSNGIPASRVGEVLQTVGLSEV
+ANKRIGSFSLGMGQRLGIAAALLGDPKVLLFDEPVNGLDPDGVRWVRELMRSLAAEGRTI
+FVSSHLMSEMQETADHLLVIGRGKIIADAPIEEVIAGSSLTAVRVRTPQPDVLRRELLEF
+GLRVEPNADSAPDELLVVGGTLEEIGDLAFHHRVPIHELSMRKASLEQAYMELTAASVEY
+GSPALSQVTEVPDHQKA*

@@ -1,0 +1,5 @@
+>SCO3213 SCO3213, SCE8.06c, trpG   SCO3213 CAB38584.1 SCE8.06c SCO3213 SCE8.06c, trpG, anthranilate synthase component II, len: 200aa; similar to many eg. TR:G4185545 (EMBL:AF108766) TrpG, anthranilate synthase component II, from Rhodobacter sphaeroides (195 aa) fasta scores; opt: 728, z-score: 825.0, E(): 0, (60.2% identity in 186 aa overlap). Contains matches to Pfam entry PF00117 GATase, Glutamine amidotransferases class-I, score 332.60, E-value 4.3e-96 and Prosite PS00442 Glutamine amidotransferases class-I active site. AL645882 3199
+MSAPTGTRAGAAPRVAVIDNYDSFTYNLVHYVAELGGRPTVFRNDAVTVAELAGFDLLLL
+SPGPGTPAGAGICVDAVRALGARLPVLGVCLGHQAVAVAYGGSVVRGEQVHGKASAVHHD
+GGGVFAGLPDPFSATRYHSLVVEPAGLPDELTVTARTADGTVMGLRHRTHPVHGVQFHPE
+SVLSPEGKQLIANFLECADD*

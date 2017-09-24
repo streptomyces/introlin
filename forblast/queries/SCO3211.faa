@@ -1,0 +1,6 @@
+>SCO3211 SCO3211, SCE8.04c, trpC2   SCO3211 CAB38582.1 SCE8.04c SCO3211 SCE8.04c, trpC2, probable indoleglycerol phosphate synthase, len: 258aa; similar to many inluding another from Streptomyces coelicolor TR:O68814 (EMBL:AF054585) located in the trpCBA locus which maps (by hybridisation) to the overlap between cosmids 3A3 and 4G6 (269 aa) fasta scores; opt: 652, z-score: 740.9, E(): 0, (47.2% identity in 254 aa overlap). Also similar to SW:TRPC_PSEAE trpC, probable indoleglycerol phosphate synthase from Pseudomonas aeruginosa (278 aa) fasta scores; opt: 632, z-score: 718.3, E(): 1.1e-32, (43.5% identity in 260 aa overlap). Contains Pfam match to entry PF00218 IGPS, Indole-3-glycerol phosphate synthases, score 316.20, E-value 3.8e-91. AL645882 3197
+MSGILAGLVAEAESQTGRRRALRTEAKLTELAAAAPPARDFAAALREPGLAVIAEMKPRS
+PSKGPLTDDYRPAELARAYQGGGAHAVSVLTHEAGFGGSPDHLAVARAACELPVLRKDFV
+VDEYQILEARALGADALLLIVAALAPARLAALLARTRACGMEALVEVHDEREVDVALEAG
+ADVIGVNHRDLRDFSIDRTLSARLRGRVGTGRVMVGESGVRGAPDARALEAAGVDAVLVG
+ELLMRAGDPGTTIKGLVG*

@@ -1,0 +1,8 @@
+>SCO3228 SCO3228, SCE63.05   SCO3228 CAB38520.1 SCE63.05 SCO3228 SCE63.05, probable glycolate oxidase, len: 377 aa; similar to many both prokaryotic and eukaryotic e.g. TR:O52792 (EMBL:AJ223998) similar to glycolate oxidase from a cluster of genes nvolved in the biosynthesis of a vancomycin group antibiotic in Amycolatopsis orientalis (Actinomycete) (357 aa) fasta scores; opt: 995, z-score: 998.4, E(): 0, (47.5% identity in 343 aa overlap) and SW:GOX_SPIOL glycolate oxidase from Spinacia oleracea (spinach) (369 aa) fasta scores; opt: 917, z-score: 920.7, E(): 0, (41.9% identity in 360 aa overlap). Contains Pfam match to entry PF01070 FMN_dh, FMN-dependent de hydrogenase, score 412.60, E-value 3.6e-120 and PS00557 FMN-dependent alpha-hydroxy acid dehydrogenases active site. AL645882 3214
+VREPLTLDDFARLARGQLPAATWDFIAGGAGRERTLAANEAVFGAVRLRPRALPGIEEPD
+TSVEVLGSRWPAPVGIAPVAYHGLAHPDGEPATAAAAGALGLPLVVSTFAGRSLEEVARA
+ASAPLWLQLYCFRDHETTLGLARRARDSGYQALVLTVDTPFTGRRLRDLRNGFAVPAHIT
+PANLTGTAAAGSATPGAHSRLAFDRRLDWSFVARLGAASGLPVLAKGVLTAPDAEAAVAA
+GVAGIVVSNHGGRQLDGAPATLEALPEVVSAVRGRCPVLLDGGVRTGADVLAALALGARA
+VLVGRPALYALAVGGASGVRRMLTLLTEDFADTMVLTGHAATGTIGPDTLAPPHHAPPHH
+GPPTAPRPAPHRDRSHG*

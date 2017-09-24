@@ -1,0 +1,6 @@
+>SCO6259 SCO6259, SCAH10.24   SCO6259 CAB60178.1 SCAH10.24 SCO6259 SCAH10.24, probable ABC sugar transport ATP binding protein, len: 263 aa; similar to TR:O68121 (EMBL:AF010496) Rhodobacter capsulatus ribose transport ATP-binding protein, 305 aa; fasta scores: opt: 612 z-score: 706.1 E(): 5.9e-32; 45.6% identity in 217 aa overlap, to SW:RBSA_ECOLI (EMBL:M13169) Escherichia coli, ribose transport ATP-binding protein RbsA, 501 aa; fasta scores: opt: 509 z-score: 585.6 E(): 3e-25; 31.5% identity in 254 aa overlap and to TR:CAA15787 (EMBL:SC7B7) Streptomyces coelicolor St7B7.07, 260 aa; fasta scores: opt: 592 z-score: 521.2 E(): 1e-23; 43.1% identity in 246 aa overlap. Contains Pfam match to entry PF00005 ABC_tran, ABC transporter and Prosite PS00017 ATP/GTP-binding site motif A (P-loop) and PS00211 ABC transporters family signature AL645882 6242
+VTRNEDRTALVELSGVSKNYGNVRALEGVSLEVHAGEITCVLGDNGAGKSTLIKIIAGLH
+QHDGGTLSLDGEETRLSSPREALDRGIATVYQDLAVVPLMPVWRNFFLGSEPRKGVAPFK
+RMDVDHMRRTTHAELLRMGIDLRDVDQPIGTLSGGERQCVAIARAVYFGAKVLVLDEPTA
+ALGVKQSGVVLKYVAAARDQGLGVVLITHNPHHAYLVGDRFVLLKRGTMVANQTRDEVTL
+DELTQQMAGGTELDDLRHELERG*

@@ -1,0 +1,6 @@
+>SCO3233 SCO3233, SCE29.0   SCO3233 CAB38877.1 SCE29.0 SCO3233 SCE29.02, probable hydrolase, len: 272 aa; similar to many e.g. TR:O52809 (EMBL:AJ223998) from the vancomycin biosynthesis cluster of Amycolatopsis orientalis (276 aa) fasta scores; opt: 892, z-score: 1028.9, E(): 0, (50.9% identity in 271 aa overlap) and TR:O67982 (EMBL:AF003947) PcaL; single polypeptide combining 3-oxoadipate enol-lactone hydrolyzing and 4-carboxymuconolactone decarboxylating activityfrom Rhodococcus opacus (400 aa) fasta scores; opt: 288, z-score: 335.4, E(): 2.3e-11, (32.0% identity in 256 aa overlap). Contains Pfam match to entry PF00561 abhydrolase, alpha/beta hydrolase fold, score 77.80, E-value 2.2e-19. AL645882 3219
+MPVLTVNGIRINYYDDAPPAGAQNAPAVLLVMGSGGSGRAWHLHQVPALVAAGFRVISFD
+NRGIAPSEECPGGFGIDDLVADTAALVEELRLGPCRVAGISMGAHIAQELALSRPDLVDR
+LVLMATRARPDALREALCRAEMELYDQGIRLPAAYEAVVQAMQNLSPRTLDNDVQARDWL
+DVLELTRRSGAGYRAQLGVRVDGDRREAYRGIRAATRVVAFQDDLIAPPHLGREVADAIP
+GAEYELVPDCGHYGYLESPDAVNKSLVEFLRR*

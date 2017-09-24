@@ -1,0 +1,10 @@
+>SCO3209 SCO3209, SCE8.02   SCO3209 CAB38580.1 SCE8.02 SCO3209 SCE8.02, possible transcriptional regulator, len: 524 aa; N-terminal (up to approx. 270aa) similar to one group of transcriptional regulator (eg. SW:ICLR_ECOLI acetate operon repressor from Escherichia coli (274 aa) fasta scores; opt: 208, z-score: 221.4, E(): 5e-05, (27.1% identity in 262 aa overlap)) and C-terminal (from approx. 270aa) similar to a different group of transcriptional regulator (eg. SW:MHPR_ECOLI mhp operon transcriptional activator (315 aa) fasta scores; opt: 205, z-score: 217.5, E(): 8.3e-05, (28.5% identity in 267 aa overlap). Both halves appear to be members of the same family of transcriptional regulators (IclR-type) suggesting a duplication event. Contains two probable helix-turn-helix motifs at 37-58aa (Score 1082 (+2.87 SD)) and 320-341aa (Score 1437 (+4.08 SD)). AL645882 3195
+MPAHTTHDAARDEAVAPLLRGIAVLGRLTGADGGTLSLSALERTTGLARSTVDRLTATLA
+RMGYVRLDGRDVVLAPRLMELGNAYLAALRLPALLSARADGLADELDESVSLAVGDRDGI
+RFIHQATRRRAMSLSFRIGDLLPAERTAPGPLFAAEWTASDWHRWRERRAADPGDHSFPA
+VPPREPGAPGEDFARRAAKAAADGWALDDQLIEPGLVAVSVPVRDPGTGRVACVASVVSH
+TSRHTAPDLRAALLPRLRAAVAAMEDDLRAAPAPEPGPPPAGLALWTGASKQELGREFVE
+SLARGLTVLTAFGEGRSALTLTQVAQATGLARATARRALLTHARAGLVAPAAGHTFTLTP
+RVLSLGFPPLSRTSLPEIAQPHLTALAERVHESASLAVLADSGEEIQYTARASAARVLSA
+RVTVGTRLPARATALGRVLLALPEVRARGYALVDEELEAGLRAIAVPVRDRTGRVVAALN
+VALHAARRTADDCVAQILPELRHTADLVETELRVAGRFCRVAVV*

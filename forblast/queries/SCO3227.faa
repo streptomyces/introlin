@@ -1,0 +1,9 @@
+>SCO3227 SCO3227, SCE8.20c, SCE63.06   SCO3227 CAD55497.1 SCE63.06 SCO3227 SCE8.20c, partial CDS, possible aminotransferase, len: 431 aa; similar to many of undefined function e.g. TR:O52815 (EMBL:AJ223998) a protein similar to aminotransferase, from a cluster of genes involved in the biosynthesis of a vancomycin group antibiotic in Amycolatopsis orientalis (Actinomycete) (438 aa) fasta scores; opt: 953, z-score: 1093.1, E(): 0, (48.4% identity in 426 aa overlap). Also similar to TR:Q64602 (EMBL:Z50144) kynurenine/alpha-aminoadipate aminotransferase from rat (Rattus norvegicus) kidney (425 aa) fasta scores; opt: 293, z-score: 338.4, E(): 1.5e-11, (25.8% identity in 419 aa overlap). SCE63.06, partial CDS, possible aminotransferase, len: >45 aa; similar to the N-terminal region of TR:O52815 (EMBL:AJ223998) a protein similar to aminotransferase from a cluster of genes nvolved in the biosynthesis of a vancomycin group antibiotic in Amycolatopsis orientalis (Actinomycete) (438 aa) fasta scores; opt: 87, z-score: 147.0, E(): 0.69, (45.2% identity in 31 aa overlap). The remainder of this CDS lies on the neighbouring Streptomyces coelicolor cosmid E8. AL645882 3213
+MTTTTPARTDRDGVLARTALHPSLSAPLLDTMNFLNEVTLRYPQAISFAPGRPYEGDFDV
+ARVPGYIETYLDHLRGRGHSEERVRTALYQYGETAGQIRDIVARMLEVDEDLTVDPASVV
+VTVGCQEAVLLTLRALFTGPEDVLLVDSPAYVGITGAAGLLDIPVVPVPGTPDGPSPEGL
+ERTVREIEASGRRARCLYVVPDCSNPTGVSLRREARTALLDAAARLDLLLLEDNPYGVFS
+RVRRPTLKSLDTERRVVYLGSFAKTAFPGARVGFVVADQLVAGADGRPPGLLAHELAKVK
+SMVTVNTPTLSQAAVAGLLLQNGGGLRAANEASARHYQSTMRCLRDTLAAELPPGAPESG
+GVRWNDPDGGFFLTLDVPFEADEAALDVSAEKYGVIWTPMRHFHLDDAGDRQIRLSCSYL
+TTDRAAEGATRLARFVKDRAASNG*

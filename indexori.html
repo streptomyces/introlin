@@ -1,0 +1,1835 @@
+<!DOCTYPE "html"> 
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<!-- {{{ style -->
+<style type="text/css">
+body {
+background: #dddddd;
+font-family: sans-serif;
+font-size: 110%;
+}
+.tta {background: #ffff00}
+.timestamp {font-size: x-small}
+td, table, tr, th {
+border-collapse: collapse;
+border: solid black 1px;
+padding: 3px;
+}
+.species {font-style: italic}
+.genus {font-style: italic}
+a:link, a:visited, a:active {color: blue; text-decoration: none}
+a:hover {color: magenta; text-decoration: none}
+div.code {
+  font-family: monospace; 
+  font-size: 120%;
+  color: #0000aa;
+  white-space: pre;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+h5 {
+  font-size: 97%;
+}
+
+.hashcol {
+color: #008000;
+}
+
+div.slide {
+margin-bottom: 60px;
+}
+
+li { margin-top: 15px; }
+
+code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+pre.code {
+margin-left: 10px;
+margin-bottom: 40px;
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.fn {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #3c6d33;
+}
+
+li.code {
+font-family: monospace;
+white-space: pre;
+color: #0000aa;
+font-size: 120%;
+}
+
+p, li {
+  width: 800px;
+}
+ul {
+  font-size: 110%;
+}
+ul.lev2 {
+  font-size: 100%;
+  list-style-type: square;
+}
+
+hr {
+  margin-top: 10px;
+  border: 3px solid #000000;
+}
+hr.thin {
+  margin-top: 5px;
+  border: 1.5px solid #aabbcc;
+}
+p.red {
+color: #aa0000;
+}
+.medium {
+  font-size: medium
+}
+.small {
+  font-size: small
+}
+em, .blue {
+  color: #0000aa
+}
+.instructor {
+font-family: monospace;
+font-size: small;
+color: #5c1f00;
+white-space: pre;
+}
+
+</style>
+<!-- }}} -->
+
+<!-- {{{ script -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script>
+function detail() {
+$("div.slide").show("fast");
+}
+function outline() {
+$("div.slide").hide("fast");
+}
+function togoutline() {
+$("div.slide").toggle();
+}
+function toginstruct() {
+$(".instructor").toggle();
+}
+</script>
+
+<script>
+jQuery(function() {
+$("h4").text(function(n, current) {
+return (n+1) + ": " + current
+})
+});
+
+jQuery(function() {
+$(".instructor").hide("fast"); return(TRUE);
+});
+
+</script>
+<!-- }}} script -->
+
+<!-- {{{ Title and heading -->
+<title>LinuxIntro</title>
+</head>
+<body>
+<button type="button" onclick="outline()">Outline</button>
+<button type="button" onclick="detail()">Detail</button>
+<!-- <button type="button" onclick="toginstruct()">
+Instructor hints show / hide</button> -->
+<h2>Introduction to the Linux command line interface</h2>
+<!-- }}} -->
+
+<!-- {{{ On arrival -->
+<h4>Start</h4>
+<a href="nowhere" onclick='$("#onarrival").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="onarrival">
+<p>
+As soon as you arrive, please point your browser to the URL shown
+below.
+</p>
+<h2>http://52.211.33.48</h2>
+<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Instructions for PuTTY -->
+<h4>Logging into Linux</h4>
+<a href="nowhere" onclick='$("#putty").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="putty">
+<p>
+Start <em>exceed</em> (found under Open Text in the start menu?) on 
+your local windows machines. This should be left
+running all the time that you are working remotely in your HPC
+accounts. Basically, exceed draws stuff on your local screen
+based on instructions coming from a remote machine.
+</p>
+<p>
+We use the PuTTY program to login to the Linux machine. This machine has
+the IP address 52.211.33.48.
+<ul>
+<li>Hostname (or IP address) is <em>52.211.33.48</em></li>.
+<li>Protocol (Connection type) is <em>SSH</em></li>
+<li>Port is <em>22</em></li>
+<li>In the left hand panel, click on the <em>+</em> sign next to <em>SSH</em> then
+select <em>X11</em> by clicking on it. Now in the right hand panel, make sure
+that <em>Enable X11 forwarding</em> is checked.</li>
+<li>Now select the <em>Session</em> tab in the left panel, check that the
+hostname and port are correct, and click <em>Open</em>.</li>
+<li>A black PuTTY terminal should come up. Login with
+the user name written on your computer and the password
+written on the left hand corner of the white board.</li>
+<li>Now type the command below<br/><br/><code>gnome-terminal &amp;</code><br/><br/>
+and press enter. A new terminal should appear.</li>
+<li>All subsequent commands should be given in the terminal created
+as a result of the above command.</li>
+<li>To avoid confusion, minimise the black PuTTY terminal you used for logging in.</li>
+</ul>
+<div class="instructor">
+* Make sure everybody has done this successfully before
+  proceeding further.
+</div>
+<a href="nowhere" onclick='$("#putty").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Files to play with -->
+<h4>Some files to play with</h4>
+<a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="prep">
+<p>
+First we will copy some files from somewhere so that we have something
+to play with. To do that, run the commands exactly as shown below.<br/>
+<em>Case is significant and spaces matter.</em>
+</p>
+<pre class="code">
+cd
+
+rm -rf introlin
+
+cp -r /home/nouser/introlin ./
+
+ls
+</pre>
+<p>
+The last command <em>(ls)</em> should show you, amongst other stuff, a directory named
+<em>introlin</em>.
+</p>
+<div class="instructor">
+* Make sure everybody has done this successfully before
+  proceeding further.
+</div>
+<a href="nowhere" onclick='$("#prep").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ What is an OS -->
+<h4>What is an Operating System?</h4>
+<a href="nowhere" onclick='$("#OS").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="OS">
+<img src = "architecture.png"><br/>
+<div class="instructor">
+* Memory is volatile, storage is permanent.
+* The processor has a tiny amount of memory (registers and caches).
+* It has very high speed access to installed memory.
+
+* Quite a few of the concepts we will see today apply to other operating
+  systems as well. It is just that these other operating systems do not
+  make them transparent or obvious.
+
+</div>
+<a href="nowhere" onclick='$("#OS").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Bash -->
+<h4>Bash</h4>
+<a href="nowhere" onclick='$("#bash").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bash">
+<ul>
+<li>Bash is a shell &mdash; <b>B</b>ourne <b>a</b>gain <b>sh</b>ell.
+Two other shells are the C shell and the Z shell. And there are more.</li>
+<li>Makes the kernel do what you want by interpreting your commands into
+a form which the kernel understands. Command interpreter.</li>
+<li>Bash is your default command interpreter.</li>
+<li>When you get a terminal, it automatically starts the default command
+interpreter (Bash in this case) for you which then prompts you for commands.</li>
+<li>Usually, Bash returns the prompt back to you only after your last
+command has finished.</li>
+<li>It is possible to set a command running in the background.</li>
+  <ul class="lev2">
+  <li>This is how we will run an editor later on.</li>
+  </ul>
+<li>Bash functions (shell functions). Usually defined by the user in the
+current environment.</li>
+<li>Builtin commands (Bash builtins). Bash knows what you mean and does it.
+(<code class="blue">cd, pwd, echo</code>).</li>
+<li>Otherwise, it looks for an executable file in $PATH and runs it for you.</li>
+<li>This other program might itself be a command interpreter
+capable of interpreting a different set of commands.</li>
+  <ul class="lev2">
+  <li>For example, R.</li>
+  <li>The R shell.</li>
+  <li>When you quit R, Bash becomes your command interpreter again.</li>
+  <li>Other examples are Python, Gnuplot etc.</li>
+  </ul>
+<li>Mostly you don't need to worry whether a command is built into Bash or
+is being run for you by Bash.</li>
+<li>If your command has a slash (&quot;/&quot;) in it, the file is
+is looked for and, if found, executed.</li>
+</ul>
+<a href="nowhere" onclick='$("#bash").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Command execution environment -->
+<h4>Command Execution Environment</h4>
+<a href="nowhere" onclick='$("#comexe").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="comexe">
+<h5>Information available at the time of running a command.</h5>
+<ul>
+<li>Open files and redirections in effect.</li>
+<li>Current working directory.</li>
+<li>Inherited functions and variables.</li>
+<li>Shell options.</li>
+<li>Builtins and functions have access to aliases.</li>
+</ul>
+<a href="nowhere" onclick='$("#comexe").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ The environment -->
+<h4>The Environment</h4>
+<a href="nowhere" onclick='$("#comenv").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="comenv">
+<h5>Information passed on to the executed command.</h5>
+<ul>
+<li>A list of name=value pairs explicitly exported to the executed command.</li>
+<li>The shell's initial environment give or take any modifications,
+additions or removals made to it.</li>
+</ul>
+<a href="nowhere" onclick='$("#comenv").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Commands -->
+<h4>Commands</h4>
+<a href="nowhere" onclick='$("#commands").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="commands">
+<ul>
+<li>Command names are always single words</li>
+<li>Arguments</li>
+  <ul class="lev2">
+  <li>These are things that the commands is to act upon</li>
+  <li>Sometimes, default arguments assumed when none given</li>
+  <li>May be required for some commands</li>
+  </ul>
+<li>Options</li>
+
+  <ul class="lev2">
+  <li>Modify the behaviour of commands</li>
+  </ul>
+<li>Mostly, options come before any arguments</li>
+
+  <ul class="lev2">
+  <li>
+  <code class="blue">command option1 option2 argument1 argument2</code>
+  </li>
+  </ul>
+
+<li>Options mostly begin with a - (dash or minus symbol) </li>
+
+  <ul class="lev2">
+  <li>
+  <code class="blue">command -opt1 -opt2 arg1 arg2</code>
+  </li>
+  </ul>
+
+<li>
+Options can also take arguments.
+</li>
+
+  <ul class="lev2">
+  <li>
+  <code class="blue">command -opt1 optarg1 -opt2 optarg2 arg1 arg2</code>
+  </li>
+  </ul>
+
+<li>
+Single character short options which do not take any arguments can
+be bundled together.
+</li>
+  <ul class="lev2">
+  <li>
+  <code class="blue">ls -lhtr</code>
+  </li>
+  </ul>
+
+<li>Long options begin with -- </li>
+<li>Sometimes there are short option equivalents. Why?</li>
+
+  <ul class="lev2">
+  <li><code class="blue">ls --color=never</code>
+  </li>
+  </ul>
+
+<li>Long and short options can be mixed</li>
+
+  <ul class="lev2">
+  <li><code class="blue">ls --group-directories-first -lh</code>
+  </li>
+  </ul>
+
+<li>Very long commands may be spread over multiple lines using
+the \ (backslash) character at the end of all but the final line</li>
+
+  <ul class="lev2">
+  <li><code class="blue">We will see an example later.</code>
+  </li>
+  </ul>
+
+<li>It is also possible to put multiple commands on the same line by
+separating the commands with semicolons (;).
+</li>
+
+  <ul class="lev2">
+  <li><code class="blue">cd; cd introlin;</code>
+  </li>
+  </ul>
+
+<li>Auto-completion: For commands as well as filenames.</li>
+<li>Comments (beginning with <code>#</code>) are ignored by Bash.</li>
+</ul>
+</ul>
+
+
+<!-- {{{ -->
+<!--
+<h5>Tasks</h5>
+
+<ul>
+<li>
+Try out the commands below for interrogating the filesystem
+and moving around in it.
+</li>
+
+<ul class="lev2">
+<li class="code">cd</li>
+<li class="code">cd introlin</li>
+<li class="code">cd ..</li>
+<li class="code">pwd</li>
+<li class="code">cd .</li>
+<li class="code">pwd</li>
+<li class="code">cd introlin</li>
+<li class="code">ls</li>
+<li class="code">ls -l</li>
+<li class="code">ls -l -h</li>
+<li class="code">ls -lh</li>
+<li class="code">ls -lht</li>
+<li class="code">ls -lhtr</li>
+<li class="code">ls --group-directories-first -lh</li>
+<li class="code">ls --format=single-column</li>
+</ul>
+
+<li>
+Some commands for making directories and copying and moving
+files between directories.
+</li>
+<ul class="lev2">
+<li class="code">pwd</li>
+<li class="code">mkdir tempdir</li>
+<li class="code">cp small.tsv tempdir</li>
+<li class="code">ls tempdir</li>
+<li class="code">ls -lh tempdir</li>
+<li class="code">cd tempdir</li>
+<li class="code">ls -lh</li>
+<li class="code">ls -lh ..</li>
+<li class="code">cd; cd introlin;</li>
+<li class="code">cp small.tsv justafile</li>
+<li class="code">mv justafile tempdir # move to the directory named tempdir</li>
+<li class="code">cd tempdir</li>
+<li class="code">ls</li>
+
+<li class="code">##########################</li>
+<li class="code">rm justafile</li>
+<li class="code">ls</li>
+<li class="code">cd ..</ls>
+<li class="code">rmdir tempdir</li>
+<li class="code">##########################</li>
+
+<li class="code">cd; cd introlin;</li>
+<li class="code">mkdir tempdir</li>
+<li class="code">cp small.tsv tempdir</ls>
+<li class="code">ls tempdir</ls>
+<li class="code">rm -rf tempdir</li>
+<li class="code">ls</ls>
+<li class="code">##########################</li>
+
+<li class="code">cp small.tsv justafile</li>
+<li class="code">mv justafile renamedfile # mv used for renaming a file.</li>
+<li class="code">ls</li>
+<li class="code">cd; cd introlin;</li>
+</ul>
+
+<li>find again</li>
+<ul class="lev2">
+<li class="code">mkdir tsvs</li>
+<li class="code">find . -iname '*.tsv' -exec cp {} tsvs \;</li>
+<li class="code">ls tsvs</li>
+</ul>
+
+<li>head (and tail) again</li>
+<ul class="lev2">
+<li class="code">head large.tsv</li>
+<li class="code">head -n 3 large.tsv</li>
+
+<li class="code">tail large.tsv</li>
+<li class="code">tail -n 3 large.tsv</li>
+
+<li class="code">head -n 3 *.tsv</li>
+<li class="code">tail -n 3 *.tsv</li>
+</ul>
+
+</ul>
+-->
+<!-- }}} -->
+
+<div class="instructor">
+* Use ls frequently.
+* Always be aware of the directory you are in. Use pwd frequently.
+</div>
+<a href="nowhere" onclick='$("#commands").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ History -->
+<h4>Command history</h4>
+<a href="nowhere" onclick='$("#history").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="history">
+<ul>
+<li>Command history and !</li>
+
+<ul class="lev2">
+<li class="code">history</li>
+<li class="code">!217 # change to something sensible before running.</li>
+<li class="code">!-5  # change -5 before running</li>
+<li>Use of control-R to reverse search command history.</li>
+</ul>
+
+</ul>
+<a href="nowhere" onclick='$("#history").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Directory organisation -->
+<h4>Directory organisation</h4>
+<a href="nowhere" onclick='$("#dirorg").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="dirorg">
+<img src = "filesystem.png"><br/>
+<hr class="thin"/>
+<ul>
+<li>Different meanings of / (forward slash).</li>
+<li>Home directory.</li>
+<li>Relative and absolute paths.</li>
+<li>The .(dot) directory.</li>
+<li>The ..(two dots) directory.</li>
+<li>The ~(tilde) is a short form for your home directory.</li>
+<li>Physical volumes and mount points.</li>
+</ul>
+<a href="nowhere" onclick='$("#dirorg").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Present working directory -->
+<h4>The <em>present working directory</em></h4>
+<a href="nowhere" onclick='$("#pwd").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="pwd">
+<ul>
+<li>AKA current directory and current working directory</li>
+<li>The contents of your current directory are accessible without
+further specification.</li>
+<li>Unless otherwise specified, new files and directories get created here.</li>
+</ul>
+<hr class="thin">
+<ul class="try">
+<li><span class="code">ls</span> shows you the contents of a directory.</li>
+<li><span class="code">mkdir</span> makes a new directory.</li>
+<li><span class="code">cd</span> changes to a given directory.</li>
+<li><span class="code">pwd</span> tell you your present working directory.</li>
+<li><span class="code">rmdir</span> is used to remove (delete) an empty directory.</li>
+<li>Press enter a few times between commands to make the screen easier to read.</li>
+<li>Use the history to re-run old commands quickly.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Make a new directory named <span class="fn">test</span>.</li>
+<li>Confirm that it has come into existence.</li>
+<li>Change to the directory you just made.</li>
+<li>Find out your current working directory.</li>
+<li>Change back to the <span class="fn">introlin</span> directory.</li>
+<li>Delete the <span class="fn">test</span> directory.</li>
+<li>Confirm that the deletion was successful.</li>
+</ol>
+
+<a href="nowhere" onclick='$("#pwd").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ The Directory Stack -->
+<h4>The Directory Stack</h4>
+<a href="nowhere" onclick='$("#dirstack").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="dirstack">
+<ul>
+<li>History of directories that have been your current directories
+in the form of a stack.</li>
+<li>Use <span class="code">dirs</span> to view the directory stack</li>
+<li><span class="code">pushd</span> to change directory and put it
+on the directory stack.</li>
+<li><span class="code">popd</span> to remove a directory from the
+directory stack.</li>
+<li>The current directory is always the first item on the directory
+stack. Even if you used <span class="code">cd</span> to get there.</li>
+<li>Integer arguments to <span class="code">pushd, popd</span> need to
+have a <span class="code">+</span> prefixed.</li>
+<li>Directory stack index is zero based.</li>
+</ul>
+
+<h6>Code for demo</h6>
+<pre>
+popd; popd; popd; popd; popd; popd; popd; popd; popd;
+cd
+pushd introlin
+pushd ~/introlin/introlin2
+pushd /home
+pushd /var/log
+pushd /etc
+dirs
+pushd +4
+dirs
+popd
+dirs
+</pre>
+
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Use <span class="code">cd</span> to change to your home directory.</li>
+<li>Use <span class="code">pushd</span> to change to <span class="fn">introlin</span>.</li>
+<li>Use <span class="code">pushd</span> to change to <span class="fn">introlin/introlin2</span>.</li>
+<li>Use <span class="code">dirs</span> to view the directory stack.</li>
+<li>Use a single <span class="code">pushd</span> command to go to your home directory.
+(Remember, directory stack index is zero based).</li>
+<li>Issue a single <span class="code">popd</span> and see where you end up.</li>
+
+</ol>
+
+<a href="nowhere" onclick='$("#dirstack").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Files -->
+<h4>Files</h4>
+<a href="nowhere" onclick='$("#files").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="files">
+<ul>
+<li>Files</li>
+  <ul class="lev3">
+  <li>Regular files</li>
+  <li>Directories contain other directories and files. Can be empty.</li>
+  <li>Symbolic links.</li>
+  <li>Pipes. Named or unnamed. Communication between two processes.</li>
+  <li>Sockets. More complicated Interprocess communications including
+  client-server operations.</li>
+  <li>Character special. Device drivers for hardware such as mouse, keyboard etc.</li>
+  <li>Block special. Device drivers for disks.</li>
+  </ul>
+<li>From a programs point of view all of the above types have similar
+behaviour&mdash;files can be opened, read, written to, and closed. The OS
+ensures that the right thing gets done for the underlying kind of file.
+</li>
+</ul>
+
+<div class="instructor">
+</div>
+<a href="nowhere" onclick='$("#files").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ File ownership and permissions-->
+<h4>File ownership and permissions</h4>
+<a href="nowhere" onclick='$("#perms").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="perms">
+
+<div class="code">
+-rw-r--r-- 1 b26stu30 b26stu30  344 Oct 28 14:01 charset.pl
+-rw-r--r-- 1 b26stu30 b26stu30  168 Oct 28 14:01 file.txt
+-rw-r--r-- 1 b26stu30 b26stu30   98 Oct 28 14:01 formode.bash
+drwxr-xr-x 3 b26stu30 b26stu30 4.0K Oct 28 14:01 fromContractor
+drwxr-xr-x 3 b26stu30 b26stu30 4.0K Oct 28 14:01 introlin2
+-rw-r--r-- 1 b26stu30 b26stu30 3.1M Oct 28 14:01 large.tsv
+-rw-r--r-- 1 b26stu30 b26stu30 142M Oct 28 14:01 local.sam
+-rw-r--r-- 1 b26stu30 b26stu30  63K Oct 28 14:01 medium.tsv
+</div>
+
+<hr class="thin"/>
+<div class="code" style="font-size: 200%">
+d rwx rwx rwx
+   u   g   o
+   ---------
+       |
+       a
+</div>
+<hr class="thin"/>
+<br/>
+<ul class="try">
+<li><span class="code">chmod</span> is used to change the permissions of files and
+directories.</li>
+<li>e.g. <span class="code">chmod a-x filename</span></li>
+<li>e.g. <span class="code">chmod u+x filename</span></li>
+<li>e.g. <span class="code">chmod u=rwx,g=rx,o=rx filename</span></li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Use the <code>-l</code> option of <code>ls</code> to check the permissions
+of the file <span class="fn">formode.bash</span>.</li>
+<li>If required, take away the permission to execute from all.</li>
+<li>Try to run formode.bash by issuing <code>./formode.bash</code></li>
+<li>Give yourself (the user) execute permission for <span class="fn">formode.bash</span>.</li>
+<li>Again, try to run formode.bash by issuing <code>./formode.bash</code></li>
+</ol>
+<hr class="thin">
+<br/>
+<ul class="try">
+<li><span class="code">chgrp</span> is used to change the group to which a
+file or directory belongs.</li>
+<li>e.g. <span class="code">chgrp training text.txt</span></li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Do a long listing and note the group to which the file
+<span class="fn">text.txt</span> belongs.</li>
+<li>Change the group ownership of <span class="fn">text.txt</span> to the group
+<span class="fn">training</span>.</li>
+<li>Again do a long listing to confirm that the above was successful.</li>
+<li>Change the group of the file <span class="fn">text.txt</span> back to
+your initial group (something like b26stu??).</li>
+<li>Confirm the above.</li>
+</ol>
+<hr class="thin">
+<ul>
+<li class="code">chown</li>
+  <ul class="lev2">
+  <li class="code"># chown user filename</li>
+  </ul>
+</ul>
+
+<a href="nowhere" onclick='$("#perms").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Shell expansions -->
+<h4>Shell expansions</h4>
+<a href="nowhere" onclick='$("#shexp").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="shexp">
+<ul>
+<li>brace expansion</li>
+<li>tilde expansion</li>
+<li>variable expansion</li>
+<li>command substitution</li>
+<li>arithmetic expansion</li>
+<li>filename expansion</li>
+</ul>
+
+<h6>See for yourself what the following commands do.</h6>
+<pre class="code">
+
+### brace expansion
+echo series{" I"," II"," III"," IV"}
+
+ls text{17,18,19,20}.csv
+
+### tilde expansion
+
+cd
+cd introlin
+cd ~
+pwd
+
+cd ~b26stu29/introlin
+pwd           # Note where you are.
+ls -lh        # Note who owns the files.
+
+### variable expansion
+
+var=DogdaysForlazydogs
+echo $var
+echo ${var:7}
+echo ${var:10:4}
+
+
+
+</pre>
+
+<a href="nowhere" onclick='$("#shexp").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} File globs -->
+
+
+
+<!-- {{{ File globbing -->
+<h4>Globs</h4>
+<a href="nowhere" onclick='$("#globs").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="globs">
+<ul>
+<li>* (Any character any number of times, including zero times)</li>
+  <ul class="lev2">
+  <li class="code">ls *txt</li>
+  </ul>
+<li>? (Any character once only)</li>
+  <ul class="lev2">
+  <li class="code">ls text1?.csv</li>
+  </ul>
+<li>[] (One of a class of characters)</li>
+  <ul class="lev2">
+  <li class="code">ls text1[789].csv</li>
+  </ul>
+<li>{} (One of a range)</li>
+  <ul class="lev2">
+  <li class="code">ls text{a..c}.csv</li>
+  </ul>
+<li>\ (Used to escape globbing characters)</li>
+  <ul class="lev2">
+  <li class="code">ls silly*fn</li>
+  <li class="code">ls silly\*fn</li>
+  <li class="code">ls &apos;silly*fn&apos; # single quote.</li>
+  </ul>
+</ul>
+
+<hr class="thin"/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>List all files ending in <span class="fn">txt</span>.</li>
+<li>List all files named <span class="fn">text</span> followed by a single character and finally ending in <span class="fn">.csv</span></li>
+<li>List all files named <span class="fn">text</span> followed by a single a, b or c and finally ending in <span class="fn">.csv</span></li>
+<li>Using a range specification {} list <span class="fn">text18.csv</span> to <span class="fn">text20.csv</span> (3 files).</li>
+<li>List <span class="fn">bad*fn</span> so that only one file gets listed.</li>
+</ol>
+<a href="nowhere" onclick='$("#globs").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} File globs -->
+
+<!-- {{{ find -->
+<h4>find: A more capable file finder.</h4>
+<a href="nowhere" onclick='$("#find").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="find">
+<ul class="lev2">
+<li>Descends into sub-directories when looking for files which match the
+pattern specified.</li>
+<li class="code">find . -name '*.txt'</li>
+<li>The first argument is the directory to start searching in.</li>
+<li>The argument to <span class="code">-name</span> is single quoted to prevent
+Bash from expanding the glob.</li>
+<li>find is capable of a lot more as we will see later.</li>
+</ul>
+
+<hr class="thin">
+<ul class="try">
+<li><span class="code">mkdir</span> makes a new directory.</li>
+<li><span class="code">cp</span> is used to copy files.
+<span class="code">cp source destination</span>. The destination can be a directory.</li>
+<li><span class="code">mv</span> is used to rename as well as move files.</li>
+<li><span class="code">rm</span> is used to remove files.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Make a new directory named <span class="fn">tsvs</span> (to contain all .tsv files).</li>
+<li>Confirm that it has come into existence.</li>
+<li>Copy all <span class="fn">.tsv</span> files to the <span class="fn">tsvs</span>
+directory you just made.</li>
+<li>Without changing to <span class="fn">tsvs</span>, list the contents of the directory
+<span class="fn">tsvs</span>.</li>
+<li>Change to the <span class="fn">tsvs</span> directory.</li>
+<li>Make a copy of <span class="fn">small.tsv</span> named <span class="fn">stuff.tsv</span></li>
+<li>List to confirm.</li>
+<li>Delete <span class="fn">small.tsv</span>.</li>
+<li>List to confirm.</li>
+<li>Rename <span class="fn">stuff.tsv</span> to <span class="fn">small.tsv</span>.</li>
+<li>List to confirm.</li>
+<li>Go up one directory and confirm that you are in <span class="fn">introlin</span>.</li>
+<li>Use find to find all <span class="fn">.tsv</span> files.</li>
+<li>Try removing the <span class="fn">tsvs</span> directory.</li>
+<li>Remove all files in the <span class="fn">tsvs</span> directory.</li>
+<li>Now remove the <span class="fn">tsvs</span> directory.</li>
+<li>List to confirm.</li>
+</ol>
+
+
+<a href="nowhere" onclick='$("#find").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Hidden files -->
+<h4>Hidden files</h4>
+<a href="nowhere" onclick='$("#hidden").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="hidden">
+<ul>
+<li>Files with names beginning with a . (dot/period) character are hidden
+from listing as well as globbing.</li>
+</ul>
+
+<hr class="thin">
+<ul class="try">
+<li><span class="code">mkdir</span> makes a new directory.</li>
+<li><span class="code">cp</span> is used to copy files.</li>
+<li><span class="code">rm</span> is used to remove files.</li>
+<li><span class="code">rmdir</span> is used to remove empty directories.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your
+home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Make a new directory named <span class="fn">testdir</span>.</li>
+<li>Confirm that it has come into existence.</li>
+<li>Copy the file <span class="fn">small.tsv</span> to the testdir directory you just made.</li>
+<li>Change to the <span class="fn">testdir</span> directory.</li>
+<li>List. Then copy <span class="fn">small.tsv</span> to a file named
+<span class="fn">.findme.tsv</span>. Note that the name begins
+with a &quot;.&quot;</li>
+<li>Do a listing.</li>
+<li>Do a listing with <span class="code"> ls -A</span></li>
+<li>Do a listing with <span class="code"> ls .*tsv</span></li>
+<li>Go up one directory and confirm that you are in <span class="fn">introlin</span>.</li>
+<li>Use <span class="code">find</span> to find all <span class="fn">.tsv</span> files.</li>
+<li>Remove all files in the <span class="fn">testdir</span> directory using the glob
+<span class="code">testdir/*</span>.</li>
+<li>Remove <span class="fn">testdir</span>. Should fail.</li>
+<li><span class="code">rm -rf testdir</span></li>
+</ol>
+<p class = "red">Be very careful with <span class="code">rm -rf</span>. <br/>
+Issued in the wrong place or with
+the wrong arguments it can be disastrous.
+</p>
+
+<a href="nowhere" onclick='$("#hidden").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Text files and their editing -->
+<h4>Text files</h4>
+<a href="nowhere" onclick='$("#text").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="text">
+<ul>
+<li>Computers understand numbers only.</li>
+<li>Numbers are used to represent alpha-numeric characters.</li>
+<li>This is known as encoding and results in character sets.</li>
+<li>A text file is interpreted <em>only</em> in terms of a 
+character set encoding. Nothing else is needed.</li>
+<li>In contrast, an application specific file can only be
+interpreted in the application that created it.</li>
+<li>We need to write files which can be interpreted correctly
+by lots of programs in addition to the one writing it.</li>
+<li>Sequencing data</li>
+  <ul class="lev3">
+  <li>Written by the software on the sequencing machine.</li>
+  <li>Adaptor clipping.</li>
+  <li>Quality filtered.</li>
+  <li>Mapped to a reference genome.</li>
+  <li>Call variants using the output of the mapper.</li>
+  <li>Use the output of the variant caller to list proteins in which
+  amino acids have changed.</li>
+  <li>The list goes on and on.</li>
+  </ul>
+<li>Source code</li>
+  <ul class="lev3">
+  <li>Written by a programmer using an editor.</li>
+  <li>The program is interpreted by an interpreter such as
+  Perl or Python or Java on Linux or MS Windows.</li>
+  <li>Or, the program may be compiled by a compiler to produce an executable.</li>
+  </ul>
+
+<li>Text files are not the same as word processor files.</li>
+<li>&quot;This is a line.&quot; 10Kb in a Word processor.
+16 bytes as plain text. 4+2+1+4+1 = 12. 3 spaces. 1 EOF.</li>
+
+<li>Why use file viewers?</li>
+  <ul class="lev2">
+  <li>Small</li>
+  <li>Fast</li>
+  <li>Safe</li>
+  </ul>
+
+<li>Editors</li>
+  <ul class="lev3">
+  <li>Some barely let you edit, some are very powerful.</li>
+  <li>Some are easy to use, some are very difficult.</li>
+  <li>No formatting such as bold or italics etc.</li>
+  <li>Syntax highlighting.</li>
+  <li>Whatever they may look like, for a given text, they
+  will produce the same files.</li>
+  <li>On the HPC we have an editor called <em>gedit</em>.
+  We also have <em>vim</em> but <em>gedit</em> is much easier to use.
+  </li>
+  </ul>
+
+</ul>
+
+<hr class="thin">
+<ul class="try">
+<li><span class="code">cat</span> dumps the entire contents of the specified file
+to the screen.</li>
+<li><span class="code">more</span> shows the contents of a file one screen
+at a time. Press <span class="code">q</span> to quit.</li>
+<li><span class="code">less</span> lets you scroll up and down a file.
+It also has some advanced features like searching. Press <span class="code">q</span> to quit.</li>
+<li><span class="code">head</span> is used to see the first few lines of a file.</li>
+<li><span class="code">tail</span> is used to see the last few lines of a file.</li>
+<li><span class="code">wc</span> tells you the number of lines, number of words and
+the number of bytes in the specified files.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your
+home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Use <span class="code">cat</span> to dump <span class="fn">small.tsv</span>
+to your terminal.</li>
+<li>Use <span class="code">more</span> to view <span class="fn">medium.tsv</span>.</li>
+<li>Use <span class="code">less</span> to view <span class="fn">medium.tsv</span>.</li>
+<li>Use <span class="code">head</span> to view the top of <span class="fn">large.tsv</span>.
+By default you get 10 lines.</li>
+<li>Use the <span class="code">-n</span> option of <span class="code">head</span> (e.g. <span class="code">-n 20</span>)
+to view the first 20 lines of <span class="fn">large.tsv</span>.</li>
+<li>Use <span class="code">tail</span> to view the bottom of <span class="fn">large.tsv</span>.
+By default you get 10 lines.</li>
+<li>Use the <span class="code">-n</span> option of <span class="code">tail</span> to view the
+last 20 lines of <span class="fn">large.tsv</span>.</li>
+<li>Use the <span class="code">wc</span> to view the word counts for all
+<span class="fn">.tsv</span> files in one command. You will need to use a
+globbing character for this.</li>
+</ol>
+
+
+<div class="instructor">
+* The most commonly used file encoding is UTF-8. UCS Transformation format 8 bit,
+  where UCS stands for Universal Character Set.
+* ASCII is another popular (older) encoding. It uses 7 bit characters.
+* UTF-8 is backward compatible with ASCII so this is not an issue.
+* The line ending / new line conventions on different platforms.
+</div>
+
+<a href="nowhere" onclick='$("#text").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Getting help on commands -->
+<h4>Getting help on commands</h4>
+<a href="nowhere" onclick='$("#help").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="help">
+<ul>
+<li class="code">man mkdir</li>
+<li class="code">man cp</li>
+<li class="code">info mkdir</li>
+<li class="code">apropos copy</li>
+<li class="code">apropos -s 1 copy # Not on the HPC.</li>
+</ul>
+<a href="nowhere" onclick='$("#help").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Links -->
+<h4>Links</h4>
+<a href="nowhere" onclick='$("#links").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="links">
+<ul>
+<li>Hard links</li>
+<ul class="lev2">
+<li>You cannot make hard links to directories.</li>
+<li>You cannot hard link across file system boundries.</li>
+</ul>
+<li>Symbolic links</li>
+<ul class="lev2">
+<li>Symbolic links can cross file system boundries.</li>
+<li>You <em>can</em> make symbolic links to directories.</li>
+<li>Symbolic links are easily distinguished from the real files.</li>
+<li>Mostly, you should use symbolic links.</li>
+</ul>
+</ul>
+
+<hr class="thin">
+<ul class="try">
+<li><span class="code">ln</span> is used to make both types of links. The default is to
+make hard links.</li>
+<li>You need to use the <span class="code">-s</span> option of <span class="code">ln</span>
+to make symbolic links.</li>
+<li>e.g. <span class="code">ln -s actualFile linkName</span>.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your
+home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li><span class="code">ls fromContractor/run6/lane1</span>.</li>
+<li>In your current directory, make a symbolic link to the file beginning with
+<span class="fn">8733</span>. Call it <span class="fn">control.sam</span>.</li>
+<li>In your current directory, make a symbolic link to the file beginning with
+<span class="fn">9736</span>. Call it <span class="fn">treatment.sam</span>.</li>
+<li>List to confirm.</li>
+<li>Use <span class="code">head</span> to view the top of
+<span class="fn">treatment.sam</span></li>
+<li><span class="code">ls -lh control.sam</span></li>
+</ol>
+<a href="nowhere" onclick='$("#links").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Filehandles -->
+<h4>Filehandles</h4>
+<a href="nowhere" onclick='$("#filehandles").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="filehandles">
+<ul>
+<li>File handles</li>
+<li>Where is Bash reading input from?</li>
+  <ul class="lev2">
+  <li>Standard input. stdin or STDIN. File descriptor 0.</li>
+  </ul>
+<li>Where is Bash writing output to?</li>
+  <ul class="lev2">
+  <li>Standard output. stdout or STDOUT. File descriptor 1.</li>
+  </ul>
+<li>Where is Bash sending error messages to?</li>
+  <ul class="lev2">
+  <li>Standard error. stderr or STDERR. File descriptor 2.</li>
+  </ul>
+</ul>
+
+<div class="instructor">
+</div>
+<a href="nowhere" onclick='$("#filehandles").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Redirection -->
+<h4>Redirection and pipes</h4>
+<a href="nowhere" onclick='$("#redirection").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="redirection">
+<h5>Redirection</h5>
+<ul class="lev2">
+<li>Useful for sending the output of a command to a file.</li>
+<li>e.g. <span class="code">ls -l &gt; temp</span></li>
+<li>e.g. <span class="code">ls -l &gt;&gt; temp</span></li>
+<li>e.g. <span class="code">ls --noop 2&gt; err</span></li>
+</ul>
+
+<hr class="thin">
+<ul class="try">
+<li>&gt; is used for redirecting STDOUT.</li>
+<li>&gt;&gt; is used for redirecting STDOUT and appending to an existing file.</li>
+<li>2&gt; is used for redirecting STDERR.</li>
+<li><span class="code">echo</span> echoes its arguments to STDOUT.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Check that you are in the directory <span class="fn">introlin</span> in your
+home directory.<br/>
+(If not, issue <span class="code">cd; cd introlin</span> then continue.)</li>
+<li>Use <span class="code">head</span> (with the <span class="code">-n</span> option)
+to copy the first 50 lines of
+<span class="fn">medium.tsv</span> to <span class="fn">temp.tsv</span>.</li>
+<li>Use <span class="code">wc</span> to count lines in <span class="fn">temp.tsv</span></li>
+<li><span class="code">echo &quot;ls -l&quot; &gt; temp</span></li>
+<li>Use <span class="code">cat</span> to examine the contents of
+<span class="fn">temp</span>.</li>
+<li><span class="code">bash &lt; temp</span></li>
+</ol>
+
+<hr/>
+
+<h5>Pipes</h5>
+<ul>
+<li>Allow you to feed the output of one command to the input of another.</li>
+<li><span class="code">|</span> is used to establish a pipe between two commands.</li>
+<li>e.g. <span class="code">ls -l | less -S</span></li>
+<li>Remember to quit out of less before continuing.</li>
+</ul>
+<br/>
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">head</span> 200 lines from <span class="fn">local.sam</span> and view the output by piping it to <span class="code">less -S</span>.</li>
+</ol>
+
+<hr/>
+
+
+<h5>tee</h5>
+<ul>
+<li>See the output and save it at the same time</li>
+<li>tee is a command which displays its STDIN to the terminal and writes it to
+the specified file at the same time.</li>
+</ul>
+<br/>
+<hr class="thin">
+<ul class="try">
+<li><span class="code">awk</span> (used below) select lines which match a pattern.</li>
+</ul>
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">awk '$1 ~/mutant2/ {print $0}' large.tsv | tee mut2only.tsv</span></li>
+<li>Use <span class="code">wc -l</span> to count the lines in
+<span class="fn">mut2only.tsv large.tsv</span>.</li>
+</ol>
+
+
+<a href="nowhere" onclick='$("#redirection").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- The exec command can also perform a redirection. In some
+shells it is even possible to use the exec command for redirection
+only, without making an actual overlay.
+-->
+<!-- }}} -->
+
+<!-- {{{ Pipelines -->
+<h4>A useful pipeline</h4>
+<a href="nowhere" onclick='$("#pipelines").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="pipelines">
+<ul>
+<li>The output of one command is made the input of another command</li>
+
+<li><span class="code">command1 -opt1 -opt2 arg1 arg2 | command2 
+-opt1 opt2 | command3</span></li>
+
+<li>The file <span class="fn">local.sam</span> is a <em>SAM</em> file produced by the 
+<span class="code">bowtie2</span> reads aligner.</li>
+<li>We want those lines which represent alignments in which reads had to
+be soft-clipped to achieve alignment to the reference. And we want them
+sorted by column 4.</li>
+<li>Column 6 has the CIGAR representation of the alignment.</li>
+
+<li class="code" style="list-style-type: none">
+132S168M1S
+152S148M1S
+1S48M252S
+</li>
+
+<li><span class="code">awk</span> is a powerful text processing tool. It is a full programming language
+that can also be used directly on the command line.</li>
+<li>e.g. <span class="code">awk '{ print $4 }' small.tsv</span></li>
+<li>e.g. <span class="code">awk '$4 &gt;= 6 { print $4 }' small.tsv</span></li>
+<li><span class="code">sort</span> is a relatively simple program for sorting lines in files.</li>
+<li>e.g. <span class="code">sort -n -k 2 small.tsv | head</span></li>
+<li>e.g. <span class="code">sort -n -k 2 small.tsv | tail</span></li>
+
+</ul>
+
+<br/>
+<hr class="thin">
+<ul class="try">
+</ul>
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">head</span> the top 50 lines of
+<span class="fn">local.sam</span> to <span class="code">awk</span> and
+confirm that column 6 of
+<span class="fn">local.sam</span> does indeed contain the CIGAR string.</li>
+
+<li><span class="code">head</span> the top 2000 lines to
+<span class="fn">local.sam</span> to <span class="fn">temp.sam</span>.</li>
+<li><span class="code">sort</span> <span class="fn">temp.sam</span> by
+column 4 and view the result without saving to a file.</li>
+</ol>
+
+<br/>
+<p>Below, we build a pipeline for the task.</p>
+<pre class="code">
+<span class="hashcol"># test awk on 200 lines of local.sam.</span>
+head -n 200 local.sam | awk '$6 ~ /[1-9][0-9]S/ { print $4"\t"$6 }'
+</pre>
+
+<pre class="code">
+<span class="hashcol"># test awk and sort on 200 lines of local.sam.</span>
+head -n 200 local.sam | awk '$6 ~ /[1-9][0-9]S/ { print $0 }' | \
+sort -n -k 4 | less -S
+</pre>
+
+
+<pre class="code">
+<span class="hashcol"># process the whole file local.sam.</span>
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
+sort -n -k 4 -o local_sorted.sam
+</pre>
+
+
+
+<div class="instructor">
+* Note the breaking of long commands over multiple lines.
+</div>
+
+<a href="nowhere" onclick='$("#pipelines").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Processes -->
+<h4>Processes</h4>
+<a href="nowhere" onclick='$("#processes").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="processes">
+<ul>
+<li>Running programs are called processes.</li>
+<li>An instance of Bash is a processes.</li>
+<li>When the computer boots up it starts a single
+process named <span class="fn">init</span> or <span class="fn">systemd</span>. All other processes descend from this one.</li>
+<li>When a child process finishes, control is handed back to its parent.</li>
+</ul>
+<br/>
+<hr class="thin">
+<ul class="try">
+</ul>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Get a new Gnome terminal and start the Python interpreter in it.</li>
+<li>Go back to your old Gnome terminal and do</li>
+<li><span class="code">ps -f -C python</span></li>
+<li>Note the process id of the parent of the python process (nnnnn).</li>
+<li>Go to the terminal running python and quit from python (<span class="code">quit()</span>).</li>
+<li>Find out the process id of the current Bash process by
+doing <span class="code">echo $$</span>.</li>
+<li>Close this new terminal (in which you ran python).</li>
+</ol>
+<br/>
+<hr>
+
+<h5>Backgrounding processes</h5>
+<ul>
+<li>You can put processes which will take a long time
+to finish in the background by putting an &quot;&amp;&quot; at the end of the command.</li>
+<li><span class="code">yes</span> prints an endless stream of &quot;y&quot;
+on the terminal.</li>
+<li>To stop <span class="code">yes</span> you have to use the <span class="fn">control-C</span> combination. Known as killing a process.</li>
+<li><span class="fn">/dev/null</span> is a file which behaves like a sink of infinite size.</li>
+<li><span class="code">jobs</span> shows you a list of jobs running in the background in the current session of Bash.</li>
+<li><span class="code">fg</span> bring the specified job to the foreground. e.g. <span class="code">fg 1</span>.</li>
+</ul>
+<br/>
+<hr class="thin">
+<ul class="try">
+</ul>
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Start <span class="code">yes</span> and then kill it.</li>
+<li>Start <span class="code">yes</span> and redirect the output to <span class="fn">/dev/null</span>. Then kill it.</li>
+<li>Start <span class="code">yes</span> and redirect the output to <span class="fn">/dev/null</span>, but in the background this time.</li>
+<li>Repeat 3. once again.</li>
+<li>Issue the <span class="code">jobs</span> command.</li>
+<li>Bring job 1 to the forground and kill it.</li>
+<li>Bring job 2 to the forground and kill it.</li>
+
+</ol>
+
+<a href="nowhere" onclick='$("#processes").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Bash as a scripting language -->
+<h4>Bash as a programming (scripting) language</h4>
+<a href="nowhere" onclick='$("#scripting0").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting0">
+<ul>
+<li>Bash is a reasonably powerful programming language.</li>
+
+<li>At the simplest level, all the commands you will be trying out today can be
+written in text files and run simply by telling Bash to read its commands from
+the file.</li>
+
+<li>It also has features of more formal programming such as conditionals and
+looping.</li>
+</ul>
+
+<h5>Ordinary variables</h5>
+
+  <ul class="lev2">
+  <li><span class="code">var=value</span></li>
+  <li><span class="code">animal=cat</span></li>
+  <li><span class="code">biganimal="A big cat"</span></li>
+  </ul>
+
+
+<h5>Environment Variables</h5>
+<ul>
+<li>Environment variables are inherited by child processes.</li>
+<li>export is used to make a variable an environment variable.</li>
+<li>e.g. <span class="code">animal=cat; export animal</span></li>
+<li>e.g. <span class="code">export animal=cat</span></li>
+</ul>
+<br/>
+<hr class="thin">
+<ul class="try">
+<li>$$ contains the process id of your current Bash session.</li>
+<li>$PPID contains the process id of the parent of the current Bash session.</li>
+<li><span class="code">echo $PPID</span></li>
+</ul>
+<h6>Please do the below along with me.</h6>
+<ol>
+<li><span class="code">echo $$ # make a note of this number.</span></li>
+<li><span class="code">filename=text.txt</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">cat $filename</span></li>
+<li><span class="code">bash</span></li>
+<li><span class="code">echo $$ # The child bash.</span></li>
+<li><span class="code">cat $filename # you will get stuck here. Use control-D to get your prompt back.</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">exit # to close the child Bash process.</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">export filename</span></li>
+<li><span class="code">bash</span></li>
+<li><span class="code">echo $$</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">cat $filename</span></li>
+<li><span class="code">exit # to close the child Bash process.</span></li>
+<li><span class="code">echo $$ # Confirm that you are back in the original bash session.</span></li>
+
+</ol>
+
+
+<h5>Some important environment variables</h5>
+<ul>
+<ul class="lev2"><li class="code">echo $PS1</li></ul>
+<ul class="lev2"><li class="code">echo $PATH</li></ul>
+<ul class="lev2"><li class="code">echo $EDITOR</li></ul>
+<ul class="lev2"><li class="code">echo $PAGER</li></ul>
+</ul>
+
+<a href="nowhere" onclick='$("#scripting0").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ A file of Bash commands -->
+<h4>A file of Bash commands</h4>
+<a href="nowhere" onclick='$("#filebash").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="filebash">
+<ul>
+<li>Each line in <em>small.tsv</em>, <em>medium.tsv</em> and, <em>large.tsv</em>
+begins with one of the
+following three words &mdash; <span class="fn">wildtype, mutant1, mutant2</span>.</li>
+<li>The task is to separate these three types of lines into
+three separate files.</li>
+<li>After making sure that you are in the <span class="fn">introlin</span> directory,
+start gedit using the command <code class="blue">gedit &amp;</code></li>
+
+<li>Type the thee commands below in gedit and save them
+as a file named <span class="fn">commands.txt</span>.</li>
+
+<pre class = "code">
+awk '$1 ~ /mutant1/ {print $0}' large.tsv &gt; mutant1.out
+awk '$1 ~ /mutant2/ {print $0}' large.tsv &gt; mutant2.out
+awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
+</pre>
+
+
+<li>Some different ways of using commands.txt</li>
+
+<ul class="lev2">
+<li class="code">Cut and paste from gedit into the terminal.</li>
+<li class="code">bash &lt; commands.txt</li>
+<li class="code">bash commands.txt</li>
+<li class="code">source commands.txt</li>
+<li class="code">source commands.txt</li>
+<li class="code">. commands.txt # same as source.</li>
+</ul>
+
+<div class="instructor">
+* Comments
+* A record of what was done
+</div>
+
+</ul>
+<a href="nowhere" onclick='$("#filebash").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Bash Scripting I -->
+<h4>Bash Scripting I</h4>
+<a href="nowhere" onclick='$("#scripting1").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting1">
+<ul>
+<li>The hashbang line.</li>
+<li>Mode.</li>
+</ul>
+
+Save the below as arguments.sh. <br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+echo $0 $1 $2
+</pre>
+Grant execute permisson: <code>chmod ug+x arguments.sh</code>
+<br/>
+Run as: <code>./arguments.sh one two three four</code> 
+<br/>
+<hr class="thin" />
+Save the below as byStrain.sh.<br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+for file in $(ls *tsv)
+  do
+     awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
+  done
+</pre>
+Grant execute permisson: <code>chmod ug+x byStrain.sh</code>
+<br/>
+Run as: <code>./byStrain.sh</code> 
+<br/>
+<hr class="thin" />
+
+Save the below as byStrain2.sh.<br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+    rm mutant[12].out wildtype.out
+for file in $(ls *tsv)
+  do
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant2.out
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; wildtype.out
+  done
+</pre>
+Grant execute permisson: <code>chmod ug+x byStrain2.sh</code>
+<br/>
+Run as: <code>./byStrain2.sh</code> 
+<br/>
+
+<a href="nowhere" onclick='$("#scripting1").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Bash Scripting II -->
+<h4>Bash Scripting II</h4>
+<a href="nowhere" onclick='$("#scripting2").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting2">
+<ul>
+<li>The task we performed using a pipeline above can also be
+performed using a script.</li>
+<li>Type the following lines of code in gedit and save as <em>script.bash</em>.</li>
+</ul>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+tempfn=$(mktemp -p ./ forsort.XXXXXX)
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam &gt; $tempfn
+sort -n -k 4 -o local_sorted.sam $tempfn
+rm $tempfn
+</pre>
+<ul class="lev2">
+<li class="code">chmod a+x script.bash</li>
+<li class="code">./script.bash</li>
+</ul>
+<a href="nowhere" onclick='$("#scripting2").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ bashrc -->
+<h4>~/.bashrc</h4>
+<a href="nowhere" onclick='$("#bashrc").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashrc">
+<pre class="code">
+cat ~/.bashrc
+cd
+cp .bashrc .bashrc.bak
+</pre>
+<p>
+Now edit your .bashrc file and add the following lines at the end.
+</p>
+<pre class="code">
+<span class="hashcol"># some aliases.</span>
+alias cdl="cd; cd introlin;"
+alias pd=pushd;
+alias lsd="ls --group-directories-first";
+
+<span class="hashcol"># and one function</span>
+lsdirs() {
+ls -lh | awk '$0 ~ /^d/ { print $9 } '
+}
+</pre>
+<p>
+Now open a new terminal and try out the function and aliases you have just
+defined.
+</p>
+
+Since these are shared accounts, we restore .bashrc to its original state.
+
+<pre class="code">
+cd
+mv .bashrc.bak .bashrc
+</pre>
+
+
+
+<a href="nowhere" onclick='$("#bashrc").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ What next? -->
+<h4>What next?</h4>
+<a href="nowhere" onclick='$("#whatnext").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="whatnext">
+<ul>
+<li><a href="http://en.flossmanuals.net/command-line/">The FSF manual for the command line for beginners</a>.</li>
+<li>Start using Linux on a regular basis.</li>
+<li>General purpose programming</li>
+  <ul class="lev2">
+  <li>Perl</li>
+  <li>Python</li>
+  <li>Ruby</li>
+  <li>Java</li>
+  <li>C++</li>
+  <li>Choose the one for which you can get help (mentoring) most easily.</li>
+  </ul>
+<li>Statistical programming</li>
+  <ul class="lev2">
+  <li>R</li>
+  </ul>
+</ul>
+
+<a href="nowhere" onclick='$("#whatnext").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- Ends here --> 
+
+<!-- {{{ Bad file names
+<h4>Bad file names</h4>
+<a href="nowhere" onclick='$("#filenames").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="filenames">
+<ul>
+<li>Examples</li>
+<ul class="lev2">
+<li class="code">cp small.tsv "example of bad fn.tsv"</li>
+<li class="code">ls exam*</li>
+<li class="code">cp small.tsv example\ of\ bad\ fn.tsv</li>
+<li class="code">ls exam*</li>
+<li class="code">rm exam # type this much and press tab for file name completion.</li>
+<li class="code">echo "Some silly text" &gt; -l</li>
+<li class="code">ls</li>
+</ul>
+<li>The option terminator "--" and its use.</li>
+<ul class="lev2">
+<li class="code">rm -- -l</li>
+<li class="code">ls</li>
+</ul>
+<li><span class="code">rm ./-l</span> also works.</li>
+</ul>
+</ul>
+<a href="nowhere" onclick='$("#filenames").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+}}} -->
+
+<!-- {{{ Their fundamental design flaws
+Their fundamental design flaws are
+completely hidden by their superficial
+design flaws.
+}}} -->
+
+<!-- {{{ Commands to be done
+
+Housekeeping: mkdir, cd, ls, cat, head, tail, more, less.
+
+Some more difficult ones: grep, find
+
+Mention: sort, cut, sed, awk
+
+Text files: gedit
+
+Bash scripts?
+
+Reading man pages.
+ 
+}}} -->
+
+<!-- {{{ Brief content overview
+<h4>Brief content overview</h4>
+<ul class="small">
+<li>Operating System basics (briefly). What is an OS?</li>
+<li>The Linux file system: mount points and links, the home directory, moving around the file system</li>
+<li>Shells: Bash.</li>
+<li>Structure of commands: Options, arguments, return values.</li>
+<li>The environment and some important environment variables.</li>
+<li>Plain text files. How plain text files differ from word processing files. Line endings on different platforms. Character encoding.</li>
+<li>More about files; filehandles, redirection and piping.</li>
+<li>File permissions.</li>
+<li>A (very simple) data analysis exercise to demonstrate the use of most of the above concepts.</li>
+</ul>
+}}} -->
+
+<!-- {{{ Bicycle
+I think one of the things that really separates us from the high primates is
+that we’re tool builders. I read a study that measured the efficiency of
+locomotion for various species on the planet. The condor used the least energy
+to move a kilometer. And, humans came in with a rather unimpressive showing,
+about a third of the way down the list. It was not too proud a showing for the
+crown of creation. So, that didn’t look so good. But, then somebody at
+Scientific American had the insight to test the efficiency of locomotion for a
+man on a bicycle. And, a man on a bicycle, a human on a bicycle, blew the
+condor away, completely off the top of the charts.
+
+And that’s what a computer is to me. What a computer is to me is it’s the most
+remarkable tool that we’ve ever come up with, and it’s the equivalent of a
+bicycle for our minds.” ~ Steve Jobs
+}}} -->
+
+</body>
+</html>
+
+<!-- {{{ Notes
+
+   1 Start
+   2 What is an Operating System?
+   3 Logging into your HPC accounts
+   4 Some data to play with
+   5 Bash
+
+   6 The File System
+   7 The present working directory
+     Demonstrate dirs and pushd.
+
+   8 Commands
+   9 Getting help on commands
+  10 Filehandles
+  11 Redirection and pipes
+  12 Pipelines
+
+  13 Yesterday
+     Dealing with filenames with spaces in them.
+     rm -l, rm ./-l, rm ---- -l
+
+  14 Globs
+  15 find
+  16 Data Analysis
+  17 Computation
+  18 Processes
+  19 Environment variables
+
+  20 File ownership and permissions
+     Demonstrate umask
+
+  21 Text files
+  22 A file of Bash commands
+  23 Bash Scripting I
+  24 Bash Scripting II
+  25 What next?
+
+  Fit parallel and screen somewhere.
+
+The problem of parallel processing.
+
+Imagine a single computer with a single processor. It can do only one
+thing at a time. Still it is able to give an impression of
+multi-tasking. What the scheduler is able to do is distribute actual
+processor time between multiple tasks. If this happens fast enough, we
+get the impression of multi-tasking. This scheduler is in the Linux
+kernel. So faster processors have two consequences.
+
+a. Smoother multi-tasking.
+b. Quantitatively more multi-tasking.
+
+Imagine a scheduler that is built into the processor. In this case the
+single processor itself can present itself to the kernel as two
+processors. This is what is known as hyper-threading in processor
+parlance.
+
+Now the processor in your computer can have more than one cores.
+Think of each core as an independent processor. The only difference
+between the  processor and the core being that more than one cores are
+fabricated on a single (physical) chip.
+
+Finally, a given computer can have multiple (physical) processors.
+
+As far as the Linux scheduler is concerned, it sees hyper-threading times
+cores number of processors. And it is able to make each of these
+multi-task several fold depending upon other resources.
+
+linup() {
+for remote in n108377.nbi.ac.uk:/var/www/html/customers/training/ \
+  v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/
+  do
+rsync -irt --exclude '*odp' --exclude '*svg' --exclude '*bak*' \
+--exclude '*sw[op]' --exclude '.*' \
+~/mnt/raspisco/training/linux \
+sco@${remote}
+done
+}
+
+}}} -->
+

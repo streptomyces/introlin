@@ -1,0 +1,7 @@
+>SCO3200 SCO3200, SCE22.17   SCO3200 CAB90984.1 SCE22.17 SCO3200 SCE22.17, probable deoR-family transcriptional regulator, len: 330 aa; similar to TR:CAB81864 (EMBL:AL161691) Streptomyces coelicolor putative deoR-family transcriptional regulator SCD40A.19c, 339 aa; fasta scores: opt: 682 z-score: 765.6 E(): 0; 43.3% identity in 298 aa overlap and to Streptomyces coelicolor SC8G12.03c, 343 aa; fasta scores: opt: 761 z-score: 720.8 E(): 1.3e-34; 45.1% identity in 326 aa overlap. Contains match to Prosite entry PS00894 Bacterial regulatory proteins, deoR family signature and possible helix-turn-helix motif at residues 22..43 (+5.48 SD) AL645882 3186
+MTTDTPARLLTLLSLLQTPREWPGGELADRLGVSRRTVRRDIDRLRELGYPVQATMGADG
+GYRLVAGKAMPPLVLDDEEAVAIAVGLRAGAGHAVEGLDEASVRALAKLEQVLPSRLRHR
+VTTLQSATTPLTSGDGPSIAPETLTVMASTVAGHERLRFAYRAADGTATRRSTEPYRLVS
+TGRRWYLVAYDLDRDDWRTFRVDRVSEPFATGARFAPRELPTGDAAEYLRRSMQRRHESY
+EITVVFHAPAEAVAPLLPHWMGTPEPVDGCVSCVVRATVSGPVEWTAARLATTGLEFRVR
+EPAELVECVRELGARLGRAAEPG*

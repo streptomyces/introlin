@@ -1,0 +1,8 @@
+>SCO3248 SCO3248, SCE29.17c, fabF3   SCO3248 CAB38892.1 SCE29.17c SCO3248 SCE29.17c, fabF3, probable 3-oxoacyl-[acyl carrier protein] synthase II, len: 406 aa; similar to many e.g. TR:O54149 (EMBL:AL021409) 3-oxoacyl acyl carrier protein synthase II from the Red cluster of Streptomyces coelicolor (407 aa) fasta scores; opt: 1217, z-score: 1314.2, E(): 0, (50.1% identity in 407 aa overlap) and SW:FABF_ECOLI 3-oxoacyl-[acyl carrier protein] synthase II FabF, from Escherichia coli (412 aa) fasta scores; opt: 843, z-score: 912.2, E(): 0, (35.4% identity in 404 aa overlap). Contains Pfam match to entry PF00109 ketoacyl-synt, Beta-ketoacyl synthase, score 92.60, E-value 7.7e-24 and Prosite match PS00606 Beta-ketoacyl synthases active site. AL645882 3234
+VTEGPAAITGVGLVTPAGTDADSTWEAMCAARSLEGGDPEPLAGTGAWHSLRVPALRPGQ
+LTGRGTARTDPFIRFALVAVAEALAQSGLDPDSWDGSRVGVVVGSAFGGVTTHDEQHRRL
+ERQGAAMVSPYLHPRALINMAAGTIGARYGITGPGHTVAAACASGASAFGLGKTLLDAGV
+CDTVVVCGTDAAVTPLVVSGFARMGALSEQKATDASRPFGADRDGFVMSEGAAAVVMEKP
+AKARARGAEVLGRLLGHADTSDAHHPTAPRPDGAGAAAAVERALAAARMSVRNVTTVNAH
+GTSTPQNDLTEARLIARLFPHGPSVTANKGLLGHTLGAAGAIEAVLTLRSLRTGVLPPIA
+HTERADPGLPELDLVLGGVRRHDGNVAVSTSFGFGGSNCALVLDAG*

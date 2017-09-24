@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>commands.bash</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl slc"># $$ contains the PID of the current shell.</span>
+
+<span class="hl slc">### dirs -p and dirs -v</span>
+
+<span class="hl slc"># (( )) numeric conditional</span>
+<span class="hl slc"># [[ ]] logical conditional</span>
+
+<span class="hl kwa">if</span> <span class="hl opt">((</span> <span class="hl num">2</span> <span class="hl opt">-</span> <span class="hl num">3</span> <span class="hl opt">));</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> expression evaluated to non-zero<span class="hl opt">;</span>
+  <span class="hl kwa">else</span>
+    <span class="hl kwb">echo</span> expression evaluated to zero<span class="hl opt">;</span>
+<span class="hl kwa">fi</span>
+
+<span class="hl kwa">if</span> <span class="hl opt">[[ -</span>d stuffed <span class="hl opt">]];</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> stuffed exists and is a directory<span class="hl opt">;</span>
+  <span class="hl kwa">else</span>
+    <span class="hl kwb">echo</span> stuffed does not exist or is not a directory<span class="hl opt">;</span>
+<span class="hl kwa">fi</span>
+
+
+v1<span class="hl opt">=</span>a<span class="hl opt">;</span> v2<span class="hl opt">=</span>b<span class="hl opt">;</span>
+<span class="hl kwa">if</span> <span class="hl opt">[[</span> <span class="hl kwd">$v2</span> <span class="hl opt">&gt;</span> <span class="hl kwd">$v1</span> <span class="hl opt">]];</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> <span class="hl kwd">$v2</span> is greater than <span class="hl kwd">$v1</span>.<span class="hl opt">;</span>
+  <span class="hl kwa">elif</span> <span class="hl opt">[[</span> <span class="hl kwd">$v2</span> <span class="hl opt">&lt;</span> <span class="hl kwd">$v1</span> <span class="hl opt">]];</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> <span class="hl kwd">$v2</span> is <span class="hl kwc">less</span>  than <span class="hl kwd">$v2</span>.<span class="hl opt">;</span>
+<span class="hl kwa">fi</span>
+
+v1<span class="hl opt">=</span><span class="hl num">80</span><span class="hl opt">;</span> v2<span class="hl opt">=</span><span class="hl num">70</span><span class="hl opt">;</span>
+<span class="hl kwa">if</span> <span class="hl opt">((</span> <span class="hl kwd">$v2</span> <span class="hl opt">&gt;</span> <span class="hl kwd">$v1</span> <span class="hl opt">));</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> <span class="hl kwd">$v2</span> is greater than <span class="hl kwd">$v1</span>.<span class="hl opt">;</span>
+  <span class="hl kwa">elif</span> <span class="hl opt">((</span> <span class="hl kwd">$v2</span> <span class="hl opt">&lt;</span> <span class="hl kwd">$v1</span> <span class="hl opt">));</span> <span class="hl kwa">then</span>
+  <span class="hl kwb">echo</span> <span class="hl kwd">$v2</span> is <span class="hl kwc">less</span> than <span class="hl kwd">$v1</span>.<span class="hl opt">;</span>
+<span class="hl kwa">fi</span>
+
+<span class="hl kwb">echo</span> <span class="hl str">'All kinds</span> <span class="hl esc">\n</span> <span class="hl str">of</span> <span class="hl ipl">$pecial</span> <span class="hl str">characters'</span><span class="hl opt">;</span>
+
+
+<span class="hl slc"># Combining stdout and stderr.</span>
+.<span class="hl opt">/</span>outanderr.pl | <span class="hl kwc">less</span>
+.<span class="hl opt">/</span>outanderr.pl |<span class="hl opt">&amp;</span> <span class="hl kwc">less</span>
+<span class="hl slc"># How do we pipe just the stderr?</span>
+
+
+<span class="hl slc"># Shell functions are executed in the context of the current shell.</span>
+ 
+
+
+<span class="hl slc"># looping while and for</span>
+<span class="hl slc"># (not finished).</span>
+<span class="hl kwb">declare</span> <span class="hl opt">-</span>i cnt<span class="hl opt">=</span><span class="hl num">10</span><span class="hl opt">;</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">$cnt</span><span class="hl opt">;</span>
+<span class="hl kwa">while</span> <span class="hl opt">((</span> <span class="hl kwd">$cnt</span> <span class="hl opt">&gt;=</span> <span class="hl num">1</span>  <span class="hl opt">));</span> <span class="hl kwa">do</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">$cnt</span><span class="hl opt">;</span>
+<span class="hl opt">:</span> $<span class="hl opt">((</span> cnt-- <span class="hl opt">));</span>
+<span class="hl kwa">done</span>
+
+
+<span class="hl slc"># Shell parameters.</span>
+
+<span class="hl slc"># Name     Number    Special</span>
+
+<span class="hl slc"># Special parameters</span>
+
+<span class="hl kwb">echo</span> <span class="hl kwd">$0</span> <span class="hl slc"># Name of shell or shell script.</span>
+<span class="hl kwb">echo</span> $&#64; <span class="hl slc"># Arguments</span>
+<span class="hl kwb">echo</span> $<span class="hl opt">*</span> <span class="hl slc"># Arguments</span>
+<span class="hl kwb">echo</span> $? <span class="hl slc"># Exit status of the most recent pipeline.</span>
+
+var1<span class="hl opt">=</span>stuff
+<span class="hl kwb">unset</span> var1<span class="hl opt">;</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">$var1</span><span class="hl opt">;</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${var1}</span><span class="hl opt">;</span>
+
+<span class="hl slc">### exclude ###</span>
+<span class="hl slc"># echo ${var1:-something} # Don't include this.</span>
+<span class="hl slc"># echo ${var1:=something}</span>
+<span class="hl slc"># unset var;</span>
+<span class="hl slc"># unset var1;</span>
+<span class="hl slc"># echo ${var1:?var1 does not exist}</span>
+
+<span class="hl slc"># Arrays</span>
+
+<span class="hl kwb">unset</span> names<span class="hl opt">;</span>
+<span class="hl kwb">declare</span> <span class="hl opt">-</span>a names<span class="hl opt">;</span>
+names<span class="hl opt">=([</span><span class="hl num">1</span><span class="hl opt">]=</span>one <span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]=</span>two <span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]=</span>three four five six<span class="hl opt">);</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${names[&#64;]}</span>
+
+names<span class="hl opt">=([</span><span class="hl num">6</span><span class="hl opt">]=</span>seven<span class="hl opt">);</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${names[&#64;]}</span>
+<span class="hl slc"># Below is what you can do to start your array index from 1.</span>
+
+somearray<span class="hl opt">=([</span><span class="hl num">1</span><span class="hl opt">]=</span>one two three four five six seven eight<span class="hl opt">);</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[&#64;]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[1]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[8]}</span>
+
+<span class="hl kwb">unset</span> somearray<span class="hl opt">;</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[&#64;]}</span>
+somearray<span class="hl opt">=</span>stuff<span class="hl opt">;</span>
+somearray<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]=</span>stuff2<span class="hl opt">;</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[&#64;]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[0]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[1]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[2]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${somearray[3]}</span>
+
+<span class="hl slc"># Associative arrays</span>
+
+<span class="hl kwb">declare</span> <span class="hl opt">-</span>A <span class="hl kwb">hash</span>
+<span class="hl kwb">hash</span><span class="hl opt">=([</span>one<span class="hl opt">]=</span>ten <span class="hl opt">[</span>two<span class="hl opt">]=</span>twenty <span class="hl opt">[</span>three<span class="hl opt">]=</span>thirty<span class="hl opt">);</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${hash[&#64;]}</span>
+<span class="hl kwb">echo</span> <span class="hl kwd">${hash[one]}</span>
+
+
+com<span class="hl opt">=</span><span class="hl str">&quot;ls&quot;</span><span class="hl opt">;</span>
+<span class="hl kwb">echo</span> $<span class="hl opt">(</span><span class="hl kwd">$com</span><span class="hl opt">);</span>
+
+.<span class="hl opt">/</span>outanderr.pl <span class="hl opt">&gt;</span> out <span class="hl num">2</span><span class="hl opt">&gt;&amp;</span><span class="hl num">1</span>
+.<span class="hl opt">/</span>outanderr.pl <span class="hl num">2</span><span class="hl opt">&gt;&amp;</span><span class="hl num">1</span> <span class="hl opt">&gt;</span> out1
+
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 3.22, http://www.andre-simon.de/-->

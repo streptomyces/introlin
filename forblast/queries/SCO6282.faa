@@ -1,0 +1,6 @@
+>SCO6282 SCO6282, SC1G7.08c   SCO6282 CAC37883.1 SC1G7.08c SCO6282 SC1G7.08c, probable 3-oxoacyl-[acyl-carrier protein] reductase, len: 265 aa; similar to SW:FABG_BACSU (EMBL:U59433) Bacillus subtilis 3-oxoacyl-[acyl-carrier protein] reductase (EC 1.1.1.100) FabG, 246 aa; fasta scores: opt: 531 Z-score: 586.7 bits: 116.1 E(): 4.3e-25; 41.036% identity in 251 aa overlap. Contains Pfam matches to entries PF00106 adh_short, short chain dehydrogenase and PF00678 adh_short_C2, Short chain dehydrogenase/reductase C-terminus and match to Prosite entry PS00061 Short-chain dehydrogenases/reductases family signature AL645882 6265
+MTERLRSFRMTALTNKTALVTGGSRGIGRAIAQRLGKEGALVALTYSSDEAAAKETVHSI
+EAAGGRAFAFRSQLGVPGDAEALWQAFDAQIGQYADGGSGLDILVNNAGIAGPGLIHEVE
+EAEYDKVFAVNAKAPFFIIQKGLERLRDGGRIVNISSGVTKVAFPGMTSYAAAKGAVEVL
+TLTLAQTLGSRGITVNAVSPGTIETDIHPWMADPAAKAHAAGFSVFNRVGQPDDVADVVA
+FLASDDARWVTGQNIDASGGSGLGL*

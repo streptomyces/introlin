@@ -1,0 +1,4 @@
+>SCO3260 SCO3260, SCE39.10   SCO3260 CAB40318.1 SCE39.10 SCO3260 SCE39.10, MutT-like protein, len: 129aa; highly similar to TR:O69802 (EMBL:AJ005260) from the integrated conjugative plasmid pSAM2 of Streptomyces ambofaciens (131 aa) fasta scores; opt: 813, z-score: 1042.9, E(): 0, (94.6% identity in 129 aa overlap) and TR:O86762 (EMBL:AL031035) from Streptomyces coelicolor cosmid 6A9 (131 aa) fasta scores; opt: 804, z-score: 1031.5, E(): 0, (93.8% identity in 129 aa overlap). Contains Pfam match to entry PF00293 mutT, Bacterial mutT protein and Prosite match to PS00893 mutT domain signature. AL645882 3246
+VREDGRLLAIRRADNGTWELPGGVLELNETPEAGVAREVWEETGIHVEVDELTGVYKNTT
+RGIVALVFRCKPSGGTERTSSESTAVSWLTPDEVSDRMAEVYAIRLLDALDGNGPHVRSH
+DGKHLIPTG*

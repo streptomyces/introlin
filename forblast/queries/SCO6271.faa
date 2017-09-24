@@ -1,0 +1,11 @@
+>SCO6271 SCO6271, accA1, SCAH10.36c, SC2C4.01c   SCO6271 CAD55505.1 SC2C4.01c SCO6271 SCAH10.36c, accA1, probable acyl-CoA carboxylase complex (partial), len: >137 aa; identical to previously sequenced TR:AAD28553 (EMBL:AF113603) Streptomyces coelicolor putative acyl-CoA carboxylase complex A subunit, AccA1, 590 aa, to TR:AAD37851 (EMBL:AF126429) Streptomyces venezuelae JadJ, 584 aa; fasta scores: opt: 674 z-score: 748.1 E(): 0; 79.7% identity in 138 aa overlap and to TR:Q54119 (EMBL:X92557) Saccharopolyspora erythraea (Streptomyces erythraeus) biotin carboxylase and biotin carboxyl carrier protein BcpA2, 591 aa; fasta scores: opt: 455 z-score: 508.1 E(): 6.3e-21; 55.6% identity in 133 aa overlap SC2C4.01c, accA1, putative acyl-CoA carboxylase complex A subunit (fragment), len: >491 aa; identical to N-terminal region of previously sequenced TR:Q9X4K6 (EMBL:AF113603) Streptomyces coelicolor putative acyl-CoA carboxylase complex A subunit AccA1, 590 aa and also identical to N-terminal region of TR:Q9X4K6 (EMBL:AF113604) Streptomyces coelicolor putative acyl-CoA carboxylase complex A subunit AccA2, 590 aa. Contains Pfam match to entry PF00289 CPSase_L_chain, Carbamoyl-phosphate synthase (CPSase) and match to Prosite entry PS00867 Carbamoyl-phosphate synthase subdomain signature 2 AL645882 6254
+VRKVLIANRGEIAVRVARACRDAGIASVAVYADPDRDALHVRAADEAFALGGDTPATSYL
+DIAKVLKAARESGADAIHPGYGFLSENAEFAQAVLDAGLIWIGPPPHAIRDLGDKVAARH
+IAQRAGAPLVAGTPDPVSGADEVVAFAKEHGLPIAIKAAFGGGGRGLKVARTLEEVPELY
+DSAVREAVAAFGRGECFVERYLDKPRHVETQCLADTHGNVVVVSTRDCSLQRRHQKLVEE
+APAPFLSEAQTEQLYSSSKAILKEAGYVGAGTVEFLVGMDGTISFLEVNTRLQVEHPVTE
+EVAGIDLVREMFRIADGEELGYDDPALRGHSFEFRINGEDPGRGFLPAPGTVTLFDAPTG
+PGVRLDAGVESGSVIGPAWDSLLAKLIVTGRTRAEALQRAARALDEFTVEGMATAIPFHR
+TVVRDPAFAPELTGSTDPFTVHTRWIETEFVNEIKPFTTPADTETDEESGRETVVVEVGG
+KRLEVSLPSSLGMSLARTGLAAGARPKRRAAKKSGPAASGDTLASPMQGTIVKIAVEEGQ
+EVQEGDLIVVLEAMKMEQPLNAHRSGTIKGLTAEVGASLTSGAAICEIKD*

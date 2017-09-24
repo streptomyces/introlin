@@ -1,0 +1,886 @@
+<!DOCTYPE "html"> 
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<!-- {{{ style -->
+<style type="text/css">
+body {
+background: #dddddd;
+font-family: sans-serif;
+font-size: 110%;
+}
+.tta {background: #ffff00}
+.timestamp {font-size: x-small}
+td, table, tr, th {
+border-collapse: collapse;
+border: solid black 1px;
+padding: 3px;
+}
+.species {font-style: italic}
+.genus {font-style: italic}
+a:link, a:visited, a:active {color: blue; text-decoration: none}
+a:hover {color: magenta; text-decoration: none}
+div.code {
+  font-family: monospace; 
+  font-size: 120%;
+  color: #0000aa;
+  white-space: pre;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+h5 {
+  font-size: 97%;
+}
+
+.hashcol {
+color: #008000;
+}
+
+div.slide {
+margin-bottom: 60px;
+}
+
+li { margin-top: 15px; }
+
+code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+pre.code {
+margin-left: 10px;
+margin-bottom: 40px;
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.fn {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #3c6d33;
+}
+
+li.code {
+font-family: monospace;
+white-space: pre;
+color: #0000aa;
+font-size: 120%;
+}
+
+p, li {
+  width: 800px;
+}
+ul {
+  font-size: 110%;
+}
+ul.lev2 {
+  font-size: 100%;
+  list-style-type: square;
+}
+
+hr {
+  margin-top: 10px;
+  border: 3px solid #000000;
+}
+hr.thin {
+  margin-top: 5px;
+  border: 1.5px solid #aabbcc;
+}
+p.red {
+color: #aa0000;
+}
+.medium {
+  font-size: medium
+}
+.small {
+  font-size: small
+}
+em, .blue {
+  color: #0000aa
+}
+.instructor {
+font-family: monospace;
+font-size: small;
+color: #5c1f00;
+white-space: pre;
+}
+
+</style>
+<!-- }}} -->
+
+<!-- {{{ script -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script>
+function detail() {
+$("div.slide").show("fast");
+}
+function outline() {
+$("div.slide").hide("fast");
+}
+function togoutline() {
+$("div.slide").toggle();
+}
+function toginstruct() {
+$(".instructor").toggle();
+}
+</script>
+
+<script>
+jQuery(function() {
+$("h4").text(function(n, current) {
+return (n+1) + ": " + current
+})
+});
+
+jQuery(function() {
+$(".instructor").hide("fast"); return(TRUE);
+});
+
+</script>
+<!-- }}} script -->
+
+<!-- {{{ Title and heading -->
+<title>Shell scripting</title>
+</head>
+<body>
+<button type="button" onclick="outline()">Outline</button>
+<button type="button" onclick="detail()">Detail</button>
+<!-- <button type="button" onclick="toginstruct()">
+Instructor hints show / hide</button> -->
+<h2>Introduction to the Linux command line interface</h2>
+<!-- }}} -->
+
+<!-- {{{ On arrival -->
+<h4>Start</h4>
+<a href="nowhere" onclick='$("#onarrival").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="onarrival">
+<p>
+As soon as you arrive, please point your browser to the URL shown
+below.
+</p>
+<h2>http://52.211.33.48</h2>
+<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Instructions for PuTTY -->
+<h4>Logging into Linux</h4>
+<a href="nowhere" onclick='$("#putty").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="putty">
+<p>
+Start <em>exceed</em> (found under Open Text in the start menu?) on 
+your local windows machines. This should be left
+running all the time that you are working remotely in your HPC
+accounts. Basically, exceed draws stuff on your local screen
+based on instructions coming from a remote machine.
+</p>
+<p>
+We use the PuTTY program to login to the Linux machine. This machine has
+the IP address 52.211.33.48.
+<ul>
+<li>Hostname (or IP address) is <em>52.211.33.48</em></li>.
+<li>Protocol (Connection type) is <em>SSH</em></li>
+<li>Port is <em>22</em></li>
+<li>In the left hand panel, click on the <em>+</em> sign next to <em>SSH</em> then
+select <em>X11</em> by clicking on it. Now in the right hand panel, make sure
+that <em>Enable X11 forwarding</em> is checked.</li>
+<li>Now select the <em>Session</em> tab in the left panel, check that the
+hostname and port are correct, and click <em>Open</em>.</li>
+<li>A black PuTTY terminal should come up. Login with
+the user name written on your computer and the password
+written on the left hand corner of the white board.</li>
+<li>Now type the command below<br/><br/><code>gnome-terminal &amp;</code><br/><br/>
+and press enter. A new terminal should appear.</li>
+<li>All subsequent commands should be given in the terminal created
+as a result of the above command.</li>
+<li>To avoid confusion, minimise the black PuTTY terminal you used for logging in.</li>
+</ul>
+<div class="instructor">
+* Make sure everybody has done this successfully before
+  proceeding further.
+</div>
+<a href="nowhere" onclick='$("#putty").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+<!-- {{{ Files to play with -->
+<h4>Some files to play with</h4>
+<a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="prep">
+<p>
+First we will copy some files from somewhere so that we have something
+to play with. To do that, run the commands exactly as shown below.<br/>
+<em>Case is significant and spaces matter.</em>
+</p>
+<pre class="code">
+cd
+
+rm -rf introlin
+
+cp -r /home/nouser/introlin ./
+
+ls
+</pre>
+<p>
+The last command <em>(ls)</em> should show you, amongst other stuff, a directory named
+<em>introlin</em>.
+</p>
+<div class="instructor">
+* Make sure everybody has done this successfully before
+  proceeding further.
+</div>
+<a href="nowhere" onclick='$("#prep").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Shell parameters -->
+<h4>Shell parameters</h4>
+<a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="shelpar">
+<ul>
+<li>Shell parameter are not typed to begin with and are treated
+as strings or characters by default.</li>
+<li>Unless exported, they are not available in child processes.</li>
+<li>They can have attributes in addition to a value.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5>Setting and removing attributes</h5>
+
+<pre class="code">
+
+var=2;
+var+=2;
+echo $var
+
+#######################
+
+declare -i var1
+var1=2;
+var1+=2;
+echo $var1
+
+#######################
+
+var2=2;
+declare -i var2
+var2+=2;
+echo $var2
+
+declare +i var2
+var2+=3;
+echo $var2;
+
+
+# Declaring a string variable to be integer.
+unset vard;
+vard=notint;
+declare -i vard;
+echo $vard;
+vard+=5;
+echo $vard;
+
+</pre>
+
+<a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Arrays -->
+<h4>Arrays</h4>
+<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="arrays">
+<ul>
+<li>Multiple values stored in integer subscripted variables.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5>Array manipulations</h5>
+
+<pre class="code">
+
+unset arr;
+declare -a arr;
+arr=(zero one two three four);
+echo ${arr[@]}
+echo $arr;        # refers to the first member.
+echo ${arr[0]};   # indexing begins from zero.
+echo ${arr[3]};
+echo ${arr[-2]};  # negative index counts from the end.
+
+
+arr+=(five);
+echo ${arr[5]}
+echo ${arr[@]};
+
+
+# Removing one element of the array.
+unset arr[5];
+echo ${arr[@]};
+
+
+# Removing the whole array.
+unset arr;    # Note, no dollar sign.
+echo $arr;
+
+
+</pre>
+
+
+<a href="nowhere" onclick='$("#arrays").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Associative arrays -->
+<h4>Associative arrays</h4>
+<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="asarrays">
+<ul>
+<li>Multiple values stored in string subscripted variables.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5>Associative array manipulations</h5>
+
+<pre class="code">
+
+unset aarr;
+declare -A aarr;
+declare -i aarr[@];
+aarr=([zero]=0 [one]=1 [two]=2 [three]=3 [four]=4);
+echo ${aarr[@]};   # no guarantee of order.
+echo ${!aarr[@]}   # 
+
+aarr[three]+=9;
+
+echo ${aarr[three]}
+
+aarr[five]=5;
+echo ${aarr[five]};
+
+aarr[five]+=20;
+echo ${aarr[five]};
+
+
+echo ${aarr[one]};
+aarr[one]=$(( aarr[one] + 10 ));
+echo ${aarr[one]};
+
+
+# Removing one element of the array.
+unset aarr[five];
+echo ${aarr[five]};
+
+
+# Removing the whole array.
+echo ${aarr[@]};
+unset aarr;
+echo ${aarr[@]};
+
+
+# Below, see what happens if array is not declared to be integer.
+
+unset barr;
+declare -A barr;
+# declare -i barr[@];
+barr=([x]=20 [y]=30);
+echo ${barr[@]};
+barr[x]+=3;
+echo ${barr[x]};
+unset barr;
+
+
+</pre>
+
+
+<a href="nowhere" onclick='$("#asarrays").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Conditionals -->
+<h4>Conditionals</h4>
+<a href="nowhere" onclick='$("#Conditionals").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="Conditionals">
+<ul>
+<li><span class="code">if, case, select</span></li>
+<li><span class="code">case</span> and <span class="code">select</span>
+are for making basic multiple choice menus.
+</li>
+<li>We will focus on <span class="code">if</span>.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5>((  )) and [[  ]]</h5>
+
+<pre class="code">
+
+# Arithmetic comparisons.
+
+unset x y
+declare -i x y;
+x=30;
+y=30;
+
+if (( x &lt; y )); then
+  echo $x is less than $y
+  else
+  echo $x is not less than $y
+fi  
+
+
+unset x y
+declare -i x y;
+x=40;
+y=30;
+
+if (( x == y )); then
+  echo $x equals $y
+  elif (( x &gt; y )); then
+  echo $x is greater than $y
+  else
+  echo $x is less than $y
+fi  
+
+
+# String comparisons.
+
+unset x y
+x=alpha;
+y=beta;
+
+if [[ x &lt; y ]]; then
+  echo $x is less than $y
+  else
+  echo $x is not less than $y
+fi
+
+</pre>
+
+<p>
+Use the right type of comparison for the right type of variables.<br/>
+Otherwise the logic is difficult to interpret.<br/>
+</p>
+
+
+
+<a href="nowhere" onclick='$("#Conditionals").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Looping -->
+<h4>Looping</h4>
+<a href="nowhere" onclick='$("#looping").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="looping">
+<ul>
+<li><span class="code">until, while, for</span></li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5><span class="code">while, until</span></h5>
+<pre class="code">
+
+# while (the condition is true).
+
+unset x;
+declare -i x;
+x=10;
+
+while (( x &gt; 0 )); do
+  echo $x;
+  : $(( --x ))
+  done
+
+
+
+# until (the condition becomes true).
+
+unset x;
+declare -i x;
+x=10;
+
+until (( x &lt;= 0 )); do
+  echo $x;
+  : $(( --x ))
+  done
+
+
+
+# An infinite while loop and
+# use of break to get out of it.
+
+unset x;
+declare -i x;
+while (( 1 == 1 )); do
+: $(( x+=1 ));
+echo $x;
+if (( x &gt; 50 )); then
+  break;
+  fi
+done
+
+
+# Use of continue.
+
+unset x;
+declare -i x;
+while (( x &lt; 20 )); do
+: $(( x+=1 ));
+
+if (( x &gt; 5 &amp;&amp; x &lt;= 10 )); then
+  continue;
+  fi
+
+echo $x;
+
+done
+
+
+</pre>
+
+<h5><span class="code">for</span></h5>
+<pre class="code">
+
+for var in one two three four; do
+  echo $var;
+done
+
+set -- alpha beta yankee zulu # sets @;
+for var; do
+  echo $var;
+done
+
+
+
+# BLASTing a directory full of fasta files using
+# the for loop.
+# We will also use GNU parallel to run BLAST searches
+# in parallel.
+
+cd; cd introlin;
+cd forblast;
+mkdir bldb blout
+makeblastdb -in sven15.faa -title "Sven seqenced in 2015" \
+-dbtype prot -out bldb/sven15
+ls bldb 
+
+declare -i bcnt=0;
+for file in $(ls --color=never queries/*faa); do
+  echo $file;
+  bn=$(basename $file .faa);
+  ofn="blout/"$bn".blastp";
+  echo $file $ofn
+  echo blastp -query $file -db bldb/sven15 -out $ofn -outfmt 6
+  : $(( bcnt++ ));
+  if (( bcnt &gt; 10 )); then
+    break;
+  fi
+done
+
+
+
+
+</pre>
+
+<a href="nowhere" onclick='$("#looping").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+
+
+
+<!-- {{{ replace -->
+<h4>Replace</h4>
+<a href="nowhere" onclick='$("#replace").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="replace">
+<ul>
+<li>AKA current directory and current working directory</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h5>Setting and removing attributes</h5>
+
+<pre class="code">
+
+</pre>
+
+
+<a href="nowhere" onclick='$("#replace").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+
+<!-- {{{ Bash as a scripting language -->
+<h4>Bash as a programming (scripting) language</h4>
+<a href="nowhere" onclick='$("#scripting0").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting0">
+<ul>
+<li>Bash is a reasonably powerful programming language.</li>
+
+<li>At the simplest level, all the commands you will be trying out today can be
+written in text files and run simply by telling Bash to read its commands from
+the file.</li>
+
+<li>It also has features of more formal programming such as conditionals and
+looping.</li>
+</ul>
+
+<h5>Ordinary variables</h5>
+
+  <ul class="lev2">
+  <li><span class="code">var=value</span></li>
+  <li><span class="code">animal=cat</span></li>
+  <li><span class="code">biganimal="A big cat"</span></li>
+  </ul>
+
+
+<h5>Environment Variables</h5>
+<ul>
+<li>Environment variables are inherited by child processes.</li>
+<li>export is used to make a variable an environment variable.</li>
+<li>e.g. <span class="code">animal=cat; export animal</span></li>
+<li>e.g. <span class="code">export animal=cat</span></li>
+</ul>
+<br/>
+<hr class="thin">
+<ul class="try">
+<li>$$ contains the process id of your current Bash session.</li>
+<li>$PPID contains the process id of the parent of the current Bash session.</li>
+<li><span class="code">echo $PPID</span></li>
+</ul>
+<h6>Please do the below along with me.</h6>
+<ol>
+<li><span class="code">echo $$ # make a note of this number.</span></li>
+<li><span class="code">filename=text.txt</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">cat $filename</span></li>
+<li><span class="code">bash</span></li>
+<li><span class="code">echo $$ # The child bash.</span></li>
+<li><span class="code">cat $filename # you will get stuck here. Use control-D to get your prompt back.</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">exit # to close the child Bash process.</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">export filename</span></li>
+<li><span class="code">bash</span></li>
+<li><span class="code">echo $$</span></li>
+<li><span class="code">echo $filename</span></li>
+<li><span class="code">cat $filename</span></li>
+<li><span class="code">exit # to close the child Bash process.</span></li>
+<li><span class="code">echo $$ # Confirm that you are back in the original bash session.</span></li>
+
+</ol>
+
+
+<h5>Some important environment variables</h5>
+<ul>
+<ul class="lev2"><li class="code">echo $PS1</li></ul>
+<ul class="lev2"><li class="code">echo $PATH</li></ul>
+<ul class="lev2"><li class="code">echo $EDITOR</li></ul>
+<ul class="lev2"><li class="code">echo $PAGER</li></ul>
+</ul>
+
+<a href="nowhere" onclick='$("#scripting0").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+
+<!-- {{{ A file of Bash commands -->
+<h4>A file of Bash commands</h4>
+<a href="nowhere" onclick='$("#filebash").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="filebash">
+<ul>
+<li>Each line in <em>small.tsv</em>, <em>medium.tsv</em> and, <em>large.tsv</em>
+begins with one of the
+following three words &mdash; <span class="fn">wildtype, mutant1, mutant2</span>.</li>
+<li>The task is to separate these three types of lines into
+three separate files.</li>
+<li>After making sure that you are in the <span class="fn">introlin</span> directory,
+start gedit using the command <code class="blue">gedit &amp;</code></li>
+
+<li>Type the thee commands below in gedit and save them
+as a file named <span class="fn">commands.txt</span>.</li>
+
+<pre class = "code">
+awk '$1 ~ /mutant1/ {print $0}' large.tsv &gt; mutant1.out
+awk '$1 ~ /mutant2/ {print $0}' large.tsv &gt; mutant2.out
+awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
+</pre>
+
+
+<li>Some different ways of using commands.txt</li>
+
+<ul class="lev2">
+<li class="code">Cut and paste from gedit into the terminal.</li>
+<li class="code">bash &lt; commands.txt</li>
+<li class="code">bash commands.txt</li>
+<li class="code">source commands.txt</li>
+<li class="code">source commands.txt</li>
+<li class="code">. commands.txt # same as source.</li>
+</ul>
+
+<div class="instructor">
+* Comments
+* A record of what was done
+</div>
+
+</ul>
+<a href="nowhere" onclick='$("#filebash").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Bash Scripting I -->
+<h4>Bash Scripting I</h4>
+<a href="nowhere" onclick='$("#scripting1").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting1">
+<ul>
+<li>The hashbang line.</li>
+<li>Mode.</li>
+</ul>
+
+Save the below as arguments.sh. <br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+echo $0 $1 $2
+</pre>
+Grant execute permisson: <code>chmod ug+x arguments.sh</code>
+<br/>
+Run as: <code>./arguments.sh one two three four</code> 
+<br/>
+<hr class="thin" />
+Save the below as byStrain.sh.<br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+for file in $(ls *tsv)
+  do
+     awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
+  done
+</pre>
+Grant execute permisson: <code>chmod ug+x byStrain.sh</code>
+<br/>
+Run as: <code>./byStrain.sh</code> 
+<br/>
+<hr class="thin" />
+
+Save the below as byStrain2.sh.<br/>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+    rm mutant[12].out wildtype.out
+for file in $(ls *tsv)
+  do
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant2.out
+ awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; wildtype.out
+  done
+</pre>
+Grant execute permisson: <code>chmod ug+x byStrain2.sh</code>
+<br/>
+Run as: <code>./byStrain2.sh</code> 
+<br/>
+
+<a href="nowhere" onclick='$("#scripting1").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Bash Scripting II -->
+<h4>Bash Scripting II</h4>
+<a href="nowhere" onclick='$("#scripting2").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scripting2">
+<ul>
+<li>The task we performed using a pipeline above can also be
+performed using a script.</li>
+<li>Type the following lines of code in gedit and save as <em>script.bash</em>.</li>
+</ul>
+<pre class="code">
+<span class="hashcol">#!/bin/bash</span>
+tempfn=$(mktemp -p ./ forsort.XXXXXX)
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam &gt; $tempfn
+sort -n -k 4 -o local_sorted.sam $tempfn
+rm $tempfn
+</pre>
+<ul class="lev2">
+<li class="code">chmod a+x script.bash</li>
+<li class="code">./script.bash</li>
+</ul>
+<a href="nowhere" onclick='$("#scripting2").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ What next? -->
+<h4>What next?</h4>
+<a href="nowhere" onclick='$("#whatnext").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="whatnext">
+<ul>
+<li><a href="http://en.flossmanuals.net/command-line/">The FSF manual for the command line for beginners</a>.</li>
+<li>Start using Linux on a regular basis.</li>
+<li>General purpose programming</li>
+  <ul class="lev2">
+  <li>Perl</li>
+  <li>Python</li>
+  <li>Ruby</li>
+  <li>Java</li>
+  <li>C++</li>
+  <li>Choose the one for which you can get help (mentoring) most easily.</li>
+  </ul>
+<li>Statistical programming</li>
+  <ul class="lev2">
+  <li>R</li>
+  </ul>
+</ul>
+
+<a href="nowhere" onclick='$("#whatnext").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- Ends here --> 
+
+</body>
+</html>
+
+

@@ -1,0 +1,6 @@
+>SCO6206 SCO6206, SC2G5.27c   SCO6206 CAB36614.1 SC2G5.27c SCO6206 SC2G5.27c, possible oxidoreductase, len: 279 aa; similar to many, mostly hypotheticals including TR:O50580 (EMBL :AB000361) D-tagatose 3-epimerase from Pseudomonas cichorii (290 aa) fasta scores; opt: 164, z-score:193.0,E(): 0.0018 ,(26.8% identity in 142 aa overlap). Most similar to SW:GIP_ECOLI glyoxylate-induced protein from Escherichia coli (258 aa) fasta scores; opt: 411, z-score:473.6, E(): 4.3e-19, (35.0% identity in 266 aa overlap). As with the Escherichia coli homologue, this CDS is located close to the CDS for gcl (SC2G5.22). AL645882 6189
+MGFADQRFNVNLSILFTELPLLERPAAAAAAGFTAVELWWPWIDSPTPEQSELDALKSAI
+EDAGVQLTGLNFYAGQLPGPDRGALSIPGEESERFRANIDVAADFARSLGCTALNALYGN
+RVEGVDPAEQDRLALENLVLAARAADRIGAVLLVEALNKPESPRYPLVSAPAAIAVVDRV
+NEATGLGNAKFLMDLYHLSMNGEDLPQVIDAYAAKTGHVQIADNPGRGAPGTGSLPLEDL
+LDRLAKAGYDGWVGLEYKPGDDPSAQSFSWLPAGARAAR*

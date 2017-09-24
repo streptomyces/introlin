@@ -1,0 +1,6 @@
+>SCO3269 SCO3269, SCE39.19   SCO3269 CAB40327.1 SCE39.19 SCO3269 SCE39.19, possible gntR-family regulator, len: 251 aa; some similarity to many egs. TR:Q07191 (EMBL:AJ005260) KorSA protein from the integrated conjugative plasmid pSAM2 of Streptomyces ambofaciens (259 aa) fasta scores; opt: 327, z-score: 380.9, E(): 6.7e-14, (31.0% identity in 252 aa overlap) and TR:O86763 (EMBL:AL031035) KorSA transcriptional regulator from Streptomyces coelicolor cosmid 6A9 (259 aa) fasta scores; opt: 326, z-score: 379.7, E(): 7.7e-14, (28.9% identity in 249 aa overlap). Contains Pfam match to entry PF00392 gntR, Bacterial regulatory proteins, gntR family. Also contains probable helix-turn-helix (+4.51 SD) 31-52aa. AL645882 3255
+MPEQPPYLRIADELRRRIAEHVWEPGDRLPSRAQIGQECGVGENVVRRAQELLISQGVLE
+GRAGSGTYVAEPRQRVRVVRSSAREQPNGSPFRADMKAVGRQGDWESRTDAKVPAPADIA
+ARLGIHEGDLCVRTTYEFLADGRPVQLSTSWEPYDLTGGTLVVLPEGGPHAGAGVVNRMA
+AIGITVSHAVEQPEPRQATAEEASLLGIQKAALVTHIRRTYYSDDGRPVETADIVVPAAH
+CEIVYEIPIRP*

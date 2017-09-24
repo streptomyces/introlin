@@ -1,0 +1,6 @@
+>SCO6264 SCO6264, SCAH10.29   SCO6264 CAB60183.1 SCAH10.29 SCO6264 SCAH10.29, reductase orfX, len: 262 aa; identical to previously sequenced TR:O86853 (EMBL:AJ007731) Streptomyces coelicolor 3-ketoacyl-ACP/CoA reductase, 244 aa and to SW:VER1_ASPPA (EMBL:M91369) Aspergillus parasiticus versicolor reductase (EC 1.1.-.-)(ver-1) 262 aa; fasta scores opt: 571 z-score: 634.6 E(): 5.7e-28; 40.9% identity in 259 aa overlap. Contains match to Pfam entries PF00106 adh_short, short chain dehydrogenase and PF00678 adh_short_C2, Short chain dehydrogenase/reductase C-terminus and match to Prosite entry PS00061 Short-chain dehydrogenases/reductases family signature AL645882 6247
+MRAHGTRYGRPLEGKTALVTGGSRGIGRGIALRLAADGALVAVHYGSSEAAARETVETIR
+SSGGQALAIRAELGVVGDAAALYAAFDAGMGEFGVPPEFDILVNNAGVSGSGRITEVTEE
+VFDRLVAVNVRAPLFLVQHGLKRLRDGGRIINISSAATRRAFPESIGYAMTKGAVDTLTL
+ALARQLGERGITVNAVAPGFVETDMNARRRQTPEAAAALAAYSVFNRIGRPDDIADVVAF
+LASDDSRWITGQYVDATGGTIL*

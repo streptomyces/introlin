@@ -1,0 +1,4 @@
+>SCO3205 SCO3205, SCE22.22   SCO3205 CAB90989.1 SCE22.22 SCO3205 SCE22.22, probable MarR-family transcriptional repressor, len: 163 aa; similar to TR:Q9X5U1 (EMBL:AF127374) Streptomyces lavendula repressor MmcW, 163 aa; fasta scores: opt: 724 z-score: 892.8 E(): 0; 65.4% identity in 162 aa overlap and to TR:CAB70635 (EMBL:AL137242) Streptomyces coelicolor putative transcriptional regulator SC8F4.09c, 158 aa; fasta scores: opt: 409 z-score: 459.2 E(): 4.8e-20; 43.2% identity in 146 aa overlap. Contains Pfam match to entry PF01047 MarR, MarR family AL645882 3191
+MNDEPRWLTAEEQLVWRSYIEAATLLEDHLDRQLQRDAGMPHVYYGLLVKLAESPRRRLR
+MTELAKYAKITRSRLSHAVARLEKNGWVRREDCPSDKRGQFAILTDEGYEVLRRTAPGHV
+DAVRQAVFDRLTPEQQKSLGEIMRIVAEGLQPSEAGADLPWLR*

@@ -1,0 +1,6 @@
+>SCO6246 SCO6246, SCAH10.11c, iclR   SCO6246 CAB60165.1 SCAH10.11c SCO6246 SCAH10.11c, iclR, transcriptional regulator for glyoxylate bypass, len: 270 aa; highly similar to SW:ICLR_ECOLI (EMBL:M31761) Escherichia coli acetate operon repressor IclR, 274 aa; fasta scores: opt: 538 Z-score: 603.9 E(): 5.5e-26; 40.234% identity in 256 aa overlap and to SW:GYLR_STRCO (EMBL:X14188) Streptomyces coelicolor glycerol operon regulatory protein, 254 aa; fasta scores: opt: 333 z-score: 389.8 E(): 2.4e-14; 32.8% identity in 250 aa overlap. Contains match to Pfam entry PF01614 IclR, Bacterial transcriptional regulator and a possible helix-turn-helix motif at residues 39..60 (+2.51 SD) AL645882 6229
+VPTSSASTTDSARSATGGVQSLERAFDLLERMADAGGEVGLSELSASSGLPLPTIHRLMR
+TLVACGYVRQQPNRRYALGPRLIRLGESASRLLGTWARPHLARLVEETGETANMALLDGD
+EIVYVAQVPSKHSMRMFTEVGRRVLPHSTGVGKALLASFPADEVRALLGRTGMPAATDKT
+ITTPDGFIAALEDVRRQGYAIDDNEQEIGVRCLAVPVPDSPTAAAISISGPAGRVTEAAT
+DRIVPLLQQVAAELSEALLTSNGSNGNPAA*
