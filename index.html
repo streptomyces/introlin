@@ -180,46 +180,48 @@ below.
 </div>
 <!-- }}} -->
 
-<!-- {{{ Instructions for PuTTY -->
-<h4>Logging into Linux</h4>
-<a href="nowhere" onclick='$("#putty").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="putty">
-<p>
-Start <em>exceed</em> (found under Open Text in the start menu?) on 
-your local windows machines. This should be left
-running all the time that you are working remotely on the server.
-Basically, exceed draws stuff on your local screen
-based on instructions coming from a remote machine.
-</p>
-<p>
-We use the PuTTY program to login to the Linux machine. This machine has
-the IP address 52.211.33.48.
-<ul>
-<li>Hostname (or IP address) is <em>52.211.33.48</em></li>.
-<li>Protocol (Connection type) is <em>SSH</em></li>
-<li>Port is <em>22</em></li>
-<li>In the left hand panel, click on the <em>+</em> sign next to <em>SSH</em> then
-select <em>X11</em> by clicking on it. Now in the right hand panel, make sure
-that <em>Enable X11 forwarding</em> is checked.</li>
-<li>Now select the <em>Session</em> tab in the left panel, check that the
-hostname and port are correct, and click <em>Open</em>.</li>
-<li>A black PuTTY terminal should come up. Login with
-the user name written on your computer and the password
-written on the left hand corner of the white board.</li>
-<li>Now type the command below<br/><br/><code>gnome-terminal &amp;</code><br/><br/>
-and press enter. A new terminal should appear.</li>
-<li>All subsequent commands should be given in the terminal created
-as a result of the above command.</li>
-<li>To avoid confusion, minimise the black PuTTY terminal you used for logging in.</li>
-</ul>
+
+<!-- {{{ What is an OS -->
+<h4>What is an Operating System?</h4>
+<a href="nowhere" onclick='$("#OS").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="OS">
+<img src = "architecture.png"><br/>
 <div class="instructor">
-* Make sure everybody has done this successfully before
-  proceeding further.
+* Memory is volatile, storage is permanent.
+* The processor has a tiny amount of memory (registers and caches).
+* It has very high speed access to installed memory.
+
+* Quite a few of the concepts we will see today apply to other operating
+  systems as well. It is just that these other operating systems do not
+  make them transparent or obvious.
+
 </div>
-<a href="nowhere" onclick='$("#putty").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#OS").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
+
+
+<!-- {{{ What is virtualisation -->
+<h4>What is virtualisation?</h4>
+<a href="nowhere" onclick='$("#virt").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="virt">
+<ul>
+<li>Actual hardware is digital electronics.</li>
+<li>If you have enough memory and processing power you can simulate
+hardware.</li>
+<li>Emulation is something different. Processors are often emulated
+for the purpose of development and testing.</li>
+<li>The guest OS is run on the same hardware as the host OS but is
+kept separate from it.</li> 
+<li>Some components are emulated i.e. an optical drive.</li>
+<li>Paravirtualisation and Full virtualisation.</li>
+</ul>
+<a href="nowhere" onclick='$("#virt").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
 
 <!-- {{{ Files to play with -->
 <h4>Some files to play with</h4>
@@ -248,26 +250,6 @@ The last command <em>(ls)</em> should show you, amongst other stuff, a directory
   proceeding further.
 </div>
 <a href="nowhere" onclick='$("#prep").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-<!-- {{{ What is an OS -->
-<h4>What is an Operating System?</h4>
-<a href="nowhere" onclick='$("#OS").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="OS">
-<img src = "architecture.png"><br/>
-<div class="instructor">
-* Memory is volatile, storage is permanent.
-* The processor has a tiny amount of memory (registers and caches).
-* It has very high speed access to installed memory.
-
-* Quite a few of the concepts we will see today apply to other operating
-  systems as well. It is just that these other operating systems do not
-  make them transparent or obvious.
-
-</div>
-<a href="nowhere" onclick='$("#OS").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
