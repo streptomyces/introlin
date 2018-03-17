@@ -27,8 +27,10 @@ div.code {
   color: #0000aa;
   white-space: pre;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 20px;
+  background: #eeeeee;
+  width: 800px;
 }
 
 h5 {
@@ -37,6 +39,10 @@ h5 {
 
 .hashcol {
 color: #008000;
+}
+
+.diy {
+color: #5c2d00;
 }
 
 div.slide {
@@ -59,6 +65,7 @@ font-family: monospace;
 font-size: 110%;
 background: #eeeeee;
 color: #0000aa;
+width: 800px;
 }
 
 span.code {
@@ -113,6 +120,9 @@ color: #aa0000;
 em, .blue {
   color: #0000aa
 }
+div.diy em {
+  color: #5c2d00;
+}
 .instructor {
 font-family: monospace;
 font-size: small;
@@ -122,6 +132,7 @@ white-space: pre;
 
 </style>
 <!-- }}} -->
+
 
 <!-- {{{ script -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
@@ -155,6 +166,7 @@ $(".instructor").hide("fast"); return(TRUE);
 </script>
 <!-- }}} script -->
 
+
 <!-- {{{ Title and heading -->
 <title>Shell scripting</title>
 </head>
@@ -166,6 +178,7 @@ Instructor hints show / hide</button> -->
 <h2>Introduction to the Linux command line interface</h2>
 <!-- }}} -->
 
+
 <!-- {{{ On arrival -->
 <h4>Start</h4>
 <a href="nowhere" onclick='$("#onarrival").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -174,80 +187,148 @@ Instructor hints show / hide</button> -->
 As soon as you arrive, please point your browser to the URL shown
 below.
 </p>
-<h2>http://52.211.33.48</h2>
+<h2>http://streptomyces.org.uk/customers/training/linux/scripting.html</h2>
 <a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
 
-<!-- {{{ Instructions for PuTTY -->
-<h4>Logging into Linux</h4>
-<a href="nowhere" onclick='$("#putty").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="putty">
-<p>
-Start <em>exceed</em> (found under Open Text in the start menu?) on 
-your local windows machines. This should be left
-running all the time that you are working remotely in your HPC
-accounts. Basically, exceed draws stuff on your local screen
-based on instructions coming from a remote machine.
-</p>
-<p>
-We use the PuTTY program to login to the Linux machine. This machine has
-the IP address 52.211.33.48.
-<ul>
-<li>Hostname (or IP address) is <em>52.211.33.48</em></li>.
-<li>Protocol (Connection type) is <em>SSH</em></li>
-<li>Port is <em>22</em></li>
-<li>In the left hand panel, click on the <em>+</em> sign next to <em>SSH</em> then
-select <em>X11</em> by clicking on it. Now in the right hand panel, make sure
-that <em>Enable X11 forwarding</em> is checked.</li>
-<li>Now select the <em>Session</em> tab in the left panel, check that the
-hostname and port are correct, and click <em>Open</em>.</li>
-<li>A black PuTTY terminal should come up. Login with
-the user name written on your computer and the password
-written on the left hand corner of the white board.</li>
-<li>Now type the command below<br/><br/><code>gnome-terminal &amp;</code><br/><br/>
-and press enter. A new terminal should appear.</li>
-<li>All subsequent commands should be given in the terminal created
-as a result of the above command.</li>
-<li>To avoid confusion, minimise the black PuTTY terminal you used for logging in.</li>
-</ul>
-<div class="instructor">
-* Make sure everybody has done this successfully before
-  proceeding further.
-</div>
-<a href="nowhere" onclick='$("#putty").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
 
-<!-- {{{ Files to play with -->
+<!-- {{{ Files to play with
 <h4>Some files to play with</h4>
+<h5 style="color: #aa0000">Not required on the second day</h5>
 <a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="prep">
 <p>
 First we will copy some files from somewhere so that we have something
 to play with. To do that, run the commands exactly as shown below.<br/>
-<em>Case is significant and spaces matter.</em>
+<em>Capitalisation is significant and spaces matter.</em>
 </p>
 <pre class="code">
 cd
 
-rm -rf introlin
+wget http://streptomyces.org.uk/customers/training/linux/introlin.zip
 
-cp -r /home/nouser/introlin ./
+unzip introlin.zip
 
 ls
 </pre>
 <p>
-The last command <em>(ls)</em> should show you, amongst other stuff, a directory named
-<em>introlin</em>.
+The last command <em>(ls)</em> should show you, amongst other stuff,
+a directory named <em>introlin</em>.
 </p>
+
+<p>
+And the command below
+</p>
+<pre class="code">
+ls introlin
+</pre>
+<p>
+should show you the contents of the directory <em>introlin</em> just
+created when you extracted <em>introlin.zip</em>.
+</p>
+
 <div class="instructor">
 * Make sure everybody has done this successfully before
   proceeding further.
 </div>
 <a href="nowhere" onclick='$("#prep").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+}}} -->
+
+
+<!-- {{{ Ordinary and environment variables -->
+<h4>Ordinary and environment variables</h4>
+<a href="nowhere" onclick='$("#ordenv").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="ordenv">
+<ul>
+<li>Bash is a reasonably capable programming language.</li>
+
+<li>At the simplest level, all the commands you have runs so far could be
+written in text files and run simply by telling Bash to read its commands from
+that file.</li>
+
+<li>It also has features of more formal programming such as conditionals and
+looping.</li>
+</ul>
+
+<h5>Ordinary variables</h5>
+
+  <ul class="lev2">
+  <li><span class="code">var=value</span></li>
+  <li><span class="code">animal=cat</span></li>
+  <li><span class="code">biganimal="A big cat"</span></li>
+  </ul>
+
+
+<h5>Environment Variables</h5>
+<ul>
+<li>Environment variables are inherited by child processes.</li>
+<li><span class="code">export</span> is used to make a variable an environment variable.</li>
+<li>e.g. <span class="code">animal=cat; export animal</span></li>
+<li>e.g. <span class="code">export animal=cat</span></li>
+</ul>
+<br/>
+
+<h5>Some important environment variables</h5>
+<ul>
+<ul class="lev2"><li class="code">echo $PS1</li></ul>
+<ul class="lev2"><li class="code">echo $PATH</li></ul>
+<ul class="lev2"><li class="code">echo $EDITOR</li></ul>
+<ul class="lev2"><li class="code">echo $PAGER</li></ul>
+</ul>
+
+<a href="nowhere" onclick='$("#ordenv").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Shell expansions -->
+<h4>Shell expansions</h4>
+<a href="nowhere" onclick='$("#shexp").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="shexp">
+<ul>
+<li>variable expansion</li>
+<li>command substitution</li>
+<li>arithmetic expansion</li>
+<li>filename expansion</li>
+</ul>
+
+<h5>Variable expansion</h5>
+<pre class="code">
+var=figure1
+echo $var
+echo $var.txt
+echo $var".txt"
+echo ${var}.txt
+echo $var"of2"
+echo $varof2
+echo ${var}of2
+
+</pre>
+
+<h5>Command substitution</h5>
+<pre class="code">
+date
+stored=$(date);
+echo $stored;
+
+</pre>
+
+<h5>Arithmetic expansion</h5>
+<pre class="code">
+echo $(( 6 + 2 ))
+nine=$(( 3 ** 2 ))
+echo $nine
+echo $(( 7/3 ));
+
+</pre>
+
+
+<a href="nowhere" onclick='$("#shexp").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -267,35 +348,49 @@ as strings or characters by default.</li>
 <br/>
 
 <h5>Setting and removing attributes</h5>
-
+<ul>
+<li><span class="code">declare</span> is used for setting and
+removing attributes.</li>
+</ul>
+<h6 class="diy">Run the following in a terminal</h6>
 <pre class="code">
-
 var=2;
 var+=2;
 echo $var
 
-#######################
+</pre>
 
+<h6 class="diy">Run the following in a terminal</h6>
+<pre class="code">
 declare -i var1
 var1=2;
 var1+=2;
 echo $var1
 
-#######################
+</pre>
 
+<h6 class="diy">Run the following in a terminal</h6>
+<pre class="code">
 var2=2;
 declare -i var2
 var2+=2;
 echo $var2
 
+# Wait here, think, then proceed.
+
 declare +i var2
 var2+=3;
 echo $var2;
 
+</pre>
 
+
+<h6 class="diy">Run the following in a terminal</h6>
+<pre class="code">
 # Declaring a string variable to be integer.
 unset vard;
 vard=notint;
+echo $vard;
 declare -i vard;
 echo $vard;
 vard+=5;
@@ -304,123 +399,6 @@ echo $vard;
 </pre>
 
 <a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
-<!-- {{{ Arrays -->
-<h4>Arrays</h4>
-<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="arrays">
-<ul>
-<li>Multiple values stored in integer subscripted variables.</li>
-</ul>
-<hr class="thin">
-<br/>
-
-<h5>Array manipulations</h5>
-
-<pre class="code">
-
-unset arr;
-declare -a arr;
-arr=(zero one two three four);
-echo ${arr[@]}
-echo $arr;        # refers to the first member.
-echo ${arr[0]};   # indexing begins from zero.
-echo ${arr[3]};
-echo ${arr[-2]};  # negative index counts from the end.
-
-
-arr+=(five);
-echo ${arr[5]}
-echo ${arr[@]};
-
-
-# Removing one element of the array.
-unset arr[5];
-echo ${arr[@]};
-
-
-# Removing the whole array.
-unset arr;    # Note, no dollar sign.
-echo $arr;
-
-
-</pre>
-
-
-<a href="nowhere" onclick='$("#arrays").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
-<!-- {{{ Associative arrays -->
-<h4>Associative arrays</h4>
-<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="asarrays">
-<ul>
-<li>Multiple values stored in string subscripted variables.</li>
-</ul>
-<hr class="thin">
-<br/>
-
-<h5>Associative array manipulations</h5>
-
-<pre class="code">
-
-unset aarr;
-declare -A aarr;
-declare -i aarr[@];
-aarr=([zero]=0 [one]=1 [two]=2 [three]=3 [four]=4);
-echo ${aarr[@]};   # no guarantee of order.
-echo ${!aarr[@]}   # 
-
-aarr[three]+=9;
-
-echo ${aarr[three]}
-
-aarr[five]=5;
-echo ${aarr[five]};
-
-aarr[five]+=20;
-echo ${aarr[five]};
-
-
-echo ${aarr[one]};
-aarr[one]=$(( aarr[one] + 10 ));
-echo ${aarr[one]};
-
-
-# Removing one element of the array.
-unset aarr[five];
-echo ${aarr[five]};
-
-
-# Removing the whole array.
-echo ${aarr[@]};
-unset aarr;
-echo ${aarr[@]};
-
-
-# Below, see what happens if array is not declared to be integer.
-
-unset barr;
-declare -A barr;
-# declare -i barr[@];
-barr=([x]=20 [y]=30);
-echo ${barr[@]};
-barr[x]+=3;
-echo ${barr[x]};
-unset barr;
-
-
-</pre>
-
-
-<a href="nowhere" onclick='$("#asarrays").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -442,22 +420,23 @@ are for making basic multiple choice menus.
 
 <h5>((  )) and [[  ]]</h5>
 
+<h6 class="diy">Arithmetic comparison I</h6>
 <pre class="code">
-
-# Arithmetic comparisons.
-
 unset x y
 declare -i x y;
 x=30;
 y=30;
 
-if (( x &lt; y )); then
+if (( $x &lt; $y )); then
   echo $x is less than $y
   else
   echo $x is not less than $y
 fi  
 
+</pre>
 
+<h6 class="diy">Arithmetic comparison II</h6>
+<pre class="code">
 unset x y
 declare -i x y;
 x=40;
@@ -471,14 +450,15 @@ if (( x == y )); then
   echo $x is less than $y
 fi  
 
+</pre>
 
-# String comparisons.
-
+<h6 class="diy">String comparison</h6>
+<pre class="code">
 unset x y
 x=alpha;
 y=beta;
 
-if [[ x &lt; y ]]; then
+if [[ $x &lt; $y ]]; then
   echo $x is less than $y
   else
   echo $x is not less than $y
@@ -509,11 +489,8 @@ Otherwise the logic is difficult to interpret.<br/>
 <hr class="thin">
 <br/>
 
-<h5><span class="code">while, until</span></h5>
+<h6 class="diy">While a condition is true</h6>
 <pre class="code">
-
-# while (the condition is true).
-
 unset x;
 declare -i x;
 x=10;
@@ -523,10 +500,11 @@ while (( x &gt; 0 )); do
   : $(( --x ))
   done
 
+</pre>
 
 
-# until (the condition becomes true).
-
+<h6 class="diy">Until a condition becomes true</h6>
+<pre class="code">
 unset x;
 declare -i x;
 x=10;
@@ -536,11 +514,12 @@ until (( x &lt;= 0 )); do
   : $(( --x ))
   done
 
+</pre>
 
 
-# An infinite while loop and
-# use of break to get out of it.
 
+<h6 class="diy">Using break to get out of an infinite loop</h6>
+<pre class="code">
 unset x;
 declare -i x;
 while (( 1 == 1 )); do
@@ -551,9 +530,11 @@ if (( x &gt; 50 )); then
   fi
 done
 
+</pre>
 
-# Use of continue.
 
+<h6 class="diy">Use of continue</h6>
+<pre class="code">
 unset x;
 declare -i x;
 while (( x &lt; 20 )); do
@@ -567,160 +548,24 @@ echo $x;
 
 done
 
-
 </pre>
 
-<h5><span class="code">for</span></h5>
+
+<h6 class="diy">for</h6>
 <pre class="code">
 
 for var in one two three four; do
   echo $var;
 done
 
-set -- alpha beta yankee zulu # sets @;
-for var; do
-  echo $var;
-done
-
-
-
-# BLASTing a directory full of fasta files using
-# the for loop.
-# We will also use GNU parallel to run BLAST searches
-# in parallel.
-
-cd; cd introlin;
-cd forblast;
-mkdir bldb blout
-makeblastdb -in sven15.faa -title "Sven seqenced in 2015" \
--dbtype prot -out bldb/sven15
-ls bldb 
-
-declare -i bcnt=0;
-for file in $(ls --color=never queries/*faa); do
-  echo $file;
-  bn=$(basename $file .faa);
-  ofn="blout/"$bn".blastp";
-  echo $file $ofn
-  echo blastp -query $file -db bldb/sven15 -out $ofn -outfmt 6
-  : $(( bcnt++ ));
-  if (( bcnt &gt; 10 )); then
-    break;
-  fi
-done
-
-
-
-
 </pre>
+
+
 
 <a href="nowhere" onclick='$("#looping").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
-
-
-
-
-
-<!-- {{{ replace -->
-<h4>Replace</h4>
-<a href="nowhere" onclick='$("#replace").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="replace">
-<ul>
-<li>AKA current directory and current working directory</li>
-</ul>
-<hr class="thin">
-<br/>
-
-<h5>Setting and removing attributes</h5>
-
-<pre class="code">
-
-</pre>
-
-
-<a href="nowhere" onclick='$("#replace").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
-
-<!-- {{{ Bash as a scripting language -->
-<h4>Bash as a programming (scripting) language</h4>
-<a href="nowhere" onclick='$("#scripting0").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="scripting0">
-<ul>
-<li>Bash is a reasonably powerful programming language.</li>
-
-<li>At the simplest level, all the commands you will be trying out today can be
-written in text files and run simply by telling Bash to read its commands from
-the file.</li>
-
-<li>It also has features of more formal programming such as conditionals and
-looping.</li>
-</ul>
-
-<h5>Ordinary variables</h5>
-
-  <ul class="lev2">
-  <li><span class="code">var=value</span></li>
-  <li><span class="code">animal=cat</span></li>
-  <li><span class="code">biganimal="A big cat"</span></li>
-  </ul>
-
-
-<h5>Environment Variables</h5>
-<ul>
-<li>Environment variables are inherited by child processes.</li>
-<li>export is used to make a variable an environment variable.</li>
-<li>e.g. <span class="code">animal=cat; export animal</span></li>
-<li>e.g. <span class="code">export animal=cat</span></li>
-</ul>
-<br/>
-<hr class="thin">
-<ul class="try">
-<li>$$ contains the process id of your current Bash session.</li>
-<li>$PPID contains the process id of the parent of the current Bash session.</li>
-<li><span class="code">echo $PPID</span></li>
-</ul>
-<h6>Please do the below along with me.</h6>
-<ol>
-<li><span class="code">echo $$ # make a note of this number.</span></li>
-<li><span class="code">filename=text.txt</span></li>
-<li><span class="code">echo $filename</span></li>
-<li><span class="code">cat $filename</span></li>
-<li><span class="code">bash</span></li>
-<li><span class="code">echo $$ # The child bash.</span></li>
-<li><span class="code">cat $filename # you will get stuck here. Use control-D to get your prompt back.</span></li>
-<li><span class="code">echo $filename</span></li>
-<li><span class="code">exit # to close the child Bash process.</span></li>
-<li><span class="code">echo $filename</span></li>
-<li><span class="code">export filename</span></li>
-<li><span class="code">bash</span></li>
-<li><span class="code">echo $$</span></li>
-<li><span class="code">echo $filename</span></li>
-<li><span class="code">cat $filename</span></li>
-<li><span class="code">exit # to close the child Bash process.</span></li>
-<li><span class="code">echo $$ # Confirm that you are back in the original bash session.</span></li>
-
-</ol>
-
-
-<h5>Some important environment variables</h5>
-<ul>
-<ul class="lev2"><li class="code">echo $PS1</li></ul>
-<ul class="lev2"><li class="code">echo $PATH</li></ul>
-<ul class="lev2"><li class="code">echo $EDITOR</li></ul>
-<ul class="lev2"><li class="code">echo $PAGER</li></ul>
-</ul>
-
-<a href="nowhere" onclick='$("#scripting0").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
 
 
 <!-- {{{ A file of Bash commands -->
@@ -733,10 +578,15 @@ begins with one of the
 following three words &mdash; <span class="fn">wildtype, mutant1, mutant2</span>.</li>
 <li>The task is to separate these three types of lines into
 three separate files.</li>
-<li>After making sure that you are in the <span class="fn">introlin</span> directory,
-start gedit using the command <code class="blue">gedit &amp;</code></li>
 
-<li>Type the thee commands below in gedit and save them
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li>After making sure that you are in the <span class="fn">introlin</span> directory,
+start kate using the command <code class="blue">kate &amp;</code></li>
+
+<li>Type the three commands below in kate and save them
 as a file named <span class="fn">commands.txt</span>.</li>
 
 <pre class = "code">
@@ -746,16 +596,20 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 </pre>
 
 
-<li>Some different ways of using commands.txt</li>
+<li>Try to following different ways of using commands.txt</li>
 
-<ul class="lev2">
-<li class="code">Cut and paste from gedit into the terminal.</li>
-<li class="code">bash &lt; commands.txt</li>
-<li class="code">bash commands.txt</li>
-<li class="code">source commands.txt</li>
+<ul class="diy">
+<li>Cut and paste from kate into the terminal.</li>
+<li><span class="code">bash &lt; commands.txt</span></li>
+<li><span class="code">bash commands.txt</span></li>
 <li class="code">source commands.txt</li>
 <li class="code">. commands.txt # same as source.</li>
 </ul>
+
+</ol>
+</div>
+
+
 
 <div class="instructor">
 * Comments
@@ -778,14 +632,6 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 <li>Mode.</li>
 </ul>
 
-Save the below as arguments.sh. <br/>
-<pre class="code">
-<span class="hashcol">#!/bin/bash</span>
-echo $0 $1 $2
-</pre>
-Grant execute permisson: <code>chmod ug+x arguments.sh</code>
-<br/>
-Run as: <code>./arguments.sh one two three four</code> 
 <br/>
 <hr class="thin" />
 Save the below as byStrain.sh.<br/>
@@ -800,6 +646,7 @@ Grant execute permisson: <code>chmod ug+x byStrain.sh</code>
 <br/>
 Run as: <code>./byStrain.sh</code> 
 <br/>
+<br/>
 <hr class="thin" />
 
 Save the below as byStrain2.sh.<br/>
@@ -809,15 +656,15 @@ Save the below as byStrain2.sh.<br/>
 for file in $(ls *tsv)
   do
  awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
- awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant2.out
- awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; wildtype.out
+ awk '$1 ~ /mutant2/ {print $0}' $file &gt;&gt; mutant2.out
+ awk '$1 ~ /wildtype/ {print $0}' $file &gt;&gt; wildtype.out
   done
 </pre>
 Grant execute permisson: <code>chmod ug+x byStrain2.sh</code>
 <br/>
 Run as: <code>./byStrain2.sh</code> 
 <br/>
-
+<br/>
 <a href="nowhere" onclick='$("#scripting1").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -829,9 +676,11 @@ Run as: <code>./byStrain2.sh</code>
 <a href="nowhere" onclick='$("#scripting2").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="scripting2">
 <ul>
-<li>The task we performed using a pipeline above can also be
-performed using a script.</li>
-<li>Type the following lines of code in gedit and save as <em>script.bash</em>.</li>
+<li>Earlier we extracted records for soft-clipped reads from a sam file
+and sorted them before writing them out to a new file. This was done using
+a pipeline.</li>
+<li>The same task can be done using a script.</li>
+<li>Type the following lines of code in kate and save as <em>script.bash</em>.</li>
 </ul>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
@@ -850,13 +699,192 @@ rm $tempfn
 <!-- }}} -->
 
 
+<!-- {{{ Bash script to feed parallel -->
+<h4>Bash script to feed parallel</h4>
+<a href="nowhere" onclick='$("#scriptpara").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="scriptpara">
+<ul>
+<li class="code">cd</li>
+<li class="code">cd introlin</li>
+<li class="code">cd forblast</li>
+<li class="code">mkdir bldb</li>
+<li class="code">mkdir blout</li>
+<li class="code">makeblastdb -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
+<li class="code">parallel --bibtex</li>
+<li>Below is a script for BLASTing all the files in a directory against the BLAST
+database (sven15) we have just made.</li>
+</ul>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ul>
+<li>
+Save the script below in a file named <span class="fn">blaster.sh</span> in the
+<span class="fn">forblast</span> directory.
+</li>
+<pre class="code">
+#!/bin/bash
+declare -i bcnt=0;
+for file in $(ls --color=never queries/*faa); do
+  bn=$(basename $file .faa);
+  ofn="blout/"$bn".blastp";
+  echo blastp -query $file -db bldb/sven15 -out $ofn -outfmt 6
+  : $(( bcnt++ ));
+  if (( bcnt &gt; 10 )); then
+    break;
+  fi
+done
+
+</pre>
+
+<li>Make <span class="fn">blaster.sh</span> executable by using <span class="code">chmod</span></li>
+<li>After making sure that you are in the <span class="fn">forblast</span>
+directory, run <span class="fn">blaster.sh</span></li>
+<li>Again, run <span class="fn">blaster.sh</span> but this time pipe its output
+to <span class="code">parallel</span></li>
+<li>List the files in <span class="fn">blout</span></li>
+<li><span class="code">less</span> one of the files in <span class="fn">blout</span></li>
+</ul>
+
+<h6>parallel</h6>
+<ul>
+<li><span class="code">parallel</span> has lots of options and features.</li>
+<li>The above script can be reduced to a single, but rather complicated,
+<span class="code">parallel</span> command.</li>
+<pre class="code">
+parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
+::: $(ls --color=never queries/*faa)
+</pre>
+</ul>
+
+<a href="nowhere" onclick='$("#scriptpara").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ bashrc -->
+<h4>~/.bashrc</h4>
+<a href="nowhere" onclick='$("#bashrc").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashrc">
+<ul>
+<li>The main configuration file for BASH.</li>
+<li>It is read everytime a new terminal is started.</li>
+<li>Mostly consists of BASH commands.</li>
+</ul>
+
+<div class="diy">
+<h6>If time permits, do the following yourself.</h6>
+<ol>
+<li>Change to your home directory.</li>
+<li>Save a copy of <span class="fn">~/.bashrc</span> as
+<span class="fn">dotbashrc</span></li>
+<li>Using <span class="code">kate</span> edit your
+<span class="fn">~/.bashrc</span> file and add the following at the
+end of the file.</li>
+<pre class="code">
+<span class="hashcol"># some aliases.</span>
+alias cdl="cd; cd introlin;"
+alias pd=pushd;
+</pre>
+<li>Now open a new terminal and try out the aliases you
+have just defined in <span class="fn">~/.bashrc</span></li>
+</ol>
+</div>
+
+<a href="nowhere" onclick='$("#bashrc").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Arrays -->
+<h4>Arrays</h4>
+<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="arrays">
+<ul>
+<li>Multiple values stored in integer subscripted variables.</li>
+<li><span class="code">declare -a</span></li>
+</ul>
+<hr class="thin">
+<br/>
+
+
+<h6 class="diy">Populating arrays and referring to elements</h6>
+<pre class="code">
+unset arr;
+declare -a arr;
+arr=(zero one two three four);
+echo ${arr[@]}
+echo $arr;        # refers to the first member.
+echo ${arr[0]};   # indexing begins from zero.
+echo ${arr[3]};
+echo ${arr[-2]};  # negative index counts from the end.
+
+</pre>
+
+<a href="nowhere" onclick='$("#arrays").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Associative arrays -->
+<h4>Associative arrays</h4>
+<a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="asarrays">
+<ul>
+<li>Multiple values stored in string subscripted variables.</li>
+<li><span class="code">declare -A</span></li>
+<li>Think key=value pairs.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<h6 class="diy">Listing values and keys</h6>
+<pre class="code">
+unset aarr;
+declare -A aarr;
+declare -i aarr[@];
+aarr=([zero]=0 [one]=1 [two]=2 [three]=3 [four]=4);
+echo ${aarr[@]};   # no guarantee of order.
+echo ${!aarr[@]}   # listing all keys. 
+
+</pre>
+
+<a href="nowhere" onclick='$("#asarrays").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
 <!-- {{{ What next? -->
 <h4>What next?</h4>
 <a href="nowhere" onclick='$("#whatnext").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="whatnext">
 <ul>
-<li><a href="http://en.flossmanuals.net/command-line/">The FSF manual for the command line for beginners</a>.</li>
+<li><a href="http://en.flossmanuals.net/command-line/">
+The FSF manual for the command line for beginners</a>.</li>
+<li>Advanced Bash Scripting Guide by Mendel Cooper is available from
+various sites on the internet. Just search for it. It is completely
+free, very big and very good.</li>
 <li>Start using Linux on a regular basis.</li>
+  <ul class="lev2">
+  <li>Linux is bigger and more capable than what I have demonstrated.</li>
+  <li>Time invested in learning more will be richly rewarded in terms of time
+  saved in doing your work as well as the quality of work you produce.</li>
+  <li>Linux is also very flexible. The syntax may be rigid but the ways in which
+  you can combine tools is immensely flexible.</li>
+  <li>And, there are hardly any tasks for
+  which more than one tools are not available.</li>
+  <li>This course is heavily influenced by my way of doing things.</li>
+  <li>e.g. <span class="code">man</span> rather than <span class="code">info</span>.
+  </li>
+  <li>It is not a bad way to start.</li>
+  <li>But, don't let it prevent you from evolving your own style
+  of working.</li>
+  </ul>
+
 <li>General purpose programming</li>
   <ul class="lev2">
   <li>Perl</li>
@@ -870,13 +898,13 @@ rm $tempfn
   <ul class="lev2">
   <li>R</li>
   </ul>
+
 </ul>
 
 <a href="nowhere" onclick='$("#whatnext").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
-
 
 <!-- Ends here --> 
 
