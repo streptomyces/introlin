@@ -217,9 +217,39 @@ the exercises.
 <!-- }}} -->
 
 
+<!-- {{{ Timing -->
+<h4>Timing</h4>
+<a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="timing">
+<h6>Thursday 22 March 2018</h6>
+<table>
+<tr><td>0930 to 1100</td><td>Course</td></tr>
+<tr><td>1100 to 1130</td><td>Coffee break</td></tr>
+<tr><td>1130 to 1300</td><td>Course</td></tr>
+<tr><td>1300 to 1400</td><td>Lunch break (lunch not provided).</td></tr>
+<tr><td>1400 to 1530</td><td>Course</td></tr>
+<tr><td>1530 to 1600</td><td>Coffee break</td></tr>
+<tr><td>1600 to 1730</td><td>Course</td></tr>
+</table>
+
+<h6>Friday 23 March 2018</h6>
+<table>
+<tr><td>0930 to 1100</td><td>Course</td></tr>
+<tr><td>1100 to 1300</td><td>Coffee break, Friday Seminar and
+Lunch break (lunch not provided)</td></tr>
+<tr><td>1300 to 1500</td><td>Course</td></tr>
+<tr><td>1500 to 1530</td><td>Coffee break</td></tr>
+<tr><td>1530 to 1730</td><td>Course</td></tr>
+</table>
+<a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
 <!-- {{{ What is Linux -->
 <h4>What is Linux?</h4>
-<a href="nowhere" onclick='$("#whatinux").toggle(); return(false)'>&#9660;&#9650;</a>
+<a href="nowhere" onclick='$("#whatlinux").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="whatlinux">
 <ul>
 <li>It is a <em>Unix</em> like <em>Operating System</em> for computers.
@@ -288,7 +318,8 @@ computer behave like it is more than one computer.</li>
 kept separate from it.</li> 
 <li><em>Virtual Machine Monitors</em> or <em>Hypervisors</em> may be native or hosted.</li>
 <li>Most hardware components are shared between the host and guest(s).</li>
-<li>Paravirtualisation and Full virtualisation.</li>
+<li>Full virtualisation and Paravirtualisation.</li>
+<li>Hardware-assisted virtualisation and Software-based virtualisation.</li>
 <li>Emulation is something different. Processors are often emulated
 for the purpose of development and testing on different architectures.</li>
 </ul>
@@ -383,11 +414,31 @@ areas of the disk to be read.</li>
 <li>By default, no write access to any disks.</li>
 <li>Several features have to be disabled.</li>
 <li>It is usual to boot from a live image and then do a full install.</li>
-<li>The boot image we will be using is <em>Kubuntu 16.04.3 LTS</em>.</li>
+<li>The boot image we will be using is <em>Kubuntu 16.04.4 LTS</em>.</li>
 <li>It has been downloaded from
 <a href="https://kubuntu.org/" target = "_blank">kubuntu.org</a></li>
 </ul>
 <a href="nowhere" onclick='$("#firstboot").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Virtual Desktops on Windows 10 -->
+<h4>Virtual Desktops on Windows 10</h4>
+<a href="nowhere" onclick='$("#winvd").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="winvd">
+<ul>
+<li>Press the tab key once while keeping the windows key pressed. 
+I will refer to this as the <em>Meta-tab</em> combination from now on.</li>
+<li>Then click on the &quot;+ New Desktop&quot; icon in the lower right part
+of the screen.</li>
+<li>Do the above again to end up with a total of 3 virtual desktops.</li>
+<li>Click on the first one.</li>
+<li>You can also use the Meta-Control-Arrow key combination to switch between
+the virtual desktops.</li>
+</ul>
+<a href="nowhere" onclick='$("#winvd").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -423,8 +474,8 @@ get something like below.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Installing Kubuntu 16.04.3 LTS -->
-<h4>Installing Kubuntu 16.04.3 LTS</h4>
+<!-- {{{ Installing Kubuntu 16.04.4 LTS -->
+<h4>Installing Kubuntu 16.04.4 LTS</h4>
 <a href="nowhere" onclick='$("#kuinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="kuinst">
 <!--
@@ -442,7 +493,6 @@ we will all have Linux running in our VMs.
 Suggested username: b26<br/>
 Suggested password: Learning26 (uppercase L)
 </p>
-
 
 <a href="nowhere" onclick='$("#kuinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -491,7 +541,7 @@ manner you use MS Windows, i.e. through a GUI. You can learn that yourself.</li>
 
 
 <!-- {{{ The Command Line Interface -->
-<h4>The Command Line Interface (GUI)</h4>
+<h4>The Command Line Interface (CLI)</h4>
 <a href="nowhere" onclick='$("#cli").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="cli">
 <ul>
@@ -555,8 +605,8 @@ to get two new terminals.</li>
 <li>VirtualBox Guest Additions.</li>
 </ul>
 <pre class="code">
-cd /media/b26/VBOXADDITIONS...
-sudo ./VBoxLinuxAdditions.run
+cd /media/b26/VBox_GAs_5.2.8
+sudo ./VBoxLinuxAdditions.run 
 </pre>
 
 <ul>
@@ -587,7 +637,7 @@ sudo apt install ncbi-blast+
 </ul>
 <pre class="code">
 sudo addgroup training
-sudo addgroup sco training
+sudo addgroup b26 training
 </pre>
 
 <ul>
@@ -717,7 +767,7 @@ looked for and, if found, executed.</li>
   </ul>
 <li>Any non-option arguments are still treated as arguments.</li>
   <ul class="lev2">
-  <li>Options and an argument e.g. <span class="code">ls -l -h introlinux</span></li>
+  <li>Options and an argument e.g. <span class="code">ls -l -h introlin</span></li>
   </ul>
 
 <li>
@@ -1013,8 +1063,8 @@ okular man_find.pdf
 <!-- }}} -->
 
 
-<!-- {{{ Mounting a directory shared by the host machine -->
-<h4>Mounting a directory shared by the host machine</h4>
+<!-- {{{ Mounting a directory shared with the host machine -->
+<h4>Mounting a directory shared with the host machine</h4>
 <a href="nowhere" onclick='$("#mntshare").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="mntshare">
 <ul>
@@ -1893,7 +1943,7 @@ the python3 process (nnnnn).</li>
 <li>Go to the terminal running python3 and quit from python3 (<span class="code">quit()</span>).</li>
 <li>Find out the process id of the current Bash process by
 doing <span class="code">echo $$</span>.</li>
-<li><span class="code">$PPID</span> holds the process id of the parent
+<li><span class="code">echo $PPID</span>. It holds the process id of the parent
 of the current Bash process.</li>
 <li>Close this new terminal (in which you ran python3).</li>
 </ol>
