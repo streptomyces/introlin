@@ -194,7 +194,8 @@ below.
 <!-- }}} -->
 
 
-<!-- {{{ Timing -->
+<!-- {{{ Timing commented out -->
+<!--
 <h4>Timing</h4>
 <a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="timing">
@@ -210,10 +211,11 @@ Lunch break (lunch not provided)</td></tr>
 <a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
+-->
 <!-- }}} -->
 
 
-<!-- {{{ Files to play with
+<!-- {{{ Files to play with. commented out.
 <h4>Some files to play with</h4>
 <h5 style="color: #aa0000">Not required on the second day</h5>
 <a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -316,6 +318,8 @@ looping.</li>
 <li>filename expansion</li>
 </ul>
 
+<h6>File: ~/introlin/scripting/shell_expansion.sh</h6>
+
 <h5>Variable expansion</h5>
 <pre class="code">
 var=figure1
@@ -324,7 +328,9 @@ echo $var.txt
 echo $var".txt"
 echo ${var}.txt
 echo $var"of2"
+
 echo $varof2
+
 echo ${var}of2
 
 </pre>
@@ -367,6 +373,7 @@ as strings or characters by default.</li>
 <br/>
 
 <h5>Setting and removing attributes</h5>
+<h6>File: ~/introlin/scripting/attributes.sh</h6>
 <ul>
 <li><span class="code">declare</span> is used for setting and
 removing attributes.</li>
@@ -437,6 +444,7 @@ are for making basic multiple choice menus.
 <hr class="thin">
 <br/>
 
+<h6>File: ~/introlin/scripting/conditional.sh</h6>
 <h5>((  )) and [[  ]]</h5>
 
 <h6 class="diy">Arithmetic comparison I</h6>
@@ -477,7 +485,9 @@ unset x y
 x=alpha;
 y=beta;
 
-if [[ $x &lt; $y ]]; then
+if [[ $x == $y ]]; then
+  echo $x equals $y
+  elif [[ $x &lt; $y ]]; then
   echo $x is less than $y
   else
   echo $x is not less than $y
@@ -508,7 +518,7 @@ Otherwise the logic is difficult to interpret.<br/>
 <hr class="thin">
 <br/>
 
-<h6 class="diy">While a condition is true</h6>
+<h6>File: ~/introlin/scripting/il_while.sh</h6>
 <pre class="code">
 unset x;
 declare -i x;
@@ -522,7 +532,7 @@ while (( x &gt; 0 )); do
 </pre>
 
 
-<h6 class="diy">Until a condition becomes true</h6>
+<h6>File: ~/introlin/scripting/il_until.sh</h6>
 <pre class="code">
 unset x;
 declare -i x;
@@ -537,7 +547,7 @@ until (( x &lt;= 0 )); do
 
 
 
-<h6 class="diy">Using break to get out of an infinite loop</h6>
+<h6>File: ~/introlin/scripting/il_break.sh</h6>
 <pre class="code">
 unset x;
 declare -i x;
@@ -552,7 +562,7 @@ done
 </pre>
 
 
-<h6 class="diy">Use of continue</h6>
+<h6>File: ~/introlin/scripting/il_continue.sh</h6>
 <pre class="code">
 unset x;
 declare -i x;
@@ -570,7 +580,7 @@ done
 </pre>
 
 
-<h6 class="diy">for</h6>
+<h6>File: ~/introlin/scripting/il_for.sh</h6>
 <pre class="code">
 
 for var in one two three four; do
@@ -729,7 +739,7 @@ rm $tempfn
 <li class="code">mkdir bldb</li>
 <li class="code">mkdir blout</li>
 <li class="code">makeblastdb -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
-<li class="code">parallel --bibtex</li>
+<li class="code">parallel --citation</li>
 <li>Below is a script for BLASTing all the files in a directory against the BLAST
 database (sven15) we have just made.</li>
 </ul>
@@ -782,18 +792,39 @@ parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
 <!-- }}} -->
 
 
-<!-- {{{ bashrc -->
-<h4>~/.bashrc</h4>
-<a href="nowhere" onclick='$("#bashrc").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="bashrc">
+<!-- {{{ bashconfig -->
+
+<h4>BASH Configuration</h4>
+<a href="nowhere" onclick='$("#bashconfig").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashconfig">
+
 <ul>
-<li>The main configuration file for BASH.</li>
-<li>It is read everytime a new terminal is started.</li>
-<li>Mostly consists of BASH commands.</li>
+<li>Two main configuration files.</li>
+<li><span class="fn">~/.bash_profile</span> and <span class="fn">~/.bashrc</span>
+are the two main configuration files for BASH.
+</li>
+<li>Consist of BASH commands.</li>
+</ul>
+
+<h5>~/.bash_profile</h5>
+<ul>
+<li>It is read everytime a login shell that is also
+non-interactive is started.</li>
+<li>Often sources <span class="fn">~/.bashrc</span></li>
+<pre class="code">
+if [[ -f ~/.bashrc ]]; then
+        source ~/.bashrc
+fi
+</pre>
+</ul>
+
+<h5>~/.bashrc</h5>
+<ul>
+<li>It is read everytime a new interactive shell is started.</li>
 </ul>
 
 <div class="diy">
-<h6>If time permits, do the following yourself.</h6>
+<h6>Do the following yourself.</h6>
 <ol>
 <li>Change to your home directory.</li>
 <li>Save a copy of <span class="fn">~/.bashrc</span> as
@@ -811,7 +842,7 @@ have just defined in <span class="fn">~/.bashrc</span></li>
 </ol>
 </div>
 
-<a href="nowhere" onclick='$("#bashrc").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#bashconfig").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -830,6 +861,7 @@ have just defined in <span class="fn">~/.bashrc</span></li>
 
 
 <h6 class="diy">Populating arrays and referring to elements</h6>
+<h6>File: ~/introlin/scripting/array.sh</h6>
 <pre class="code">
 unset arr;
 declare -a arr;
@@ -861,6 +893,7 @@ echo ${arr[-2]};  # negative index counts from the end.
 <br/>
 
 <h6 class="diy">Listing values and keys</h6>
+<h6>File: ~/introlin/scripting/associative.sh</h6>
 <pre class="code">
 unset aarr;
 declare -A aarr;

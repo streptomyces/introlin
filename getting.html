@@ -1,0 +1,197 @@
+<!DOCTYPE "html"> 
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<!-- {{{ style -->
+<style type="text/css">
+body {
+background: #dddddd;
+font-family: sans-serif;
+font-size: 110%;
+}
+.tta {background: #ffff00}
+.timestamp {font-size: x-small}
+td, table, tr, th {
+border-collapse: collapse;
+border: solid black 1px;
+padding: 3px;
+}
+.species {font-style: italic}
+.genus {font-style: italic}
+a:link, a:visited, a:active {color: blue; text-decoration: none}
+a:hover {color: magenta; text-decoration: none}
+div.code {
+  font-family: monospace; 
+  font-size: 120%;
+  color: #0000aa;
+  white-space: pre;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  background: #eeeeee;
+  width: 800px;
+}
+
+h5 {
+  font-size: 97%;
+}
+
+.hashcol {
+color: #008000;
+}
+
+.diy {
+color: #5c2d00;
+}
+
+div.slide {
+margin-bottom: 60px;
+}
+
+li { margin-top: 15px; }
+
+code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+pre.code {
+margin-left: 10px;
+margin-bottom: 40px;
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+width: 800px;
+}
+
+span.code {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #0000aa;
+}
+
+span.fn {
+font-family: monospace;
+font-size: 110%;
+background: #eeeeee;
+color: #3c6d33;
+}
+
+li.code {
+font-family: monospace;
+white-space: pre;
+color: #0000aa;
+font-size: 120%;
+}
+
+p, li {
+  width: 800px;
+}
+ul {
+  font-size: 110%;
+}
+ul.lev2 {
+  font-size: 100%;
+  list-style-type: square;
+}
+
+hr {
+  margin-top: 10px;
+  border: 3px solid #000000;
+}
+hr.thin {
+  margin-top: 5px;
+  border: 1.5px solid #aabbcc;
+}
+p.red {
+color: #aa0000;
+}
+.medium {
+  font-size: medium
+}
+.small {
+  font-size: small
+}
+em, .blue {
+  color: #0000aa
+}
+div.diy em {
+  color: #5c2d00;
+}
+.instructor {
+font-family: monospace;
+font-size: small;
+color: #5c1f00;
+white-space: pre;
+}
+
+</style>
+<!-- }}} -->
+
+
+<!-- {{{ script -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script>
+function detail() {
+$("div.slide").show("fast");
+}
+function outline() {
+$("div.slide").hide("fast");
+}
+function togoutline() {
+$("div.slide").toggle();
+}
+function toginstruct() {
+$(".instructor").toggle();
+}
+</script>
+
+<script>
+jQuery(function() {
+$("h4").text(function(n, current) {
+return (n+1) + ": " + current
+})
+});
+
+jQuery(function() {
+$(".instructor").hide("fast"); return(TRUE);
+});
+
+</script>
+<!-- }}} script -->
+
+
+<!-- {{{ Title and heading -->
+<title>Getting</title>
+</head>
+<body>
+<!--
+<button type="button" onclick="outline()">Outline</button>
+<button type="button" onclick="detail()">Detail</button>
+-->
+<!-- <button type="button" onclick="toginstruct()">
+Instructor hints show / hide</button> -->
+<!-- }}} -->
+
+<pre class="code">
+wget http://streptomyces.org.uk/customers/training/linux/index.html
+wget http://streptomyces.org.uk/customers/training/linux/scripting.html
+wget http://streptomyces.org.uk/customers/training/linux/assembled1.jpg
+wget http://streptomyces.org.uk/customers/training/linux/assembled2.jpg
+wget http://streptomyces.org.uk/customers/training/linux/install_button.jpg
+wget http://streptomyces.org.uk/customers/training/linux/vmshare.jpg
+wget http://streptomyces.org.uk/customers/training/linux/vmshare2.jpg
+wget http://streptomyces.org.uk/customers/training/linux/softclip.jpg
+wget http://streptomyces.org.uk/customers/training/linux/architecture.png
+
+</pre>
+
+
+</body>
+</html>

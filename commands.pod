@@ -1,0 +1,23 @@
+=head1 Name
+
+Linux Training
+
+=head2 Fri 17 Nov 2017
+
+Some notes made during the last course are recorded below.
+
+Installation reboot happened just before coffee break.
+
+Commands (slide 17) finished just before lunch break.
+
+Finished upto slide 27 on day 1.
+
+
+=head2 rsync
+
+ rsync -uvi index.html scripting.html *jpg xr.sh 10-monitor.conf \
+ sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/
+
+
+=cut
+

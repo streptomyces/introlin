@@ -221,7 +221,7 @@ the exercises.
 <h4>Timing</h4>
 <a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="timing">
-<h6>Thursday 22 March 2018</h6>
+<h6>Tues 30 and Wed 31 October 2018</h6>
 <table>
 <tr><td>0930 to 1100</td><td>Course</td></tr>
 <tr><td>1100 to 1130</td><td>Coffee break</td></tr>
@@ -232,7 +232,8 @@ the exercises.
 <tr><td>1600 to 1730</td><td>Course</td></tr>
 </table>
 
-<h6>Friday 23 March 2018</h6>
+<!--
+<h6>Friday</h6>
 <table>
 <tr><td>0930 to 1100</td><td>Course</td></tr>
 <tr><td>1100 to 1300</td><td>Coffee break, Friday Seminar and
@@ -241,6 +242,8 @@ Lunch break (lunch not provided)</td></tr>
 <tr><td>1500 to 1530</td><td>Coffee break</td></tr>
 <tr><td>1530 to 1730</td><td>Course</td></tr>
 </table>
+-->
+
 <a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -319,7 +322,7 @@ kept separate from it.</li>
 <li><em>Virtual Machine Monitors</em> or <em>Hypervisors</em> may be native or hosted.</li>
 <li>Most hardware components are shared between the host and guest(s).</li>
 <li>Full virtualisation and Paravirtualisation.</li>
-<li>Hardware-assisted virtualisation and Software-based virtualisation.</li>
+<li>Hardware-assisted virtualisation.</li>
 <li>Emulation is something different. Processors are often emulated
 for the purpose of development and testing on different architectures.</li>
 </ul>
@@ -413,8 +416,11 @@ areas of the disk to be read.</li>
 <li>Works entirely in memory.</li>
 <li>By default, no write access to any disks.</li>
 <li>Several features have to be disabled.</li>
+</ul>
+<h5>So...</h5>
+<ul>
 <li>It is usual to boot from a live image and then do a full install.</li>
-<li>The boot image we will be using is <em>Kubuntu 16.04.4 LTS</em>.</li>
+<li>The boot image we will be using is <em>Kubuntu 18.04.1 LTS</em>.</li>
 <li>It has been downloaded from
 <a href="https://kubuntu.org/" target = "_blank">kubuntu.org</a></li>
 </ul>
@@ -450,7 +456,7 @@ the virtual desktops.</li>
 <div class="slide" id="ovb">
 <ul>
 <li>Start Oracle VirtualBox.</li>
-<li>Ask for a new virtual machine. Give it a name. (I suggest &quot;ku16&quot;)</li>
+<li>Ask for a new virtual machine. Give it a name. (I suggest &quot;ku18&quot;)</li>
 <li>Change the type to Linux and Version to 64bit Ubuntu.</li>
 <li>Specify the amount of memory you want it to use.
 We will use 8192 MB.</li>
@@ -474,8 +480,8 @@ get something like below.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Installing Kubuntu 16.04.4 LTS -->
-<h4>Installing Kubuntu 16.04.4 LTS</h4>
+<!-- {{{ Installing Kubuntu 18.04 LTS -->
+<h4>Installing Kubuntu 18.04 LTS</h4>
 <a href="nowhere" onclick='$("#kuinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="kuinst">
 <!--
@@ -490,11 +496,90 @@ we will all have Linux running in our VMs.
 </p>
 
 <p>
-Suggested username: b26<br/>
-Suggested password: Learning26 (uppercase L)
+Example username: stu26 (use whatever you like but not too long)<br/>
+Suggested password: -1mouse (minus one mouse)<br/>
+Suggested hostname: vlin
+</p>
+
+<p class = "red">
+It is important to remember the password you use here.
 </p>
 
 <a href="nowhere" onclick='$("#kuinst").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Post-installation -->
+<h4>Immediately after installation</h4>
+<a href="nowhere" onclick='$("#postinst").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="postinst">
+<ul>
+<li>Change VirtualBox <em>host key</em> to <em>Right Alt</em>.</li>
+<li>Screen resolution.</li>
+<li>Virtual desktops and switching shortcuts.</li>
+<li>Add Konsole, Firefox, System Settings and Kate to favourites.</li>
+<li>Make <span class="code">sudo</span> passwordless.</li>
+</ul>
+<ul>
+<li>VirtualBox Guest Additions.</li>
+</ul>
+<pre class="code">
+cd /media/stu26/VBox_GAs_5.2.18
+sudo ./VBoxLinuxAdditions.run 
+</pre>
+
+<ul>
+<li>Update all the software packages.</li>
+</ul>
+<pre class="code">
+sudo apt update
+sudo apt upgrade
+</pre>
+
+<ul>
+<li>Install <em>parallel</em></li>
+</ul>
+<pre class="code">
+sudo apt install parallel
+</pre>
+
+<ul>
+<li>Search and install <em>NCBI Blast+</em></li>
+</ul>
+<pre class="code">
+sudo apt search ncbi-blast
+sudo apt install ncbi-blast+
+</pre>
+
+<ul>
+<li>Make a new user group named <em>training</em> and add yourself to it.</li>
+</ul>
+<pre class="code">
+sudo addgroup training
+sudo addgroup stu26 training
+</pre>
+
+<ul>
+<li>Reboot.</li>
+</ul>
+<pre class="code">
+sudo reboot
+</pre>
+
+<p>
+After the reboot, go to the virtual desktop 3 and start Firefox.
+In Firefox, go to this <br/>
+http://streptomyces.org.uk/customers/training/linux/
+URL. This is to minimise the need to switch between Windows and our
+Kubuntu virtual machine.
+</p>
+<p>
+If you have not already done so, make your virtual machine full screen.
+</p>
+
+<a href="nowhere" onclick='$("#postinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -505,12 +590,18 @@ Suggested password: Learning26 (uppercase L)
 <a href="nowhere" onclick='$("#gui").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="gui">
 <ul>
-<li>Several desktop environments are available e.g. Unity, KDE, Gnome.</li>
-<li>I use KDE because it is highly configurable.</li>
-<li>You should try the others at least once. There a some lesser known
-ones as well which are very good.</li>
+<li>The desktop and the window manager.</li>
+<li>Several desktop environments are available e.g. KDE, Gnome, XFCE, LXDE</li>
+<li>They come with their window managers.</li>
+<li>KDE (at this time) uses a window manager known as Plasma.</li>
+<li>At work I use KDE but with a different window manager (i3wm).</li>
+<li>If you use start using Linux regularly it is worth trying out some
+of the other desktops / window managers. You might find something better suited
+to your style of working.</li>
 <li>All modern, commonly used Linux distributions are very usable in the
-manner you use MS Windows, i.e. through a GUI. You can learn that yourself.</li>
+manner you use MS Windows, i.e. through a GUI. It is simply a matter of
+familiarising yourself with the desktop environment and you can do
+that yourself.</li>
 <li>We will stick to the command line for the rest of this course.</li>
 </ul>
 <a href="nowhere" onclick='$("#gui").hide("fast"); return(false)'>&#9650;</a>
@@ -590,69 +681,6 @@ to get two new terminals.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Post-installation -->
-<h4>Immediately after installation</h4>
-<a href="nowhere" onclick='$("#postinst").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="postinst">
-<ul>
-<li>Change VirtualBox <em>host key</em> to <em>Right Alt</em>.</li>
-<li>Screen resolution.</li>
-<li>Virtual desktops and switching shortcuts.</li>
-<li>Add Konsole, Firefox, System Settings and Kate to favourites.</li>
-<li>Make <span class="code">sudo</span> passwordless.</li>
-</ul>
-<ul>
-<li>VirtualBox Guest Additions.</li>
-</ul>
-<pre class="code">
-cd /media/b26/VBox_GAs_5.2.8
-sudo ./VBoxLinuxAdditions.run 
-</pre>
-
-<ul>
-<li>Update all the software packages.</li>
-</ul>
-<pre class="code">
-sudo apt update
-sudo apt upgrade
-</pre>
-
-<ul>
-<li>Install <em>parallel</em></li>
-</ul>
-<pre class="code">
-sudo apt install parallel
-</pre>
-
-<ul>
-<li>Search and install <em>NCBI Blast+</em></li>
-</ul>
-<pre class="code">
-sudo apt search ncbi-blast
-sudo apt install ncbi-blast+
-</pre>
-
-<ul>
-<li>Make a new user group named <em>training</em> and add yourself to it.</li>
-</ul>
-<pre class="code">
-sudo addgroup training
-sudo addgroup b26 training
-</pre>
-
-<ul>
-<li>Reboot.</li>
-</ul>
-<pre class="code">
-sudo reboot
-</pre>
-
-<a href="nowhere" onclick='$("#postinst").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
 <!-- {{{ Files to play with -->
 <h4>Some files to play with</h4>
 <a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -701,8 +729,10 @@ created when you extracted <em>introlin.zip</em>.
 <a href="nowhere" onclick='$("#bash").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="bash">
 <ul>
-<li>Bash is a shell &mdash; <b>B</b>ourne <b>a</b>gain <b>sh</b>ell.
-Two other shells are the C shell and the Z shell. And there are more.</li>
+<li>Bourne shell (Stephen Bourne 1976 at Bell Labs)</li>
+<li>Bash &mdash; <b>B</b>ourne <b>a</b>gain <b>sh</b>ell originally written
+by Brian Fox for the Free Software Foundation's GNU Project. First release 1989.</li>
+<li>There are other shells such as the C shell and the Z shell.</li>
 <li>Makes the kernel do what you want by interpreting your commands into
 a form which the kernel understands. Command interpreter.</li>
 <li>Bash is your default command interpreter.</li>
@@ -712,7 +742,7 @@ interpreter (Bash in this case) for you which then prompts you for commands.</li
 command has finished.</li>
 <li>It is possible to set a command running in the background.</li>
   <ul class="lev2">
-  <li>This is how we will run an editor later on.</li>
+  <li>We will see this later.</li>
   </ul>
 <li>Bash functions (shell functions). Usually defined by the user in the
 current environment.</li>
@@ -808,8 +838,8 @@ be bundled together.
 <li>Force-stopping parsing of options</li>
 
   <ul class="lev2">
-  <li><code class="blue">ls --optbreak</code>
-  <li><code class="blue">ls -- --optbreak</code>
+  <li><code class="blue">ls --sillyname</code>
+  <li><code class="blue">ls -- --sillyname</code>
   </li>
   </ul>
 
@@ -977,12 +1007,21 @@ and see what effect it has.</li>
 <span class="code">less</span>, then kill the terminal itself.</li>
 </ol>
 </div>
-
 <p>
 If you use a command often then it is a good idea to read its
 documentation in some detail. You will almost certainly find
 useful options you were not aware of.
 </p>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Inside <span class="fn">introlin</span> there is a directory
+named <span class="fn">--optbreak</span>. List the contents of this
+directory.</li>
+</ol>
+</div>
+
 <div class="diy">
 <h6>Getting a pdf file for a man page</h6>
 <pre class="code">
@@ -1068,35 +1107,34 @@ okular man_find.pdf
 <a href="nowhere" onclick='$("#mntshare").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="mntshare">
 <ul>
-<li>On the host make a directory (folder) which you want to be visible in the guest.
+<li>On the host (Windows) make a directory (folder) which you
+want to be visible in the guest.
 We suggest the name &quot;vmshared&quot;.</li>
 <li>Save a text (.txt) file in this directory with a line of text in it.</li>
 <li>In VirtualBox Menu, Devices &#8594; Shared Folders &#8594;
 Shared Folders Settings.</li>
 </ul>
-<img src="vmshare.jpg"/><br/><br/>
-<img src="vmshare2.jpg"/>
+<img src="vmshared.jpg"/><br/><br/>
 <ul>
-<li>In &quot;Folder Path&quot; find the host directory you wish to share.</li>
+<li>In &quot;Folder Path&quot; find the host (Windows) directory you wish to share.</li>
 <li>&quot;Folder Name&quot; will fill itself. You may change it, but remember
 the name. Click &quot;OK&quot;.</li>
 <li>Back in Kubuntu, in a terminal, I will talk you through the following
 commands.</li>
 <li class="code">cd</li>
-<li class="code">mkdir hostshared</li>
+<li class="code">mkdir winshared</li>
 <li class="code">ls</li>
-<li class="code">sudo mount -t vboxsf vmshared hostshared</li>
-<li class="code">ls hostshared</li>
+<li class="code">sudo mount -t vboxsf vmshared winshared</li>
+<li class="code">ls winshared</li>
 </ul>
 
 <ul>
 <li>The last command above should list the text file you had
-created on the host machine.</li>
-<li>Any files you put in the <span class="fn">hostshared</span>
+created on the Windows side.</li>
+<li>Any files you put in the <span class="fn">winshared</span>
 directory will be physically in the <span class="fn">vmshared</span>
-folder on the host machine.</li>
+folder on the host (Windows) side.</li>
 </ul>
-
 
 <a href="nowhere" onclick='$("#mntshare").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -1330,6 +1368,7 @@ ensures that the right thing gets done for the underlying kind of file or device
 <li>Descends into sub-directories when looking for files which match the
 pattern specified.</li>
 <li class="code">find &lt;options&gt; &lt;startdir&gt; &lt;global options&gt; &lt;tests&gt; &lt;actions&gt;</li>
+<li class="code">     --true--              ------------- expression -------</li>
 <li><span class="code">expressions</span> also have options like syntax.</li>
 <li>Global option to specify maximum and minimum depth of descent</li>
 <li>Tests for string pattern in name, modification time, etc.</li>
@@ -1445,14 +1484,14 @@ the wrong arguments it can be disastrous.
 <div class="slide" id="perms">
 
 <div class="code">
--rw-r--r-- 1 b26 b26   344 Oct 28 14:01 charset.pl
--rw-r--r-- 1 b26 b26   168 Oct 28 14:01 file.txt
--rw-r--r-- 1 b26 b26    98 Oct 28 14:01 formode.bash
-drwxr-xr-x 3 b26 b26  4.0K Oct 28 14:01 fromContractor
-drwxr-xr-x 3 b26 b26  4.0K Oct 28 14:01 introlin2
--rw-r--r-- 1 b26 b26  3.1M Oct 28 14:01 large.tsv
--rw-r--r-- 1 b26 b26  142M Oct 28 14:01 local.sam
--rw-r--r-- 1 b26 b26   63K Oct 28 14:01 medium.tsv
+-rw-r--r-- 1 stu26 stu26   344 Oct 28 14:01 charset.pl
+-rw-r--r-- 1 stu26 stu26   168 Oct 28 14:01 file.txt
+-rw-r--r-- 1 stu26 stu26    98 Oct 28 14:01 formode.bash
+drwxr-xr-x 3 stu26 stu26  4.0K Oct 28 14:01 fromContractor
+drwxr-xr-x 3 stu26 stu26  4.0K Oct 28 14:01 introlin2
+-rw-r--r-- 1 stu26 stu26  3.1M Oct 28 14:01 large.tsv
+-rw-r--r-- 1 stu26 stu26  142M Oct 28 14:01 local.sam
+-rw-r--r-- 1 stu26 stu26   63K Oct 28 14:01 medium.tsv
 </div>
 
 <hr class="thin"/>
@@ -1508,7 +1547,7 @@ file or directory belongs.</li>
 <span class="fn">training</span>.</li>
 <li>Again do a long listing to confirm that the above was successful.</li>
 <li>Change the group of the file <span class="fn">text.txt</span> back to
-your initial group (b26).</li>
+your initial group (stu26).</li>
 <li>Confirm the above.</li>
 </ol>
 </div>

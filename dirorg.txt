@@ -1,0 +1,43 @@
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+│   └── sco
+│       ├── Desktop
+│       ├── Documents
+│       ├── Downloads
+│       ├── introlin
+│       │   ├── forblast
+│       │   │   ├── bldb
+│       │   │   ├── blout
+│       │   │   ├── pabldb
+│       │   │   ├── paout
+│       │   │   └── queries
+│       │   ├── fromContractor
+│       │   │   └── run6
+│       │   │       └── lane1
+│       │   ├── introlin2
+│       │   │   └── introlin3
+│       │   │       └── introlin4
+│       │   ├── --optbreak
+│       │   └── scripting
+│       ├── Music
+│       ├── Pictures
+│       ├── Public
+│       ├── Templates
+│       └── Videos
+├── lib
+├── lib64
+├── lost+found
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin
+├── tmp
+├── usr
+└── var
