@@ -19,5 +19,21 @@ Finished upto slide 27 on day 1.
  sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/
 
 
+=head2 Fri 25 Oct 2019
+
+Kubuntu 18.04.3 doesn't include a 1920x1080 resolution. So we will
+need to get the students to C<wget> F<xr.sh> ans source it to set the
+resolution. I have also put F<10-monitor.conf> on
+http://streptomyces.org.uk/customers/training/linux/. This file will
+be put in F</etc/X11/xorg.conf.d/> to make this resolution the default
+resolution.
+
+The actual modeline can be determined by
+
+ cvt 1920 1080 60
+
+
+
+
 =cut
 
