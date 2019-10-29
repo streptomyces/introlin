@@ -321,8 +321,11 @@ computer behave like it is more than one computer.</li>
 kept separate from it.</li> 
 <li><em>Virtual Machine Monitors</em> or <em>Hypervisors</em> may be native or hosted.</li>
 <li>Most hardware components are shared between the host and guest(s).</li>
-<li>Full virtualisation and Paravirtualisation.</li>
-<li>Hardware-assisted virtualisation.</li>
+<li>Full virtualisation: Guest OS and applications can run unmodified.</li>
+<li>Paravirtualisation: Guest OS and applications need to be specially modified
+to be able to run in the virtual environment.</li>
+<li>Hardware-assisted virtualisation: Hardware components, especially main processors,
+designed to make virtualisation efficient.</li>
 <li>Emulation is something different. Processors are often emulated
 for the purpose of development and testing on different architectures.</li>
 </ul>
@@ -456,7 +459,11 @@ the virtual desktops.</li>
 <div class="slide" id="ovb">
 <ul>
 <li>Start Oracle VirtualBox.</li>
-<li>Ask for a new virtual machine. Give it a name. (I suggest &quot;ku18&quot;)</li>
+<li>Tools &rarr; Preferences &rarr; Input &rarr; Virtual Machine
+&rarr; Host Key Combination
+</li>
+<li>Set this to the Alt key on the right of the space bar.</li>
+<li>Ask for a new virtual machine. Give it a name. (We suggest &quot;ku18&quot;)</li>
 <li>Change the type to Linux and Version to 64bit Ubuntu.</li>
 <li>Specify the amount of memory you want it to use.
 We will use 8192 MB.</li>
@@ -464,11 +471,13 @@ We will use 8192 MB.</li>
 <li>Hard disk file type will be <em>VirtualBox Disk Image</em>.</li>
 <li>We will use a fixed storage size of 20 GB and create the
 virtual hard disk.</li>
-<li>In settings, we increase the number of processors to use to 3.</li>
+<li>In settings, we increase the number of processors to use to 3 and
+the video memory to about 84 MB.</li>
 <li>A virtual optical drive is provided and we will put our bootable
-image file in it. <em>C:/Coursefiles/IntroLinux/kubuntu...iso</em></li>
+image file in it.<br/>
+<em>C:/coursefiles/IntroLinux/kubuntu-18.04.3-desktop-amd64.iso</em></li>
 <li>Rest of the default settings are fine.</li>
-<li>Click on the big green arrow to boot the VM and wait till you
+<li>Click on the green arrow labelled &quot;Start&quot; to boot the VM and wait till you
 get something like below.</li>
 </ul>
 <br/>
@@ -516,20 +525,9 @@ It is important to remember the password you use here.
 <a href="nowhere" onclick='$("#postinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="postinst">
 <ul>
-<li>Change VirtualBox <em>host key</em> to <em>Right Alt</em>.</li>
-<li>Screen resolution.</li>
-<li>Virtual desktops and switching shortcuts.</li>
-<li>Add Konsole, Firefox, System Settings and Kate to favourites.</li>
+<li>Set screen resolution to 1680x1050 for now.</li>
 <li>Make <span class="code">sudo</span> passwordless.</li>
 </ul>
-<ul>
-<li>VirtualBox Guest Additions.</li>
-</ul>
-<pre class="code">
-cd /media/stu26/VBox_GAs_5.2.18
-sudo ./VBoxLinuxAdditions.run 
-</pre>
-
 <ul>
 <li>Update all the software packages.</li>
 </ul>
@@ -537,6 +535,29 @@ sudo ./VBoxLinuxAdditions.run
 sudo apt update
 sudo apt upgrade
 </pre>
+
+While the packages are being upgraded we will
+<ul>
+<li>Configure Virtual desktops and switching shortcuts.</li>
+<li>Configure the task manager.</li>
+</ul>
+
+Before we can install VirtualBox Gest Additions we need install GCC and make,
+and reboot the virtual machine.
+<ul>
+<li>Install <span class="code">GCC</span> and <span class="code">make</span></li>
+<li><span class="code">sudo reboot</span></li>
+</ul>
+
+
+<ul>
+<li>VirtualBox Guest Additions.</li>
+</ul>
+<pre class="code">
+cd /media/stu26/VBox_GAs_6.0.14
+sudo ./VBoxLinuxAdditions.run 
+</pre>
+
 
 <ul>
 <li>Install <em>parallel</em></li>
@@ -974,8 +995,12 @@ files between directories.
 <ul>
 <li class="code">man mkdir</li>
 <li class="code">man cp</li>
-<li class="code">info mkdir</li>
 </ul>
+<p>
+There is also a utility named <span class="code">info</span>. A lot of
+documentation is written in the &quot;info&quot; format for reading
+with this tool. I will not be able to demonstrate it to you.
+</p>
 <ul>
 <li>The <span class="code">man</span> command uses a pager to display
 the help text.</li>
@@ -988,6 +1013,10 @@ occurrences respectively.</li>
 <li>Use <span class="code">q</span> to get out of
 <span class="code">less</span>.</li>
 <li>(Instructor to demonstrate using color option of ls).</li>
+<li>All builtin commands are bundled into one man page.</li>
+<li>Use <span class="code">help</span> to see their documentation.
+e.g. <span class="code">help history</span>.
+</li>
 </ul>
 
 <div class="diy">
@@ -1820,7 +1849,9 @@ to copy the first 50 lines of
 <li><span class="code">|</span> is used to establish a pipe between two commands.</li>
 <li>e.g. <span class="code">ls -l | less -S</span></li>
 <li>Remember to quit out of less before continuing.</li>
-<li><span class="code">|&amp;</span> is used to include stderr into the pipe.</li>
+<li><span class="code">|&amp;</span> is used to include stderr in the pipe<br/>
+(short for <span class="code">2&gt;&amp;1 |</span>). 
+</li>
 <li>e.g. <span class="code">./outanderr.pl |&amp; less</span></li>
 <!-- <li><span class="code">./outanderr.pl 2>&1 > /dev/null | less</span></li> -->
 <li>Remember to quit out of less before continuing.</li>
@@ -1846,7 +1877,8 @@ the specified file at the same time.</li>
 <br/>
 <hr class="thin">
 <ul class="try">
-<li><span class="code">awk</span> (used below) select lines which match a pattern.</li>
+<li><span class="code">awk</span> (used below) selects lines of text
+which match a pattern.</li>
 </ul>
 
 <div class="diy">
@@ -1962,31 +1994,13 @@ sort -n -k 4 -o local_sorted.sam
 <li>Running programs are called processes.</li>
 <li>An instance of Bash is a processes.</li>
 <li>When the computer boots up it starts a single
-process named <span class="fn">init</span> or <span class="fn">systemd</span>. All other processes descend from this one.</li>
+process named <span class="fn">init</span> or <span class="fn">systemd</span>.
+All other processes descend from this one.</li>
 <li>When a child process finishes, control is handed back to its parent.</li>
 </ul>
 <br/>
-<hr class="thin">
 <ul class="try">
 </ul>
-
-<div class="diy">
-<h6>Do the following yourself.</h6>
-<ol>
-<li>Get a new Konsole terminal and start the Python3 interpreter in it by typing
-<span class="code">python3</span>.</li>
-<li>Go back to your old Konsole terminal and do</li>
-<li><span class="code">ps -f -C python3</span></li>
-<li>Note the process id of the <em class="black">parent</em> of
-the python3 process (nnnnn).</li>
-<li>Go to the terminal running python3 and quit from python3 (<span class="code">quit()</span>).</li>
-<li>Find out the process id of the current Bash process by
-doing <span class="code">echo $$</span>.</li>
-<li><span class="code">echo $PPID</span>. It holds the process id of the parent
-of the current Bash process.</li>
-<li>Close this new terminal (in which you ran python3).</li>
-</ol>
-</div>
 <br/>
 <a href="nowhere" onclick='$("#processes").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -1994,18 +2008,26 @@ of the current Bash process.</li>
 <!-- }}} -->
 
 <!-- {{{ Backgrounding -->
-<h4>Backgrounding processes</h4>
+<h4>Stopping, backgrounding and foregrounding processes</h4>
 <a href="nowhere" onclick='$("#bgproc").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="bgproc">
 <ul>
-<li>You can put processes which will take a long time
-to finish in the background by putting an &quot;&amp;&quot; at the end of the command.</li>
-<li><span class="code">yes</span> prints an endless stream of &quot;y&quot;
-on the terminal.</li>
-<li>To stop <span class="code">yes</span> you have to use the <span class="fn">control-C</span> combination. Known as killing a process.</li>
-<li><span class="fn">/dev/null</span> is a file which behaves like a sink of infinite size.</li>
-<li><span class="code">jobs</span> shows you a list of jobs running in the background in the current session of Bash.</li>
-<li><span class="code">fg</span> bring the specified job to the foreground. e.g. <span class="code">fg %1</span>.</li>
+<li>You can start processes in the background
+by putting an &quot;&amp;&quot; at the end of the command.</li>
+<li>You can stop (suspend) a process by the <span class="fn">control-z</span>
+combination.</li>
+<li><span class="code">jobs</span> shows you a list of jobs running in
+the background in the current session of Bash.</li>
+<li><span class = "code">fg %1</span> is used to restart a suspended job
+in the foreground.</li>
+<li><span class = "code">bg %1</span> is used to restart a suspended job
+in the background.</li>
+<li><span class="code">yes</span> prints an endless stream of &quot;y&quot; (or
+any string argument) on the terminal.</li>
+<li>To stop <span class="code">yes</span> you have to use the
+<span class="fn">control-c</span> combination. Known as killing a process.</li>
+<li><span class="fn">/dev/null</span> is a file which behaves
+like a sink of infinite size.</li>
 </ul>
 <br/>
 <hr class="thin">
@@ -2015,13 +2037,37 @@ on the terminal.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>Start <span class="code">yes</span> and then kill it.</li>
-<li>Start <span class="code">yes</span> and redirect the output to <span class="fn">/dev/null</span>. Then kill it.</li>
-<li>Start <span class="code">yes</span> and redirect the output to <span class="fn">/dev/null</span>, but in the background this time.</li>
-<li>Repeat 3. once again.</li>
-<li>Issue the <span class="code">jobs</span> command.</li>
-<li>Bring job 1 to the forground and kill it.</li>
+<li>Find out the process id of the current bash process by doing <br/>
+<span class = "code">echo $$</span>
+.</li>
+<li>Start the python3 interpreter in the background.</li>
+<li><span class = "code">ps -f -C python3</span> to see the process id and
+the parent process id (PPID) of the python3 interpreter.</li>
+<li>Bring the python3 process to the foreground and end it by control-d.</li>
+</ol>
+</div>
+<hr class="thin"/>
+
+<div class="diy">
+<h6>Do the following with the instructor.</h6>
+<ol>
+<li>Start <span class="code">yes</span> and then kill it (with control-c).</li>
+<li>Start <span class="code">yes</span> and redirect the output
+to <span class="fn">/dev/null</span>. Then kill it.</li>
+<li>Start <span class="code">yes one</span> and redirect the output to
+<span class="fn">/dev/null</span>, but in the background this time.</li>
+<li>Start <span class="code">yes two</span> and redirect the output to
+<span class="fn">/dev/null</span>, but in the background this time.</li>
+<li>Examine the output of <span class="code">jobs</span>.</li>
+<li>Bring job 1 to the foreground and suspend it using control-z.</li>
+<li>Examine the output of <span class="code">jobs</span>.</li>
+<li>Bring job 2 to the foreground and suspend it using control-z.</li>
+<li>Examine the output of <span class="code">jobs</span>.</li>
+<li>Restart job 1 in the background.</li>
+<li>Examine the output of <span class="code">jobs</span>.</li>
 <li>Bring job 2 to the forground and kill it.</li>
+<li>Bring job 1 to the forground and kill it.</li>
+<li>Examine the output of <span class="code">jobs</span>.</li>
 </ol>
 </div>
 

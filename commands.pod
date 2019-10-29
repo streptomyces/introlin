@@ -32,7 +32,7 @@ The actual modeline can be determined by
 
  cvt 1920 1080 60
 
-
+usermod -G docker,vboxusers,wheel,users sco
 
 
 =cut

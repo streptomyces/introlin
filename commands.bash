@@ -137,3 +137,56 @@ echo $($com);
 ./outanderr.pl > out 2>&1
 ./outanderr.pl 2>&1 > out1
 
+
+exec 6< ../introlin/test
+declare -ax avc
+mapfile -u 6 avc
+exec 6>&-
+exec 6<&-
+
+unset avc
+declare -ax avc
+# cat ../introlin/test | mapfile avc
+# mapfile avc < <(cat ../introlin/test)
+mapfile avc < ../introlin/test
+echo ${avc[3]}
+#;
+
+coproc CP {
+  echo
+}
+echo ${CP[1]}
+echo ${CP[0]}
+
+echo stuffed >&"${CP[1]}"
+read cpout <&"${CP[0]}"
+echo $cpout
+#;
+
+
+coproc myproc {
+    bash
+}
+# send a command to it (echo a)
+echo 'echo a' >&"${myproc[1]}"
+# read a line from its output
+read line <&"${myproc[0]}"
+# show the line
+echo "$line"
+#;
+
+
+declare -A strcnt
+strcntwc -l < <(awk '$1 ~/mutant2/ {print $0}' ../introlin/test)
+
+
+twit () {
+  while read input
+    do
+      echo $input $input
+    done
+}
+declare -fx twit
+
+yes | twit
+

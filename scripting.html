@@ -738,7 +738,7 @@ rm $tempfn
 <li class="code">cd forblast</li>
 <li class="code">mkdir bldb</li>
 <li class="code">mkdir blout</li>
-<li class="code">makeblastdb -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
+<li class="code">makeblastdb -parse_seqids -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
 <li class="code">parallel --citation</li>
 <li>Below is a script for BLASTing all the files in a directory against the BLAST
 database (sven15) we have just made.</li>
@@ -775,7 +775,7 @@ to <span class="code">parallel</span></li>
 <li><span class="code">less</span> one of the files in <span class="fn">blout</span></li>
 </ul>
 
-<h6>parallel</h6>
+<h6><span class="code">parallel</span></h6>
 <ul>
 <li><span class="code">parallel</span> has lots of options and features.</li>
 <li>The above script can be reduced to a single, but rather complicated,
@@ -784,6 +784,12 @@ to <span class="code">parallel</span></li>
 parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
 ::: $(ls --color=never queries/*faa)
 </pre>
+</ul>
+<h6><span class="code">blastdbcmd</span></h6>
+<ul>
+<li>Examine the output of the following</li>
+<li><span class="code">blastdbcmd -db bldb/sven15 -line_length 60 -entry SVEN15_2573</span></li>
+<li><span class="code">blastdbcmd -db bldb/sven15 -range 50-60 -entry SVEN15_2573</span></li>
 </ul>
 
 <a href="nowhere" onclick='$("#scriptpara").hide("fast"); return(false)'>&#9650;</a>
@@ -816,6 +822,7 @@ if [[ -f ~/.bashrc ]]; then
         source ~/.bashrc
 fi
 </pre>
+<li><span class="fn">~/.profile</span> may be read if this file does not exist.</li>
 </ul>
 
 <h5>~/.bashrc</h5>
@@ -848,7 +855,7 @@ have just defined in <span class="fn">~/.bashrc</span></li>
 <!-- }}} -->
 
 
-<!-- {{{ Arrays commented out -->
+<!-- {{{ Arrays -->
 <h4>Arrays</h4>
 <a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="arrays">
@@ -880,7 +887,7 @@ echo ${arr[-2]};  # negative index counts from the end.
 <!-- }}} -->
 
 
-<!-- {{{ Associative arrays commented out -->
+<!-- {{{ Associative arrays -->
 <h4>Associative arrays</h4>
 <a href="nowhere" onclick='$("#arrays").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="asarrays">
