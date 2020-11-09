@@ -260,6 +260,28 @@ created when you extracted <em>introlin.zip</em>.
 }}} -->
 
 
+<!-- {{{ Shell parameters -->
+<h4>Shell parameters</h4>
+<a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="shelpar">
+<ul>
+<li>A parameter is an entity that stores values.</li>
+<li>It can be a name</li>
+<li>A number (excluding 0) or,</li>
+<li>Some special characters (* @ # 0 $)</li>
+<li>A variable is a parameter denoted by a name.</li>
+<li>Shell parameter are not typed to begin with and are treated as strings or
+characters by default.</li>
+<li>Unless exported, they are not available in child processes.</li>
+<li>They can have attributes in addition to a value.</li>
+</ul>
+<br/>
+<a href="nowhere" onclick='$("#attributes").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
 <!-- {{{ Ordinary and environment variables -->
 <h4>Ordinary and environment variables</h4>
 <a href="nowhere" onclick='$("#ordenv").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -322,16 +344,16 @@ looping.</li>
 
 <h5>Variable expansion</h5>
 <pre class="code">
-var=figure1
-echo $var
+var=figure
+echo $var1
+echo ${var}1
 echo $var.txt
 echo $var".txt"
 echo ${var}.txt
-echo $var"of2"
+echo $var" 1 of 2"
 
-echo $varof2
 
-echo ${var}of2
+echo ${var:0:3}". 1"
 
 </pre>
 
@@ -360,16 +382,15 @@ echo $(( 7/3 ));
 
 
 <!-- {{{ Shell parameters -->
-<h4>Shell parameters</h4>
-<a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="shelpar">
+<h4>Attributes</h4>
+<a href="nowhere" onclick='$("#attributes").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="attributes">
 <ul>
 <li>Shell parameter are not typed to begin with and are treated
 as strings or characters by default.</li>
 <li>Unless exported, they are not available in child processes.</li>
 <li>They can have attributes in addition to a value.</li>
 </ul>
-<hr class="thin">
 <br/>
 
 <h5>Setting and removing attributes</h5>
@@ -424,7 +445,7 @@ echo $vard;
 
 </pre>
 
-<a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#attributes").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -924,6 +945,7 @@ echo ${!aarr[@]}   # listing all keys.
 <ul>
 <li><a href="http://en.flossmanuals.net/command-line/">
 The FSF manual for the command line for beginners</a>.</li>
+<li><a href="https://www.gnu.org/software/bash/manual/">GNU BASH Manual</a>.</li>
 <li>Advanced Bash Scripting Guide by Mendel Cooper is available from
 various sites on the internet. Just search for it. It is completely
 free, very big and very good.</li>
@@ -943,7 +965,6 @@ free, very big and very good.</li>
   <li>But, don't let it prevent you from evolving your own style
   of working.</li>
   </ul>
-
 <li>General purpose programming</li>
   <ul class="lev2">
   <li>Perl</li>

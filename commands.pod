@@ -34,6 +34,45 @@ The actual modeline can be determined by
 
 usermod -G docker,vboxusers,wheel,users sco
 
+=head2 Fri 01 Nov 2019
+
+=head4 Notes after the course
+
+After the installation make them start with a prepared image.
+
+Day one finished after doing slide 30 (File ownership and permissions).
+
+History of Linux in two columns which merge.
+
+For the directory tree: moving around and referencing complicated paths.
+
+Feedback: For every topic we need to ask for
+
+- Quality of instruction
+- Essentiality
+- Desirability
+
+The Directory Stack can go.
+tee can go.
+Command grouping can go.
+Arrays can go.
+
+Aliasing and .bashrc and .bash_profile can come forward.
+
+Find should have a better demonstration.
+
+Hidden files discussion can be shortened and simplified.
+
+Job control to be highly reduced.
+
+The sam softclip task is too complicated.
+
+awk could be replaced by grep and introduce regular expressions.
+
+zrun??
+
+
+
 
 =cut
 

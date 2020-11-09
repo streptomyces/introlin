@@ -190,3 +190,4 @@ declare -fx twit
 
 yes | twit
 
+bd=file.txt; ([[ -d $bd ]] && ls $bd/bldb) || ([[ -f $bd ]] && head $bd)

@@ -1867,7 +1867,6 @@ to copy the first 50 lines of
 
 <hr/>
 
-
 <h5>tee</h5>
 <ul>
 <li>See the output and save it at the same time</li>
@@ -1898,6 +1897,69 @@ which match a pattern.</li>
 shells it is even possible to use the exec command for redirection
 only, without making an actual overlay.
 -->
+<!-- }}} -->
+
+
+<!-- {{{ Lists of commands -->
+<h4>Lists of commands</h4>
+<a href="nowhere" onclick='$("#loc").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="loc">
+<ul>
+<li>Lists of commands or pipelines separated by</li>
+<li>&amp;</li>
+<li>&amp;&amp;</li>
+<li>||</li>
+<li>;</li>
+</ul>
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">cd; cd introlin</span></li>
+<li><span class="code">ls nosuchdir || echo failed to find</span></li>
+<li><span class="code">ls forblast || echo failed to find</span></li>
+<li><span class="code">ls forblast && ls forblast/bldb</span></li>
+<li><span class="code">ls nosuchdir && ls forblast/bldb</span></li>
+<li><span class="code">ls nosuchdir; ls forblast/bldb</span></li>
+</ol>
+</div>
+<div class="instructor">
+</div>
+<a href="nowhere" onclick='$("#loc").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Command grouping -->
+<h4>Command grouping</h4>
+<a href="nowhere" onclick='$("#grouping").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="grouping">
+<ul>
+<li><span class="code">( listOfCommands )</span>. Run in a subshell.</li>
+<li><span class="code">{ listOfCommands }</span>. Run in the current shell.</li>
+<li><span class="code">
+bd=file.txt; ([[ -d $bd ]]
+&& ls $bd/bldb) || ([[ -f $bd ]] && head $bd)</span></li>
+</ul>
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">cd; cd introlin</span></li>
+<li><span class="code">ls bldb</span></li>
+<li><span class="code">( cd forblast; ls bldb; )</span></li>
+<li>What is your current directory now?</li>
+</ol>
+<ol>
+<li><span class="code">cd; cd introlin</span></li>
+<li><span class="code">{ cd forblast; ls bldb; }</span></li>
+<li>What is your current directory now?</li>
+</ol>
+</div>
+<div class="instructor">
+</div>
+<a href="nowhere" onclick='$("#grouping").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
 <!-- }}} -->
 
 
@@ -2007,6 +2069,7 @@ All other processes descend from this one.</li>
 </div>
 <!-- }}} -->
 
+
 <!-- {{{ Backgrounding -->
 <h4>Stopping, backgrounding and foregrounding processes</h4>
 <a href="nowhere" onclick='$("#bgproc").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -2075,6 +2138,7 @@ to <span class="fn">/dev/null</span>. Then kill it.</li>
 <hr/>
 </div>
 <!-- }}} -->
+
 
 <!-- {{{ Continue -->
 <h4>Continue</h4>
