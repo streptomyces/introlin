@@ -140,7 +140,7 @@ white-space: pre;
 }
 
 </style>
-<!-- }}} -->
+<!-- }}} -->zo
 
 
 <!-- {{{ script -->
@@ -177,12 +177,13 @@ $(".instructor").hide("fast"); return(TRUE);
 
 
 <!-- {{{ Title and heading -->
-<title>Linux Command Line</title>
+<title>Linux</title>
 </head>
 <body>
+<!--
 <button type="button" onclick="outline()">Outline</button>
 <button type="button" onclick="detail()">Detail</button>
-<!-- <button type="button" onclick="toginstruct()">
+<button type="button" onclick="toginstruct()">
 Instructor hints show / hide</button> -->
 <h2>Introduction to the Linux command line interface</h2>
 <!-- }}} -->
@@ -196,22 +197,22 @@ Instructor hints show / hide</button> -->
 As soon as you arrive
 </p>
 <ul>
-<li>Log into one of the computers with your usual user ID.</li>
-<li>If you do not have a user id, use the student account id
-written on your computer.</li>
-<li>Then start Firefox and go to the URL shown below.</li>
+<li>Start a web browser (Firefox or Google Chrome or Safari) and go to
+the URL shown below.</li>
 </ul>
 <h2>http://streptomyces.org.uk/customers/training/linux/</h2>
-<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
+
 <h5>Some requests</h5>
 <ul>
-<li>Put your phones away during the course. There is a break every 90 minutes.
-You can use your phones then.</li>
-<li>Discussing with your neighbours is fine (even encouraged) when you are doing
-the exercises.
-<em>But please stop all conversation when the instructor begins to speak</em>.</li>
-<li>Raise your hand and ask if something is not clear.</li>
+<li>I would like to be able to see you. So keep your video on as much
+as possible.</li>
+<li>After the introduction as done, keep your microphone off unless
+you need to speak. This is just to avoid unnecessary noise, I am not
+discouraging you from speaking and asking questions. </li>
+<li>Marielle will be monitoring the chat so you can get our attention
+by typing something like &quot;Help&quot; or &quot;???????&quot; there.</li>
 </ul>
+<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -221,30 +222,68 @@ the exercises.
 <h4>Timing</h4>
 <a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="timing">
-<h6>Tues 30 and Wed 31 October 2018</h6>
+<h6>Thursday 26 and Friday 27 November 2020</h6>
 <table>
-<tr><td>0930 to 1100</td><td>Course</td></tr>
-<tr><td>1100 to 1130</td><td>Coffee break</td></tr>
-<tr><td>1130 to 1300</td><td>Course</td></tr>
-<tr><td>1300 to 1400</td><td>Lunch break (lunch not provided).</td></tr>
-<tr><td>1400 to 1530</td><td>Course</td></tr>
-<tr><td>1530 to 1600</td><td>Coffee break</td></tr>
-<tr><td>1600 to 1730</td><td>Course</td></tr>
+<tr><td>1000 to 1100</td><td>Course 1 hour</td></tr>
+<tr><td>1100 to 1120</td><td>Break 20 minutes</td></tr>
+<tr><td>1120 to 1230</td><td>Course 1 hour 10 minutes</td></tr>
+<tr><td>1230 to 1330</td><td>Break 1 hour</td></tr>
+<tr><td>1330 to 1430</td><td>Course 1 hour</td></tr>
+<tr><td>1430 to 1450</td><td>Break 20 minutes</td></tr>
+<tr><td>1450 to 1550</td><td>Course 1 hour</td></tr>
+<tr><td>1550 to 1610</td><td>Break 20 minutes</td></tr>
+<tr><td>1610 to 1700</td><td>Course 50 minutes</td></tr>
 </table>
 
-<!--
-<h6>Friday</h6>
-<table>
-<tr><td>0930 to 1100</td><td>Course</td></tr>
-<tr><td>1100 to 1300</td><td>Coffee break, Friday Seminar and
-Lunch break (lunch not provided)</td></tr>
-<tr><td>1300 to 1500</td><td>Course</td></tr>
-<tr><td>1500 to 1530</td><td>Coffee break</td></tr>
-<tr><td>1530 to 1730</td><td>Course</td></tr>
-</table>
--->
 
 <a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ SSH -->
+<h4>SSH</h4>
+<a href="nowhere" onclick='$("#ssh").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="ssh">
+<h5>Generating a key pair</h5>
+<ul>
+<li>Start the &quot;Windows PowerShell&quot; and size the window
+to a convenient size. Then do the following one line at a time,
+with me.</li>
+</ul>
+<h5>Logging into the remote machine</h5>
+<pre class="code">
+ssh stuNN@nnn.nnn.nnn.nnn
+</pre>
+<p>
+There will be warning that the authenticity of the host cannot be
+established and you will be asked whether you want to continue
+with the connection. Type &quot;yes&quot; to continue. This will happen
+on the very first time for a new host. Type your password (it will not
+be displayed as you type) and press enter.
+</p>
+<pre class="code">
+ssh-keygen
+</pre>
+
+<p>
+Now log out of the remote machine and on your local machine.
+</p>
+<pre class="code">
+ssh-keygen
+scp .\.ssh\id_rsa.pub stuNN@nnn.nnn.nnn.nnn:.ssh/authorized_keys
+</pre>
+<p>The first command above creates a key pair and the second one
+copies the public key to the <span class="code">.ssh/authorized_keys</span> directory
+of the remote machine. Now you can <span class="code">ssh</span> back to
+the remote machine without using a password.
+</p>
+<pre class="code">
+ssh stuNN@nnn.nnn.nnn.nnn
+</pre>
+
+<a href="nowhere" onclick='$("#ssh").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
