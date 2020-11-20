@@ -140,7 +140,7 @@ white-space: pre;
 }
 
 </style>
-<!-- }}} -->zo
+<!-- }}} -->
 
 
 <!-- {{{ script -->
@@ -254,7 +254,7 @@ with me.</li>
 </ul>
 <h5>Logging into the remote machine</h5>
 <pre class="code">
-ssh stuNN@nnn.nnn.nnn.nnn
+ssh stu42@35.178.148.245
 </pre>
 <p>
 There will be warning that the authenticity of the host cannot be
@@ -272,7 +272,7 @@ Now log out of the remote machine and on your local machine.
 </p>
 <pre class="code">
 ssh-keygen
-scp .\.ssh\id_rsa.pub stuNN@nnn.nnn.nnn.nnn:.ssh/authorized_keys
+scp .\.ssh\id_rsa.pub stu42@35.178.148.245:.ssh/authorized_keys
 </pre>
 <p>The first command above creates a key pair and the second one
 copies the public key to the <span class="code">.ssh/authorized_keys</span> directory
@@ -280,7 +280,7 @@ of the remote machine. Now you can <span class="code">ssh</span> back to
 the remote machine without using a password.
 </p>
 <pre class="code">
-ssh stuNN@nnn.nnn.nnn.nnn
+ssh stu42@35.178.148.245
 </pre>
 
 <a href="nowhere" onclick='$("#ssh").hide("fast"); return(false)'>&#9650;</a>
@@ -365,8 +365,6 @@ kept separate from it.</li>
 to be able to run in the virtual environment.</li>
 <li>Hardware-assisted virtualisation: Hardware components, especially main processors,
 designed to make virtualisation efficient.</li>
-<li>Emulation is something different. Processors are often emulated
-for the purpose of development and testing on different architectures.</li>
 </ul>
 <a href="nowhere" onclick='$("#virt").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -374,7 +372,7 @@ for the purpose of development and testing on different architectures.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Virtualisation 2 -->
+<!-- {{{ # Virtualisation 2
 <h4>Virtual Machines</h4>
 <a href="nowhere" onclick='$("#virt2").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="virt2">
@@ -389,7 +387,7 @@ the fact that a resource is shared with other VMs.</li>
 <a href="nowhere" onclick='$("#virt2").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ Minimal usable machine -->
@@ -403,6 +401,7 @@ the fact that a resource is shared with other VMs.</li>
 <li>Networking.</li>
 <li>(Keyboard, Mouse, Monitor)</li>
 </ul>
+<!--
 <p>
 We will use <em>Oracle VirtualBox</em> to provide us with a virtual machine
 on which we will now install a flavour of <em>Ubuntu</em> Linux known as
@@ -412,6 +411,7 @@ on which we will now install a flavour of <em>Ubuntu</em> Linux known as
 If you had a new physical machine with no OS, the process of installing
 a flavour of Linux on it would be very much the same.
 </p>
+-->
 <img src = "assembled1.jpg" width = "800 px"></br>
 </br>
 <img src = "assembled2.jpg" width = "800 px"></br>
@@ -441,7 +441,7 @@ areas of the disk to be read.</li>
 <!-- }}} -->
 
 
-<!-- {{{ First boot -->
+<!-- {{{ # First boot
 <h4>The very first boot</h4>
 <a href="nowhere" onclick='$("#firstboot").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="firstboot">
@@ -469,7 +469,7 @@ areas of the disk to be read.</li>
 <a href="nowhere" onclick='$("#firstboot").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ Virtual Desktops on Windows 10 -->
@@ -478,12 +478,12 @@ areas of the disk to be read.</li>
 <div class="slide" id="winvd">
 <ul>
 <li>Press the tab key once while keeping the windows key pressed. 
-I will refer to this as the <em>Meta-tab</em> combination from now on.</li>
+I will refer to this as the <em>Windows-tab</em> combination from now on.</li>
 <li>Then click on the &quot;+ New Desktop&quot; icon in the lower right part
 of the screen.</li>
 <li>Do the above again to end up with a total of 3 virtual desktops.</li>
 <li>Click on the first one.</li>
-<li>You can also use the Meta-Control-Arrow key combination to switch between
+<li>You can also use the <em>Windows-Control-Arrow</em> key combination to switch between
 the virtual desktops.</li>
 </ul>
 <a href="nowhere" onclick='$("#winvd").hide("fast"); return(false)'>&#9650;</a>
@@ -492,7 +492,7 @@ the virtual desktops.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Oracle VirtualBox -->
+<!-- {{{ # Oracle VirtualBox
 <h4>Oracle VirtualBox</h4>
 <a href="nowhere" onclick='$("#ovb").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="ovb">
@@ -525,18 +525,16 @@ get something like below.</li>
 <a href="nowhere" onclick='$("#ovb").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
-<!-- {{{ Installing Kubuntu 18.04 LTS -->
+<!-- {{{ # Installing Kubuntu 18.04 LTS
 <h4>Installing Kubuntu 18.04 LTS</h4>
 <a href="nowhere" onclick='$("#kuinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="kuinst">
-<!--
 <ul>
 <li>Ask for a new virtual machine. Give it a name.</li>
 </ul>
--->
 <p>
 I will talk you through the installation process as I do it and you
 should follow the steps on your machines. Hopefully, at the end of it
@@ -556,10 +554,10 @@ It is important to remember the password you use here.
 <a href="nowhere" onclick='$("#kuinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
-<!-- {{{ Post-installation -->
+<!-- {{{ # Post installation
 <h4>Immediately after installation</h4>
 <a href="nowhere" onclick='$("#postinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="postinst">
@@ -642,10 +640,10 @@ If you have not already done so, make your virtual machine full screen.
 <a href="nowhere" onclick='$("#postinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
-<!-- {{{ The Graphical User Interface -->
+<!-- {{{ # The Graphical User Interface
 <h4>The Graphical User Interface (GUI)</h4>
 <a href="nowhere" onclick='$("#gui").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="gui">
@@ -667,7 +665,7 @@ that yourself.</li>
 <a href="nowhere" onclick='$("#gui").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ What is an OS -->
@@ -698,7 +696,14 @@ that yourself.</li>
 <ul>
 <li>Commands are typed in a <em>terminal</em>.</li>
 <li>They are interpreted by a <em>command interpreter</em>.</li>
-<li>The program providing us with a terminal in Kubuntu is <em>Konsole</em>.</li>
+<li>Several terminals exist for you to choose from.</li>
+<li>Gnome based systems (of which Ubuntu is one) have <em>gnome-terminal</em>.</li>
+<li>KDE based systems (Kubuntu flavour of Ubuntu) have <em>konsole</em>.</li>
+<li>We will be using <em>xfce4-terminal</em> because it is light-weight
+compared to the two above.</li>
+<li>If I am working remotely I use <em>xfce4-terminal</em>. If I am working on-site then
+I use the <em>gnome-terminal</em>.</li>
+<li>The are lots of others as well.</li>
 </ul>
 <a href="nowhere" onclick='$("#cli").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -712,14 +717,14 @@ that yourself.</li>
 <div class="slide" id="newterm">
 <ul>
 <li>It is quite common to be working in more than one terminal at the same time.</li>
-<li>You can use the menu in an existing Konsole terminal to get a new terminal.</li>
+<li>You can use the menu in an existing xfce4 terminal to get a new terminal.</li>
 <li>Or, you can use the Control-Shift-N key combination.</li>
 <li>As a convenience, the new terminal has the same current directory
 as the old one.</li>
 </ul>
 <hr class="thin"/>
 <ul>
-<li>To close a Konsole terminal you can use the menu.</li>
+<li>To close a xfce4 terminal you can use the menu.</li>
 <li>Or, the Control-Shift-W key combination.</li>
 <li>Or, the Control-D key combination.</li>
 </ul>
@@ -727,7 +732,8 @@ as the old one.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>Use the start menu to get a Konsole terminal.</li>
+<li>In you ssh terminal (in Windows PowerShell) type <span class="code"></span>
+to get a new terminal</li>
 <li>From the existing terminal, use both means described above
 to get two new terminals.</li>
 <li>Kill one of the new terminals with one key combination mentioned above.</li>
@@ -1061,7 +1067,7 @@ e.g. <span class="code">help history</span>.
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>Get a new Konsole terminal and view the man page for
+<li>Get a new terminal and view the man page for
 <span class="code">ls</span> in it.</li>
 <li>Search for the string &quot;file size&quot; to figure out the option
 you need to sort your directory listing by file size.</li>
@@ -1095,11 +1101,10 @@ directory.</li>
 <pre class="code">
 man -Tps find &gt; man_find.ps
 ps2pdf man_find.ps man_find.pdf
-okular man_find.pdf
+evince man_find.pdf
 </pre>
 <ul>
-<li>Use the okular menu or control-q to quit okular.</li>
-<li>PDF files are searchable but Postscript files are not (at least in okular).</li>
+<li>Close the window or use control-w to quit evince.</li>
 </ul>
 <a href="nowhere" onclick='$("#help").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -1170,7 +1175,7 @@ okular man_find.pdf
 <!-- }}} -->
 
 
-<!-- {{{ Mounting a directory shared with the host machine -->
+<!-- {{{ # Mounting a directory shared with the host machine
 <h4>Mounting a directory shared with the host machine</h4>
 <a href="nowhere" onclick='$("#mntshare").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="mntshare">
@@ -1207,7 +1212,7 @@ folder on the host (Windows) side.</li>
 <a href="nowhere" onclick='$("#mntshare").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ History -->
@@ -1222,6 +1227,9 @@ folder on the host (Windows) side.</li>
 <li class="code">!217 # ensure that command is safe before running.</li>
 <li class="code">!-5
 <li>Use of control-R to reverse search command history.</li>
+<li>History serial numbers are unique to current terminal.
+So don't think you can view history in one terminal and run
+commands using <span class="code">!nnn</span> in another.</li>
 </ul>
 </ul>
 
