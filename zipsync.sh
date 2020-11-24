@@ -1,6 +1,6 @@
 pushd ../
 # zip --exclude *.sw[op] -r introlin introlin
-zip  -r -f introlin introlin
+zip  -r introlin introlin
 
 # introlin.zip goes in the same directory as the html files
 # but here it is kept at one level above.
