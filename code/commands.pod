@@ -71,8 +71,13 @@ awk could be replaced by grep and introduce regular expressions.
 
 zrun??
 
-
-
-
 =cut
+
+=head2 Sun 22 Nov 2020
+
+Replace all occurrences of ip address with a the specified ip address.
+
+ perl code/insert.pl -ip $fire -- index.html
+
+
 

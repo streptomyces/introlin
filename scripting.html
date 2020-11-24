@@ -171,22 +171,18 @@ $(".instructor").hide("fast"); return(TRUE);
 <title>Shell scripting</title>
 </head>
 <body>
-<button type="button" onclick="outline()">Outline</button>
+<!-- <button type="button" onclick="outline()">Outline</button>
 <button type="button" onclick="detail()">Detail</button>
-<!-- <button type="button" onclick="toginstruct()">
+<button type="button" onclick="toginstruct()">
 Instructor hints show / hide</button> -->
 <h2>Introduction to the Linux command line interface</h2>
 <!-- }}} -->
 
 
 <!-- {{{ On arrival -->
-<h4>Start</h4>
+<h4>Scripting</h4>
 <a href="nowhere" onclick='$("#onarrival").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="onarrival">
-<p>
-As soon as you arrive, please point your browser to the URL shown
-below.
-</p>
 <h2>http://streptomyces.org.uk/customers/training/linux/scripting.html</h2>
 <a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -634,9 +630,9 @@ three separate files.</li>
 <h6>Do the following yourself.</h6>
 <ol>
 <li>After making sure that you are in the <span class="fn">introlin</span> directory,
-start kate using the command <code class="blue">kate &amp;</code></li>
+start mousepad using the command <code class="blue">mousepad &amp;</code></li>
 
-<li>Type the three commands below in kate and save them
+<li>Type the three commands below in mousepad and save them
 as a file named <span class="fn">commands.txt</span>.</li>
 
 <pre class = "code">
@@ -649,7 +645,7 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 <li>Try to following different ways of using commands.txt</li>
 
 <ul class="diy">
-<li>Cut and paste from kate into the terminal.</li>
+<li>Cut and paste from mousepad into the terminal.</li>
 <li><span class="code">bash &lt; commands.txt</span></li>
 <li><span class="code">bash commands.txt</span></li>
 <li class="code">source commands.txt</li>
@@ -730,7 +726,7 @@ Run as: <code>./byStrain2.sh</code>
 and sorted them before writing them out to a new file. This was done using
 a pipeline.</li>
 <li>The same task can be done using a script.</li>
-<li>Type the following lines of code in kate and save as <em>script.bash</em>.</li>
+<li>Type the following lines of code in mousepad and save as <em>script.bash</em>.</li>
 </ul>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
@@ -760,7 +756,8 @@ rm $tempfn
 <li class="code">mkdir bldb</li>
 <li class="code">mkdir blout</li>
 <li class="code">makeblastdb -parse_seqids -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
-<li class="code">parallel --citation</li>
+<li>In the past running <span class="code">parallel --citation</span>
+was required before you could use <span class="code">parallel</span>.</li>
 <li>Below is a script for BLASTing all the files in a directory against the BLAST
 database (sven15) we have just made.</li>
 </ul>
@@ -819,37 +816,11 @@ parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
 <!-- }}} -->
 
 
-<!-- {{{ bashconfig -->
+<!-- {{{ bashrced -->
 
-<h4>BASH Configuration</h4>
-<a href="nowhere" onclick='$("#bashconfig").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="bashconfig">
-
-<ul>
-<li>Two main configuration files.</li>
-<li><span class="fn">~/.bash_profile</span> and <span class="fn">~/.bashrc</span>
-are the two main configuration files for BASH.
-</li>
-<li>Consist of BASH commands.</li>
-</ul>
-
-<h5>~/.bash_profile</h5>
-<ul>
-<li>It is read everytime a login shell that is also
-non-interactive is started.</li>
-<li>Often sources <span class="fn">~/.bashrc</span></li>
-<pre class="code">
-if [[ -f ~/.bashrc ]]; then
-        source ~/.bashrc
-fi
-</pre>
-<li><span class="fn">~/.profile</span> may be read if this file does not exist.</li>
-</ul>
-
-<h5>~/.bashrc</h5>
-<ul>
-<li>It is read everytime a new interactive shell is started.</li>
-</ul>
+<h4>Editing .bashrc</h4>
+<a href="nowhere" onclick='$("#bashrced").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashrced">
 
 <div class="diy">
 <h6>Do the following yourself.</h6>
@@ -857,20 +828,31 @@ fi
 <li>Change to your home directory.</li>
 <li>Save a copy of <span class="fn">~/.bashrc</span> as
 <span class="fn">dotbashrc</span></li>
-<li>Using <span class="code">kate</span> edit your
+<li>Using <span class="code">mousepad</span> edit your
 <span class="fn">~/.bashrc</span> file and add the following at the
 end of the file.</li>
 <pre class="code">
-<span class="hashcol"># some aliases.</span>
-alias cdl="cd; cd introlin;"
-alias pd=pushd;
+<span class="hashcol"># source customrc</span>
+if [[ -f ${HOME}/customrc ]]; then
+  source ${HOME}/customrc;
+fi
+</pre>
+<li>
+Now use mousepad to write the following in a file named
+<span class="fn">customrc</span> in your home
+directory.
+</li>
+<pre class="code">
+<span class="hashcol"># sourced from ~/.bashrc</span>
+alias cdil="cd; cd introlin;"
+alias med="mousepad"
 </pre>
 <li>Now open a new terminal and try out the aliases you
 have just defined in <span class="fn">~/.bashrc</span></li>
 </ol>
 </div>
 
-<a href="nowhere" onclick='$("#bashconfig").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#bashrced").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -943,7 +925,7 @@ echo ${!aarr[@]}   # listing all keys.
 <a href="nowhere" onclick='$("#whatnext").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="whatnext">
 <ul>
-<li><a href="http://en.flossmanuals.net/command-line/">
+<li><a href="http://archive.flossmanuals.net/command-line/">
 The FSF manual for the command line for beginners</a>.</li>
 <li><a href="https://www.gnu.org/software/bash/manual/">GNU BASH Manual</a>.</li>
 <li>Advanced Bash Scripting Guide by Mendel Cooper is available from

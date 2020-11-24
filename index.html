@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<!-- vim: set tw=80 nosi: --> 
 
 <!-- {{{ style -->
 <style type="text/css">
@@ -46,7 +47,8 @@ margin-bottom: 60px;
 }
 
 .diy {
-color: #5c2d00;
+// color: #5c2d00;
+color: #550055;
 }
 
 li { margin-top: 15px; }
@@ -206,11 +208,9 @@ the URL shown below.</li>
 <ul>
 <li>I would like to be able to see you. So keep your video on as much
 as possible.</li>
-<li>After the introduction as done, keep your microphone off unless
+<li>After the introduction is done, keep your microphone off unless
 you need to speak. This is just to avoid unnecessary noise, I am not
-discouraging you from speaking and asking questions. </li>
-<li>Marielle will be monitoring the chat so you can get our attention
-by typing something like &quot;Help&quot; or &quot;???????&quot; there.</li>
+discouraging you from speaking or asking questions. </li>
 </ul>
 <a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -235,14 +235,90 @@ by typing something like &quot;Help&quot; or &quot;???????&quot; there.</li>
 <tr><td>1610 to 1700</td><td>Course 50 minutes</td></tr>
 </table>
 
-
+<p class="red">
+Please wait here. Do not proceed beyond this point until
+instructed to do so.
+</p>
 <a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
 
 
-<!-- {{{ SSH -->
+<!-- {{{ SSH: Xming, Pageant and, PuTTY -->
+<h4>SSH</h4>
+<a href="nowhere" onclick='$("#ssh").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="ssh">
+<h5>Start Xming</h5>
+<ul>
+<li>
+If you need to, download and install <a
+href="https://sourceforge.net/projects/xming/" target = "_blank">from here</a>.
+</li>
+<li>When you start <span class="code">Xming</span> apparently, nothing will
+happen but, <span class="code">Xming</span> will appear in the Windows system
+tray.</li>
+<li><span class="code">Xming</span> is an xserver which allows windows created
+by applications running on a remote machine to appear on your local machine.</li>
+</ul>
+
+<!-- # {{{
+<h5>Add private key to Pageant</h5>
+<ul>
+<li>Pageant is part of the PuTTY suite.
+If needed, download and install
+<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"
+target="_blank">from here</a>. Make sure you get the 64bit installer msi file.
+</li>
+<li>Start Pageant. Once again this will end up in the Windows system tray.</li>
+<li>Right-click on Pageant and add the <a href="firetest.ppk"
+download="firetest.ppk">provided private key</a> to it.</li>
+</ul>
+}}} -->
+
+<h5>Use PuTTY to connect to the remote machine.</h5>
+<ul>
+<li>If needed, download and install the PuTTY suite 
+<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"
+target="_blank">from here</a>. Make sure you get the 64bit installer msi file.
+</li>
+<li>
+We will use PuTTY to log into the remote machine (IP address: 18.135.28.173).
+</li>
+<li>
+Remember to enable X11 forwarding in the &quot;SSH&quot; section.
+</li>
+<li>
+When PuTTY connects to a remote machine for the first time it warns you that the
+identity of that machine is not known to it.
+</li>
+<li>Use the user id assigned to you in the table below. By convention user ids
+are lower case in Unix.</li>
+<br/>
+
+<table>
+<tr><th>Name</th><th>user id</th></tr>
+<tr><td>Agata Dziegiel</td><td>agata</td></tr>
+<tr><td>Carl Halford</td><td>carl</td></tr>
+<tr><td>Jack Hales</td><td>jack</td></tr>
+<tr><td>James Docherty</td><td>james</td></tr>
+<tr><td>Judit Talas</td><td>judit</td></tr>
+<tr><td>Reuben James</td><td>reuben</td></tr>
+<tr><td>Roshani Badgami</td><td>roshani</td></tr>
+<tr><td>Teagan Brown</td><td>teagan</td></tr>
+</table>
+
+<li>The password will be provided to you in Zoom chat.</li>
+
+</ul>
+
+<a href="nowhere" onclick='$("#ssh").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ # SSH from PowerShell
 <h4>SSH</h4>
 <a href="nowhere" onclick='$("#ssh").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="ssh">
@@ -254,7 +330,7 @@ with me.</li>
 </ul>
 <h5>Logging into the remote machine</h5>
 <pre class="code">
-ssh stu42@35.178.148.245
+ssh stu42@18.135.28.173
 </pre>
 <p>
 There will be warning that the authenticity of the host cannot be
@@ -272,7 +348,7 @@ Now log out of the remote machine and on your local machine.
 </p>
 <pre class="code">
 ssh-keygen
-scp .\.ssh\id_rsa.pub stu42@35.178.148.245:.ssh/authorized_keys
+scp .\.ssh\id_rsa.pub stu42@18.135.28.173:.ssh/authorized_keys
 </pre>
 <p>The first command above creates a key pair and the second one
 copies the public key to the <span class="code">.ssh/authorized_keys</span> directory
@@ -280,13 +356,13 @@ of the remote machine. Now you can <span class="code">ssh</span> back to
 the remote machine without using a password.
 </p>
 <pre class="code">
-ssh stu42@35.178.148.245
+ssh stu42@18.135.28.173
 </pre>
 
 <a href="nowhere" onclick='$("#ssh").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ What is Linux -->
@@ -307,7 +383,7 @@ language.</td></tr>
 <tr><td>1984</td><td>Bell Labs restricts access to UNIX source code.</td></tr>
 <tr><td>1985</td><td>Richard M. Stallman establishes the Free
 Software Foundation.</td></tr>
-<tr><td>Early 1990s</td><td>Shell, compilers, text editors written
+<tr><td>Early 1990</td><td>Shell, compilers, text editors written
 but Kernel and Device Drivers struggling.</td></tr>
 <tr><td>1991</td><td>Linus Torvalds starts working on a kernel
 of his own and makes it freely accessible.</td></tr>
@@ -348,12 +424,12 @@ for older, low spec machines.
 <!-- }}} -->
 
 
-<!-- {{{ What is virtualisation -->
+<!-- {{{ # What is virtualisation
 <h4>What is virtualisation?</h4>
 <a href="nowhere" onclick='$("#virt").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="virt">
 <ul>
-<li>Actual hardware is digital electronics.</li>
+<li>Hardware is digital electronics.</li>
 <li>If you have enough memory and processing power you can make your
 computer behave like it is more than one computer.</li>
 <li>The guest computer is run on the same hardware as the host computer but is
@@ -369,7 +445,7 @@ designed to make virtualisation efficient.</li>
 <a href="nowhere" onclick='$("#virt").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-<!-- }}} -->
+}}} -->
 
 
 <!-- {{{ # Virtualisation 2
@@ -696,14 +772,13 @@ that yourself.</li>
 <ul>
 <li>Commands are typed in a <em>terminal</em>.</li>
 <li>They are interpreted by a <em>command interpreter</em>.</li>
-<li>Several terminals exist for you to choose from.</li>
+<li>Several terminal applications exist for you to choose from.</li>
 <li>Gnome based systems (of which Ubuntu is one) have <em>gnome-terminal</em>.</li>
 <li>KDE based systems (Kubuntu flavour of Ubuntu) have <em>konsole</em>.</li>
-<li>We will be using <em>xfce4-terminal</em> because it is light-weight
-compared to the two above.</li>
-<li>If I am working remotely I use <em>xfce4-terminal</em>. If I am working on-site then
-I use the <em>gnome-terminal</em>.</li>
-<li>The are lots of others as well.</li>
+<li>If you are on a text only connection you only have the terminal
+provided by PuTTY (or PowerShell). You cannot run any GUI programs.</li>
+<li>If you can get <em>X11 forwarding</em> to work then GUI programs also
+work. We will see this soon.</li>
 </ul>
 <a href="nowhere" onclick='$("#cli").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -716,11 +791,12 @@ I use the <em>gnome-terminal</em>.</li>
 <a href="nowhere" onclick='$("#newterm").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="newterm">
 <ul>
-<li>It is quite common to be working in more than one terminal at the same time.</li>
+<li>It is quite common to have several terminals open.</li>
 <li>You can use the menu in an existing xfce4 terminal to get a new terminal.</li>
 <li>Or, you can use the Control-Shift-N key combination.</li>
 <li>As a convenience, the new terminal has the same current directory
 as the old one.</li>
+<li>You can also have multiple tabs (Control-Shift-T) in the one terminal.</li>
 </ul>
 <hr class="thin"/>
 <ul>
@@ -732,8 +808,10 @@ as the old one.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>In you ssh terminal (in Windows PowerShell) type <span class="code"></span>
-to get a new terminal</li>
+
+<li>In your PuTTY terminal type <span class="code">xfce4-terminal</span> to get
+a new terminal. Minimize the PuTTY terminal now.</li>
+
 <li>From the existing terminal, use both means described above
 to get two new terminals.</li>
 <li>Kill one of the new terminals with one key combination mentioned above.</li>
@@ -741,6 +819,14 @@ to get two new terminals.</li>
 </ol>
 </div>
 
+
+<p>
+If you do not have X11 forwarding (no graphical terminals),
+you can open multiple ssh sessions to get multiple terminals. It is not
+great but better than being restricted to a single terminal.
+</p>
+<ul>
+</ul>
 <a href="nowhere" onclick='$("#newterm").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -806,15 +892,17 @@ a form which the kernel understands. Command interpreter.</li>
 interpreter (Bash in this case) for you which then prompts you for commands.</li>
 <li>Usually, Bash returns the prompt back to you only after your last
 command has finished.</li>
-<li>It is possible to set a command running in the background.</li>
+<li>It is possible to set a command running in the background by putting an
+<em>&quot;&amp;&quot;</em> at the end of the command.</li>
+<li>Aliases, Functions, Builtins and Executables (binaries).</li>
   <ul class="lev2">
-  <li>We will see this later.</li>
+  <li>Aliases are expanded as soon as they are seen.</li>
+  <li>Bash functions (shell functions). Usually defined by the user in the
+  current environment.</li>
+  <li>Builtin commands (Bash builtins). Bash knows what you mean and does it.
+  (<code class="blue">cd, pwd, echo</code>).</li>
+  <li>Otherwise, it looks for an executable file in $PATH and runs it for you.</li>
   </ul>
-<li>Bash functions (shell functions). Usually defined by the user in the
-current environment.</li>
-<li>Builtin commands (Bash builtins). Bash knows what you mean and does it.
-(<code class="blue">cd, pwd, echo</code>).</li>
-<li>Otherwise, it looks for an executable file in $PATH and runs it for you.</li>
 <li>This other program might itself be a command interpreter
 capable of interpreting a different set of commands.</li>
   <ul class="lev2">
@@ -827,6 +915,33 @@ capable of interpreting a different set of commands.</li>
 is being run for you by Bash.</li>
 <li>If your command has a slash (&quot;/&quot;) in it, the file is
 looked for and, if found, executed.</li>
+
+<li><span class="code">builtin</span> command to ignore
+shell functions and aliases to run the actual built-in command.</li>
+
+<li>Use the <span class="code">command</span> command to ignore shell functions
+and aliases to run the actual external command.</li>
+
+<li>If you only want to avoid alias expansion, but still allow function
+definitions to be considered, then prefix the command with &quot;\&quot; to just
+prevent alias expansion.</li>
+
+<li>Use the <span class="code">type</span> command to figure out
+what you have got. The <span class="code">-a</span> option to
+<span class="code">type</span> will list all variant executables.</li>
+
+<div class="diy">
+<h6>Try the following commands in a terminal; think about their outputs.</h6>
+<ol>
+<li><span class="code">type cd</span></li>
+<li><span class="code">type R</span></li>
+<li><span class="code">type -a R</span></li>
+<li><span class="code">unalias R</span></li>
+<li><span class="code">type -a R</span></li>
+<li><span class="code">type cdil</span></li>
+<ol>
+</div>
+
 </ul>
 <a href="nowhere" onclick='$("#bash").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -931,103 +1046,52 @@ separating the commands with semicolons (;).
 </ul>
 </ul>
 
-
-<!-- {{{ -->
-<!--
-<h5>Tasks</h5>
-
-<ul>
-<li>
-Try out the commands below for interrogating the filesystem
-and moving around in it.
-</li>
-
-<ul class="lev2">
-<li class="code">cd</li>
-<li class="code">cd introlin</li>
-<li class="code">cd ..</li>
-<li class="code">pwd</li>
-<li class="code">cd .</li>
-<li class="code">pwd</li>
-<li class="code">cd introlin</li>
-<li class="code">ls</li>
-<li class="code">ls -l</li>
-<li class="code">ls -l -h</li>
-<li class="code">ls -lh</li>
-<li class="code">ls -lht</li>
-<li class="code">ls -lhtr</li>
-<li class="code">ls --group-directories-first -lh</li>
-<li class="code">ls --format=single-column</li>
-</ul>
-
-<li>
-Some commands for making directories and copying and moving
-files between directories.
-</li>
-<ul class="lev2">
-<li class="code">pwd</li>
-<li class="code">mkdir tempdir</li>
-<li class="code">cp small.tsv tempdir</li>
-<li class="code">ls tempdir</li>
-<li class="code">ls -lh tempdir</li>
-<li class="code">cd tempdir</li>
-<li class="code">ls -lh</li>
-<li class="code">ls -lh ..</li>
-<li class="code">cd; cd introlin;</li>
-<li class="code">cp small.tsv justafile</li>
-<li class="code">mv justafile tempdir # move to the directory named tempdir</li>
-<li class="code">cd tempdir</li>
-<li class="code">ls</li>
-
-<li class="code">##########################</li>
-<li class="code">rm justafile</li>
-<li class="code">ls</li>
-<li class="code">cd ..</ls>
-<li class="code">rmdir tempdir</li>
-<li class="code">##########################</li>
-
-<li class="code">cd; cd introlin;</li>
-<li class="code">mkdir tempdir</li>
-<li class="code">cp small.tsv tempdir</ls>
-<li class="code">ls tempdir</ls>
-<li class="code">rm -rf tempdir</li>
-<li class="code">ls</ls>
-<li class="code">##########################</li>
-
-<li class="code">cp small.tsv justafile</li>
-<li class="code">mv justafile renamedfile # mv used for renaming a file.</li>
-<li class="code">ls</li>
-<li class="code">cd; cd introlin;</li>
-</ul>
-
-<li>find again</li>
-<ul class="lev2">
-<li class="code">mkdir tsvs</li>
-<li class="code">find . -iname '*.tsv' -exec cp {} tsvs \;</li>
-<li class="code">ls tsvs</li>
-</ul>
-
-<li>head (and tail) again</li>
-<ul class="lev2">
-<li class="code">head large.tsv</li>
-<li class="code">head -n 3 large.tsv</li>
-
-<li class="code">tail large.tsv</li>
-<li class="code">tail -n 3 large.tsv</li>
-
-<li class="code">head -n 3 *.tsv</li>
-<li class="code">tail -n 3 *.tsv</li>
-</ul>
-
-</ul>
--->
 <!-- }}} -->
 
-<div class="instructor">
-* Use ls frequently.
-* Always be aware of the directory you are in. Use pwd frequently.
-</div>
-<a href="nowhere" onclick='$("#commands").hide("fast"); return(false)'>&#9650;</a>
+
+<!-- {{{ bashconfig -->
+
+<h4>BASH Configuration</h4>
+<a href="nowhere" onclick='$("#bashconfig").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashconfig">
+
+<ul>
+<li>Two main configuration files.</li>
+<li><span class="fn">~/.bash_profile</span> and <span class="fn">~/.bashrc</span>
+are the two main configuration files for BASH.
+</li>
+<li>Consist of BASH commands.</li>
+</ul>
+
+<h5>~/.bash_profile</h5>
+<ul>
+<li>It is read everytime a login shell that is also
+non-interactive is started.</li>
+<li>Often sources <span class="fn">~/.bashrc</span></li>
+<pre class="code">
+if [[ -f ~/.bashrc ]]; then
+   source ~/.bashrc
+fi
+</pre>
+<li><span class="fn">~/.profile</span> may be read if this file does not exist.</li>
+</ul>
+
+<h5>~/.bashrc</h5>
+<ul>
+<li>It is read everytime a new interactive shell is started.</li>
+<li>We will have a go at editing this file at the end of the course.</li>
+</ul>
+
+<p>
+When a new user is created
+<span class="fn">~/.profile</span>
+or <span class="fn">~/.bash_profile</span>
+and <span class="fn">~/.bashrc</span> files are created. These are quite
+complex. You should only add your customisations at the ends of these files
+without disturbing what is already there.
+</p>
+
+<a href="nowhere" onclick='$("#bashconfig").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -1042,9 +1106,8 @@ files between directories.
 <li class="code">man cp</li>
 </ul>
 <p>
-There is also a utility named <span class="code">info</span>. A lot of
-documentation is written in the &quot;info&quot; format for reading
-with this tool. I will not be able to demonstrate it to you.
+There is also a utility named <span class="code">info</span> for reading the
+documentation. I don't use it enough to be able to demonstrate it to you.
 </p>
 <ul>
 <li>The <span class="code">man</span> command uses a pager to display
@@ -1058,7 +1121,8 @@ occurrences respectively.</li>
 <li>Use <span class="code">q</span> to get out of
 <span class="code">less</span>.</li>
 <li>(Instructor to demonstrate using color option of ls).</li>
-<li>All builtin commands are bundled into one man page.</li>
+<li>All builtin commands are bundled into one man page.
+<span class="code">man bash-builtins</span></li>
 <li>Use <span class="code">help</span> to see their documentation.
 e.g. <span class="code">help history</span>.
 </li>
@@ -1165,7 +1229,8 @@ evince man_find.pdf
 <li>Home directory.</li>
 <li>Relative and absolute paths.</li>
 <li>The .(dot) directory.</li>
-<li>The ..(two dots) directory.</li>
+<li>The ..(two dots) directory. <span class="code">cd ..</span> is very commonly
+used.</li>
 <li>The ~(tilde) is short for your home directory.</li>
 <li>Physical volumes, file systems, and mount points.</li>
 </ul>
@@ -1255,7 +1320,7 @@ using <span class="code">less</span>.</li>
 <a href="nowhere" onclick='$("#pwd").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="pwd">
 <ul>
-<li>AKA the &quot;current directory&quot; or the &quot;current
+<li>Also known as the &quot;current directory&quot; or the &quot;current
 working directory&quot;.</li>
 <li>The contents of your current directory are accessible without
 further specification.</li>
@@ -1294,13 +1359,69 @@ further specification.</li>
 <!-- }}} -->
 
 
+<!-- {{{ Copying and moving -->
+<h4>Copying and moving files</h4>
+<a href="nowhere" onclick='$("#copymove").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="copymove">
+<h5>Making directories</h5>
+<ul>
+<li><span class="code">mkdir newdir</span> : newdir is a subdirectory in the
+current directory.</li>
+<li><span class="code">mkdir -p newdir/level2/level3/level4</span> : All the
+intermediate level directories get made as needed.</li>
+</ul>
+<h5>Copying</h5>
+<ul>
+<li><span class="code">cp fileA fileB</span> : fileB is identical to fileA.
+Timestamp is now.</li>
+<li><span class="code">cp fileA directory</span> : Copy has the same name as the
+original. Timestamp is now.</li>
+<li><span class="code">cp fileA directory/fileC</span> : fileC is identical to
+fileA. Timestamp is now.</li>
+</ul>
+<h5>Moving</h5>
+<ul>
+<li><span class="code">mv fileA fileB</span> : fileA is <em>renamed</em> to fileB.
+fileB keeps the timestamp of fileA.</li>
+<li><span class="code">mv fileA directory</span> : fileA is moved to the target
+directory. Timestamp unchanged.</li>
+<li><span class="code">mv fileA directory/fileC</span> : fileA is moved to the target
+directory and is given the name fileC. Timestamp of fileC is that of fileA.</li>
+<li><span class="code">mv directoryA directoryB</span> : If directoryB exists,
+directoryA is moved inside it as a subdirectory. Otherwise directoryA is simply
+renamed to directoryB.
+</li>
+</ul>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">cd; cd introlin;</span></li>
+<li>Make a directory named &quot;books&quot;</li>
+<li>Move the file &quot;WildAnimals.txt&quot; to &quot;books&quot;</li>
+<li>Change to the directory &quot;books&quot;</li>
+<li>Make a directory named &quot;books2&quot; and place a copy of
+&quot;WildAnimals.txt&quot; in it.</li>
+<li>Rename the directory &quot;books2&quot; to &quot;safe&quot;</li>
+</ol>
+</div>
+
+<a href="nowhere" onclick='$("#copymove").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
 <!-- {{{ The Directory Stack -->
 <h4>The Directory Stack</h4>
 <a href="nowhere" onclick='$("#dirstack").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="dirstack">
 <ul>
-<li>History of directories that have been your current directories
-in the form of a stack.</li>
+<li>It is possible to keep a record of directories that have been your current
+directories in the form of a stack.</li>
+<li>
+You need to use <span class="code">pushd</span> to change directories.
+</li>
 <li>Use <span class="code">dirs</span> to view the directory stack</li>
 <li><span class="code">pushd</span> to change directory and put it
 on the directory stack. Defaults to switching the top two entries in the stack.</li>
@@ -1360,14 +1481,15 @@ dirs -v
 <ul>
 <li>Files</li>
   <ul class="lev3">
-  <li>Regular files</li>
+  <li>Regular files. Can be empty (size zero).</li>
   <li>Directories contain other directories and files. Can be empty.</li>
   <li>Symbolic links.</li>
   <li>Pipes. Named or unnamed. Communication between two processes.</li>
   <li>Sockets. More complicated Interprocess communications including
   client-server operations.</li>
   <li>Character special. Device drivers for hardware such as mouse, keyboard etc.</li>
-  <li>Block special. Device drivers for disks.</li>
+  <li>Block special. Device drivers for disks. Usually &quot;mounted&quot; on mount points
+      and presented to you as directories. Try <span class="code">lsblk</span>.</li>
   </ul>
 <li>From a programs point of view all of the above types have similar
 behaviour&mdash;files can be opened, read, written to, and closed. The OS
@@ -1391,6 +1513,7 @@ ensures that the right thing gets done for the underlying kind of file or device
 <li>* (Any character any number of times, including zero times)</li>
   <ul class="lev2">
   <li class="code">ls *txt</li>
+  <li class="code">ls *csv</li>
   </ul>
 <li>? (Any character once only)</li>
   <ul class="lev2">
@@ -1443,27 +1566,21 @@ ensures that the right thing gets done for the underlying kind of file or device
 <ul class="lev2">
 <li>Descends into sub-directories when looking for files which match the
 pattern specified.</li>
-<li class="code">find &lt;options&gt; &lt;startdir&gt; &lt;global options&gt; &lt;tests&gt; &lt;actions&gt;</li>
+<li class="code">find &lt;options&gt; &lt;startdirs&gt; &lt;global options&gt; &lt;tests&gt; &lt;actions&gt;</li>
 <li class="code">     --true--              ------------- expression -------</li>
+<li>&quot;True&quot; options are all to do with how find treats symbolic links
+or for debugging. The default is not to follow symbolic links.</li>
+<li>Multiple starting directories may be specified. They will all be searched.</li>
 <li><span class="code">expressions</span> also have options like syntax.</li>
 <li>Global option to specify maximum and minimum depth of descent</li>
 <li>Tests for string pattern in name, modification time, etc.</li>
 <li>Actions for deletion, printing, running any shell command on the found files.</li>
 <li class="code">find . -maxdepth 2 -name '*.txt' -print</li>
-<li>The first argument is the directory to start searching in.</li>
 <li>The argument to <span class="code">-name</span> is single quoted to prevent
 Bash from expanding the glob.</li>
 </ul>
 
 <hr class="thin">
-<ul class="try">
-<li><span class="code">mkdir</span> makes a new directory.</li>
-<li><span class="code">cp</span> is used to copy files.
-<span class="code">cp source destination</span>. The destination can be a directory.</li>
-<li><span class="code">mv</span> is used to rename as well as move files.</li>
-<li><span class="code">rm</span> is used to remove files.</li>
-</ul>
-<br/>
 
 <div class="diy">
 <h6>Do the following yourself.</h6>
@@ -1623,7 +1740,7 @@ file or directory belongs.</li>
 <span class="fn">training</span>.</li>
 <li>Again do a long listing to confirm that the above was successful.</li>
 <li>Change the group of the file <span class="fn">text.txt</span> back to
-your initial group (stu26).</li>
+your initial group.</li>
 <li>Confirm the above.</li>
 </ol>
 </div>
@@ -1694,8 +1811,8 @@ by lots of programs in addition to the one writing it.</li>
   <li>Syntax highlighting.</li>
   <li>Whatever they may look like, for a given text, they
   will produce the same files.</li>
-  <li>We have an editor called <em>kate</em>.
-  We also have <em>vim</em> but <em>kate</em> is much easier to use.
+  <li>We have an editor called <em>mousepad</em>.
+  We also have <em>vim</em> but <em>mousepad</em> is much easier to use.
   </li>
   </ul>
 
@@ -1963,6 +2080,7 @@ only, without making an actual overlay.
 <ol>
 <li><span class="code">cd; cd introlin</span></li>
 <li><span class="code">ls nosuchdir || echo failed to find</span></li>
+<li><span class="code">ls nosuchdir 2> /dev/null || echo failed to find</span></li>
 <li><span class="code">ls forblast || echo failed to find</span></li>
 <li><span class="code">ls forblast && ls forblast/bldb</span></li>
 <li><span class="code">ls nosuchdir && ls forblast/bldb</span></li>
@@ -1984,12 +2102,12 @@ only, without making an actual overlay.
 <ul>
 <li><span class="code">( listOfCommands )</span>. Run in a subshell.</li>
 <li><span class="code">{ listOfCommands }</span>. Run in the current shell.</li>
-<li><span class="code">
-bd=file.txt; ([[ -d $bd ]]
-&& ls $bd/bldb) || ([[ -f $bd ]] && head $bd)</span></li>
 </ul>
 <div class="diy">
 <h6>Do the following yourself.</h6>
+<p>
+The semicolons after the commands are important.
+</p>
 <ol>
 <li><span class="code">cd; cd introlin</span></li>
 <li><span class="code">ls bldb</span></li>
@@ -2056,7 +2174,7 @@ that can also be used directly on the command line.</li>
 confirm that column 6 of
 <span class="fn">local.sam</span> does indeed contain the CIGAR string.</li>
 
-<li><span class="code">head</span> the top 2000 lines of
+<li><span class="code">head</span> the top 200 lines of
 <span class="fn">local.sam</span> to <span class="fn">temp.sam</span>.</li>
 <li><span class="code">sort</span> <span class="fn">temp.sam</span> by
 column 4 and view the result without saving to a file.</li>
@@ -2158,6 +2276,7 @@ the parent process id (PPID) of the python3 interpreter.</li>
 </div>
 <hr class="thin"/>
 
+<!-- # {{{
 <div class="diy">
 <h6>Do the following with the instructor.</h6>
 <ol>
@@ -2180,6 +2299,7 @@ to <span class="fn">/dev/null</span>. Then kill it.</li>
 <li>Examine the output of <span class="code">jobs</span>.</li>
 </ol>
 </div>
+}}} -->
 
 <a href="nowhere" onclick='$("#bgproc").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
