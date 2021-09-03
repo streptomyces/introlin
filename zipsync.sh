@@ -1,5 +1,7 @@
 pushd ../
 # zip --exclude *.sw[op] -r introlin introlin
+cp linux/index.html linux/scripting.html \
+linux/*.jpg linux/architecture.png introlin/
 zip  -r introlin introlin
 
 # introlin.zip goes in the same directory as the html files

@@ -257,20 +257,39 @@ created when you extracted <em>introlin.zip</em>.
 
 
 <!-- {{{ Shell parameters -->
-<h4>Shell parameters</h4>
+<h4>Shell Parameters</h4>
 <a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="shelpar">
 <ul>
 <li>A parameter is an entity that stores values.</li>
-<li>It can be a name</li>
-<li>A number (excluding 0) or,</li>
-<li>Some special characters (* @ # 0 $)</li>
 <li>A variable is a parameter denoted by a name.</li>
 <li>Shell parameter are not typed to begin with and are treated as strings or
 characters by default.</li>
 <li>Unless exported, they are not available in child processes.</li>
 <li>They can have attributes in addition to a value.</li>
 </ul>
+<h5>Positional Parameters</h5>
+<ul>
+<li>$1 to $9, then ${10}, ${11} ...</li>
+</ul>
+<h5>Special Parameters</h5>
+<ul>
+<li><span class="code">$0</span> : the invocation.</li>
+<li><span class="code">$*</span> and <span class="code">@</span> : positional parameters.</li>
+<li><span class="code">$#</span> : number of positional parameters.</li>
+<li><span class="code">$$</span> : process id of the shell.</li>
+</ul>
+<div class="diy">
+<p>Save the script below as param_demo.sh.</p>
+<pre class="code">
+#!/usr/bin/bash
+echo "Demonstration of shell parameters";
+echo $0
+echo $@
+echo $1
+</pre>
+<p>After making the script executable, run it as <span class="code">./param_demo.sh one two three</span>.</p>
+</div>
 <br/>
 <a href="nowhere" onclick='$("#attributes").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -683,7 +702,7 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 Save the below as byStrain.sh.<br/>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
-for file in $(ls *tsv)
+for file in $(ls --color=never *tsv)
   do
      awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
   done
@@ -698,13 +717,13 @@ Run as: <code>./byStrain.sh</code>
 Save the below as byStrain2.sh.<br/>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
-    rm mutant[12].out wildtype.out
-for file in $(ls *tsv)
+rm mutant[12].out wildtype.out
+for file in $(ls --color=never *tsv)
   do
- awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
- awk '$1 ~ /mutant2/ {print $0}' $file &gt;&gt; mutant2.out
- awk '$1 ~ /wildtype/ {print $0}' $file &gt;&gt; wildtype.out
-  done
+  awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
+  awk '$1 ~ /mutant2/ {print $0}' $file &gt;&gt; mutant2.out
+  awk '$1 ~ /wildtype/ {print $0}' $file &gt;&gt; wildtype.out
+done
 </pre>
 Grant execute permisson: <code>chmod ug+x byStrain2.sh</code>
 <br/>
@@ -745,20 +764,20 @@ rm $tempfn
 <!-- }}} -->
 
 
-<!-- {{{ Bash script to feed parallel -->
-<h4>Bash script to feed parallel</h4>
-<a href="nowhere" onclick='$("#scriptpara").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="scriptpara">
+<!-- {{{ Bash function to feed parallel -->
+<h4>Bash function to feed parallel</h4>
+<a href="nowhere" onclick='$("#funpara").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="funpara">
 <ul>
-<li class="code">cd</li>
-<li class="code">cd introlin</li>
-<li class="code">cd forblast</li>
-<li class="code">mkdir bldb</li>
-<li class="code">mkdir blout</li>
-<li class="code">makeblastdb -parse_seqids -in sven15.faa -title "Sven of 2015" -dbtype prot -out bldb/sven15</li>
-<li>In the past running <span class="code">parallel --citation</span>
-was required before you could use <span class="code">parallel</span>.</li>
-<li>Below is a script for BLASTing all the files in a directory against the BLAST
+<li><span class="code">cd</span></li>
+<li><span class="code">cd introlin</span></li>
+<li><span class="code">cd forblast</span></li>
+<li><span class="code">mkdir bldb</span></li>
+<li><span class="code">mkdir blout</span></li>
+<li>Make the BLAST database.</li>
+<pre class="code">makeblastdb -parse_seqids -in sven15.faa -title "Sven of 2015" \
+-dbtype prot -out bldb/sven15</pre>
+<li>Below is a shell function for BLASTing all the files in a directory against the BLAST
 database (sven15) we have just made.</li>
 </ul>
 
@@ -766,35 +785,34 @@ database (sven15) we have just made.</li>
 <h6>Do the following yourself.</h6>
 <ul>
 <li>
-Save the script below in a file named <span class="fn">blaster.sh</span> in the
+Save the function below in a file named <span class="fn">blastfun.sh</span> in the
 <span class="fn">forblast</span> directory.
 </li>
 <pre class="code">
-#!/bin/bash
-declare -i bcnt=0;
+para-blast () {
 for file in $(ls --color=never queries/*faa); do
   bn=$(basename $file .faa);
   ofn="blout/"$bn".blastp";
   echo blastp -query $file -db bldb/sven15 -out $ofn -outfmt 6
-  : $(( bcnt++ ));
-  if (( bcnt &gt; 10 )); then
-    break;
-  fi
 done
-
+}
 </pre>
-
-<li>Make <span class="fn">blaster.sh</span> executable by using <span class="code">chmod</span></li>
+<li><span class="code">type para-blast</span></li>
 <li>After making sure that you are in the <span class="fn">forblast</span>
-directory, run <span class="fn">blaster.sh</span></li>
-<li>Again, run <span class="fn">blaster.sh</span> but this time pipe its output
-to <span class="code">parallel</span></li>
+directory, run <span class="fn">source blastfun.sh</span></li>
+<li>Now run <span class="code">para-blast</span>.</li>
+<li>Now run <span class="code">para-blast | head -n 6</span>.</li>
+<li>Again, run <span class="code">para-blast | head -n 6 </span> but this time, further pipe the output
+to <br/><span class="code">parallel --jobs 3</span></li>
 <li>List the files in <span class="fn">blout</span></li>
 <li><span class="code">less</span> one of the files in <span class="fn">blout</span></li>
 </ul>
 
 <h6><span class="code">parallel</span></h6>
 <ul>
+<li>In the past running <span class="code">parallel --citation</span>
+was required before you could use <span class="code">parallel</span>.
+That does not seem to be the case now.</li>
 <li><span class="code">parallel</span> has lots of options and features.</li>
 <li>The above script can be reduced to a single, but rather complicated,
 <span class="code">parallel</span> command.</li>
@@ -810,7 +828,7 @@ parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
 <li><span class="code">blastdbcmd -db bldb/sven15 -range 50-60 -entry SVEN15_2573</span></li>
 </ul>
 
-<a href="nowhere" onclick='$("#scriptpara").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#funpara").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -844,8 +862,8 @@ directory.
 </li>
 <pre class="code">
 <span class="hashcol"># sourced from ~/.bashrc</span>
-alias cdil="cd; cd introlin;"
-alias med="mousepad"
+alias cdbl="cd; cd introlin/forblast;"
+med () { mousepad $@ & }
 </pre>
 <li>Now open a new terminal and try out the aliases you
 have just defined in <span class="fn">~/.bashrc</span></li>
@@ -934,7 +952,7 @@ free, very big and very good.</li>
 <li>Start using Linux on a regular basis.</li>
   <ul class="lev2">
   <li>Linux is bigger and more capable than what I have demonstrated.</li>
-  <li>Time invested in learning more will be richly rewarded in terms of time
+  <li>Time invested in learning is generously rewarded in terms of time
   saved in doing your work as well as the quality of work you produce.</li>
   <li>Linux is also very flexible. The syntax may be rigid but the ways in which
   you can combine tools is immensely flexible.</li>

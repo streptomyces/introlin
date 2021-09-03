@@ -208,9 +208,9 @@ the URL shown below.</li>
 <ul>
 <li>I would like to be able to see you. So keep your video on as much
 as possible.</li>
-<li>After the introduction is done, keep your microphone off unless
+<li>Please keep your microphone off unless
 you need to speak. This is just to avoid unnecessary noise, I am not
-discouraging you from speaking or asking questions. </li>
+discouraging you from speaking or asking questions.</li>
 </ul>
 <a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -218,10 +218,22 @@ discouraging you from speaking or asking questions. </li>
 <!-- }}} -->
 
 
-<!-- {{{ Timing -->
-<h4>Timing</h4>
+<!-- {{{ Introduction and Timing -->
+<h4>Introduction and Timing</h4>
 <a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="timing">
+<h5>Introduction</h5>
+<ul>
+<li>I am Govind Chandra. I work as a data analyst in the Department of
+Microbiology in the JIC.</li>
+<li>I am being helped in running this course by Marielle Vigouroux who
+works as a data analyst in the Department Computational and Systems
+Biology in the JIC.</li>
+</ul>
+<h5>Timing</h5>
+<p>
+With a bit of flexibility, we will stick to the following plan on both days.
+</p>
 <h6>Thursday 26 and Friday 27 November 2020</h6>
 <table>
 <tr><td>1000 to 1100</td><td>Course 1 hour</td></tr>
@@ -283,7 +295,7 @@ download="firetest.ppk">provided private key</a> to it.</li>
 target="_blank">from here</a>. Make sure you get the 64bit installer msi file.
 </li>
 <li>
-We will use PuTTY to log into the remote machine (IP address: 18.135.28.173).
+We will use PuTTY to log into the remote machine (IP address: 18.132.195.233).
 </li>
 <li>
 Remember to enable X11 forwarding in the &quot;SSH&quot; section.
@@ -293,12 +305,13 @@ When PuTTY connects to a remote machine for the first time it warns you that the
 identity of that machine is not known to it.
 </li>
 <li>Use the user id assigned to you in the table below. By convention user ids
-are lower case in Unix.</li>
+are lower case in Unix. I have simply used your first names.</li>
 <br/>
 
 <table>
 <tr><th>Name</th><th>user id</th></tr>
 <tr><td>Agata Dziegiel</td><td>agata</td></tr>
+<tr><td>Benguo Gu</td><td>benguo</td></tr>
 <tr><td>Carl Halford</td><td>carl</td></tr>
 <tr><td>Jack Hales</td><td>jack</td></tr>
 <tr><td>James Docherty</td><td>james</td></tr>
@@ -330,7 +343,7 @@ with me.</li>
 </ul>
 <h5>Logging into the remote machine</h5>
 <pre class="code">
-ssh stu42@18.135.28.173
+ssh stu42@18.132.195.233
 </pre>
 <p>
 There will be warning that the authenticity of the host cannot be
@@ -348,7 +361,7 @@ Now log out of the remote machine and on your local machine.
 </p>
 <pre class="code">
 ssh-keygen
-scp .\.ssh\id_rsa.pub stu42@18.135.28.173:.ssh/authorized_keys
+scp .\.ssh\id_rsa.pub stu42@18.132.195.233:.ssh/authorized_keys
 </pre>
 <p>The first command above creates a key pair and the second one
 copies the public key to the <span class="code">.ssh/authorized_keys</span> directory
@@ -356,7 +369,7 @@ of the remote machine. Now you can <span class="code">ssh</span> back to
 the remote machine without using a password.
 </p>
 <pre class="code">
-ssh stu42@18.135.28.173
+ssh stu42@18.132.195.233
 </pre>
 
 <a href="nowhere" onclick='$("#ssh").hide("fast"); return(false)'>&#9650;</a>
@@ -553,9 +566,8 @@ areas of the disk to be read.</li>
 <a href="nowhere" onclick='$("#winvd").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="winvd">
 <ul>
-<li>Press the tab key once while keeping the windows key pressed. 
-I will refer to this as the <em>Windows-tab</em> combination from now on.</li>
-<li>Then click on the &quot;+ New Desktop&quot; icon in the lower right part
+<li>Press the tab key once while keeping the windows key pressed.</li>
+<li>Then click on the &quot;+ New Desktop&quot; icon in the top part
 of the screen.</li>
 <li>Do the above again to end up with a total of 3 virtual desktops.</li>
 <li>Click on the first one.</li>
@@ -1045,12 +1057,14 @@ separating the commands with semicolons (;).
 <li>Comments (beginning with <code>#</code>) are ignored by Bash.</li>
 </ul>
 </ul>
+<a href="nowhere" onclick='$("#commands").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
 
 <!-- }}} -->
 
 
 <!-- {{{ bashconfig -->
-
 <h4>BASH Configuration</h4>
 <a href="nowhere" onclick='$("#bashconfig").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="bashconfig">
@@ -1359,59 +1373,6 @@ further specification.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Copying and moving -->
-<h4>Copying and moving files</h4>
-<a href="nowhere" onclick='$("#copymove").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="copymove">
-<h5>Making directories</h5>
-<ul>
-<li><span class="code">mkdir newdir</span> : newdir is a subdirectory in the
-current directory.</li>
-<li><span class="code">mkdir -p newdir/level2/level3/level4</span> : All the
-intermediate level directories get made as needed.</li>
-</ul>
-<h5>Copying</h5>
-<ul>
-<li><span class="code">cp fileA fileB</span> : fileB is identical to fileA.
-Timestamp is now.</li>
-<li><span class="code">cp fileA directory</span> : Copy has the same name as the
-original. Timestamp is now.</li>
-<li><span class="code">cp fileA directory/fileC</span> : fileC is identical to
-fileA. Timestamp is now.</li>
-</ul>
-<h5>Moving</h5>
-<ul>
-<li><span class="code">mv fileA fileB</span> : fileA is <em>renamed</em> to fileB.
-fileB keeps the timestamp of fileA.</li>
-<li><span class="code">mv fileA directory</span> : fileA is moved to the target
-directory. Timestamp unchanged.</li>
-<li><span class="code">mv fileA directory/fileC</span> : fileA is moved to the target
-directory and is given the name fileC. Timestamp of fileC is that of fileA.</li>
-<li><span class="code">mv directoryA directoryB</span> : If directoryB exists,
-directoryA is moved inside it as a subdirectory. Otherwise directoryA is simply
-renamed to directoryB.
-</li>
-</ul>
-
-<div class="diy">
-<h6>Do the following yourself.</h6>
-<ol>
-<li><span class="code">cd; cd introlin;</span></li>
-<li>Make a directory named &quot;books&quot;</li>
-<li>Move the file &quot;WildAnimals.txt&quot; to &quot;books&quot;</li>
-<li>Change to the directory &quot;books&quot;</li>
-<li>Make a directory named &quot;books2&quot; and place a copy of
-&quot;WildAnimals.txt&quot; in it.</li>
-<li>Rename the directory &quot;books2&quot; to &quot;safe&quot;</li>
-</ol>
-</div>
-
-<a href="nowhere" onclick='$("#copymove").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
 <!-- {{{ The Directory Stack -->
 <h4>The Directory Stack</h4>
 <a href="nowhere" onclick='$("#dirstack").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -1469,6 +1430,76 @@ dirs -v
 </div>
 
 <a href="nowhere" onclick='$("#dirstack").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Copying and moving -->
+<h4>Copying and moving files</h4>
+<a href="nowhere" onclick='$("#copymove").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="copymove">
+<h5>Making directories</h5>
+<ul>
+<li><span class="code">mkdir newdir</span> : newdir is a subdirectory in the
+current directory.</li>
+<li><span class="code">mkdir -p newdir/level2/level3/level4</span> : All the
+intermediate level directories get made as needed.</li>
+</ul>
+<h5>Copying</h5>
+<ul>
+<li><span class="code">cp fileA fileB</span> : fileB is identical to fileA.
+Timestamp is now.</li>
+<li><span class="code">cp fileA directory</span> : Copy has the same name as the
+original. Timestamp is now.</li>
+<li><span class="code">cp fileA directory/fileC</span> : fileC is identical to
+fileA. Timestamp is now.</li>
+</ul>
+<h5>Moving</h5>
+<ul>
+<li><span class="code">mv fileA fileB</span> : fileA is <em>renamed</em> to fileB.
+fileB keeps the timestamp of fileA.</li>
+<li><span class="code">mv fileA directory</span> : fileA is moved to the target
+directory. Timestamp unchanged.</li>
+<li><span class="code">mv fileA directory/fileC</span> : fileA is moved to the target
+directory and is given the name fileC. Timestamp of fileC is that of fileA.</li>
+<li><span class="code">mv directoryA directoryB</span> : If directoryB exists,
+directoryA is moved inside it as a subdirectory. Otherwise directoryA is simply
+renamed to directoryB.
+</li>
+</ul>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li><span class="code">cd; cd introlin;</span></li>
+<li>Make a directory named &quot;books&quot;</li>
+<li>Move the file &quot;WildAnimals.txt&quot; to &quot;books&quot;</li>
+<li>Change to the directory &quot;books&quot;</li>
+<li>Make a directory named &quot;books2&quot; and place a copy of
+&quot;WildAnimals.txt&quot; in it.</li>
+<li>Rename the directory &quot;books2&quot; to &quot;safe&quot;</li>
+</ol>
+</div>
+
+<h5>Across hosts</h5>
+<ul>
+<li>Get a terminal on your local machine. &quot;PowerShell&quot; on Windows;
+&quot;Terminal&quot; on Macs.</li>
+<li><span class="code">ssh govind@18.132.195.233 ls introlin</span></li>
+<li><span class="code">scp govind@18.132.195.233:introlin/man_find.pdf ./</span></li>
+<li><span class="code">scp localfile govind@18.132.195.233:introlin</span></li>
+<li><span class="code">scp localfile govind@18.132.195.233:introlin/fromlocal</span></li>
+<li><span class="code">-r</span> (recursive) option of <span
+class="code">scp</span> can be used to copy entire directories in either
+direction.</li>
+<li><span class="code">rsync</span> is more useful for keeping entire
+directories on two machines synchronised. It is complicated but can save you a
+lot of manual moving of files and directories.</li>
+</ul>
+
+
+<a href="nowhere" onclick='$("#copymove").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -1677,14 +1708,16 @@ the wrong arguments it can be disastrous.
 <div class="slide" id="perms">
 
 <div class="code">
--rw-r--r-- 1 stu26 stu26   344 Oct 28 14:01 charset.pl
--rw-r--r-- 1 stu26 stu26   168 Oct 28 14:01 file.txt
--rw-r--r-- 1 stu26 stu26    98 Oct 28 14:01 formode.bash
-drwxr-xr-x 3 stu26 stu26  4.0K Oct 28 14:01 fromContractor
-drwxr-xr-x 3 stu26 stu26  4.0K Oct 28 14:01 introlin2
--rw-r--r-- 1 stu26 stu26  3.1M Oct 28 14:01 large.tsv
--rw-r--r-- 1 stu26 stu26  142M Oct 28 14:01 local.sam
--rw-r--r-- 1 stu26 stu26   63K Oct 28 14:01 medium.tsv
+-rw-r--r-- 1 marielle marielle  344 Nov  3  2016  charset.pl
+-rw-r--r-- 1 marielle marielle  168 Nov  3  2016  file.txt
+drwxr-xr-x 3 marielle marielle 4.0K Oct 15  2017  forblast
+-rw-r--r-- 1 marielle marielle   98 Nov  3  2016  formode.bash
+drwxr-xr-x 3 marielle marielle 4.0K Nov  3  2016  fromContractor
+drwxr-xr-x 3 marielle marielle 4.0K Nov  3  2016  introlin2
+-rw-r--r-- 1 marielle marielle 3.1M Nov  3  2016  large.tsv
+-rw-rw-r-- 1 marielle marielle  15M Nov  3  2016  local.sam
+-rw-rw-r-- 1 marielle marielle  14M Nov  3  2016  local_sorted.sam
+-rw-r--r-- 1 marielle marielle  63K Nov  3  2016  medium.tsv
 </div>
 
 <hr class="thin"/>
@@ -2070,20 +2103,26 @@ only, without making an actual overlay.
 <div class="slide" id="loc">
 <ul>
 <li>Lists of commands or pipelines separated by</li>
+
+<ul class="lev2">
 <li>&amp;</li>
 <li>&amp;&amp;</li>
 <li>||</li>
 <li>;</li>
+</ul>
+<li><span class="fn">/dev/null</span> is a file which behaves
+like a sink of infinite size. Useful for discarding unwanted output from
+processes.</li>
 </ul>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
 <li><span class="code">cd; cd introlin</span></li>
 <li><span class="code">ls nosuchdir || echo failed to find</span></li>
-<li><span class="code">ls nosuchdir 2> /dev/null || echo failed to find</span></li>
+<li><span class="code">ls nosuchdir 2&gt; /dev/null || echo failed to find</span></li>
 <li><span class="code">ls forblast || echo failed to find</span></li>
-<li><span class="code">ls forblast && ls forblast/bldb</span></li>
-<li><span class="code">ls nosuchdir && ls forblast/bldb</span></li>
+<li><span class="code">ls forblast &amp;&amp; ls forblast/bldb</span></li>
+<li><span class="code">ls nosuchdir &amp;&amp; ls forblast/bldb</span></li>
 <li><span class="code">ls nosuchdir; ls forblast/bldb</span></li>
 </ol>
 </div>
@@ -2214,7 +2253,7 @@ sort -n -k 4 -o local_sorted.sam
 <div class="slide" id="processes">
 <ul>
 <li>Running programs are called processes.</li>
-<li>An instance of Bash is a processes.</li>
+<li>An instance of Bash is a process.</li>
 <li>When the computer boots up it starts a single
 process named <span class="fn">init</span> or <span class="fn">systemd</span>.
 All other processes descend from this one.</li>
@@ -2245,12 +2284,6 @@ the background in the current session of Bash.</li>
 in the foreground.</li>
 <li><span class = "code">bg %1</span> is used to restart a suspended job
 in the background.</li>
-<li><span class="code">yes</span> prints an endless stream of &quot;y&quot; (or
-any string argument) on the terminal.</li>
-<li>To stop <span class="code">yes</span> you have to use the
-<span class="fn">control-c</span> combination. Known as killing a process.</li>
-<li><span class="fn">/dev/null</span> is a file which behaves
-like a sink of infinite size.</li>
 </ul>
 <br/>
 <hr class="thin">
