@@ -201,16 +201,16 @@ As soon as you arrive
 written on your computer.</li>
 <li>Then start Firefox and go to the URL shown below.</li>
 </ul>
-<h2>http://streptomyces.org.uk/customers/training/linux/</h2>
+<h2>http://streptomyces.org.uk/customers/training/linux/nov2021/</h2>
 <a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <h5>Some requests</h5>
 <ul>
 <li>Put your phones away during the course. There is a break every 90 minutes.
 You can use your phones then.</li>
-<li>Discussing with your neighbours is fine (even encouraged) when you are doing
+<li>Discussing with your neighbours is fine when you are doing
 the exercises.
 <em>But please stop all conversation when the instructor begins to speak</em>.</li>
-<li>Raise your hand and ask if something is not clear.</li>
+<li>Ask if something is not clear.</li>
 </ul>
 <hr/>
 </div>
@@ -458,12 +458,17 @@ the virtual desktops.</li>
 <a href="nowhere" onclick='$("#ovb").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="ovb">
 <ul>
+<li>
+Windows has its own virtualisation builtin called HyperV which can be
+enabled or disabled. Docker needs HyperV enabled but VirtualBox needs
+it disabled.
+</li>
 <li>Start Oracle VirtualBox.</li>
 <li>Tools &rarr; Preferences &rarr; Input &rarr; Virtual Machine
 &rarr; Host Key Combination
 </li>
 <li>Set this to the Alt key on the right of the space bar.</li>
-<li>Ask for a new virtual machine. Give it a name. (We suggest &quot;ku18&quot;)</li>
+<li>Ask for a new virtual machine. Give it a name. (We suggest &quot;ku20&quot;)</li>
 <li>Change the type to Linux and Version to 64bit Ubuntu.</li>
 <li>Specify the amount of memory you want it to use.
 We will use 8192 MB.</li>
@@ -475,7 +480,7 @@ virtual hard disk.</li>
 the video memory to about 84 MB.</li>
 <li>A virtual optical drive is provided and we will put our bootable
 image file in it.<br/>
-<em>C:/coursefiles/IntroLinux/kubuntu-18.04.3-desktop-amd64.iso</em></li>
+<em>C:/coursefiles/IntroLinux/kubuntu-20.04.3-desktop-amd64.iso</em></li>
 <li>Rest of the default settings are fine.</li>
 <li>Click on the green arrow labelled &quot;Start&quot; to boot the VM and wait till you
 get something like below.</li>

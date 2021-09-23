@@ -5,6 +5,6 @@ zip --exclude *.sw[op] -r introlin introlin
 # but here it is kept at one level above.
 
 rsync -uvi --checksum introlin.zip  \
-sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/
+sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/nov2021/
 pushd
 
