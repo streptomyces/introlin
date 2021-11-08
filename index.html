@@ -221,7 +221,7 @@ the exercises.
 <h4>Timing</h4>
 <a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="timing">
-<h6>Tues 30 and Wed 31 October 2018</h6>
+<h6>Wed 17 and Thu 18 November 2021</h6>
 <table>
 <tr><td>0930 to 1100</td><td>Course</td></tr>
 <tr><td>1100 to 1130</td><td>Coffee break</td></tr>
@@ -231,18 +231,6 @@ the exercises.
 <tr><td>1530 to 1600</td><td>Coffee break</td></tr>
 <tr><td>1600 to 1730</td><td>Course</td></tr>
 </table>
-
-<!--
-<h6>Friday</h6>
-<table>
-<tr><td>0930 to 1100</td><td>Course</td></tr>
-<tr><td>1100 to 1300</td><td>Coffee break, Friday Seminar and
-Lunch break (lunch not provided)</td></tr>
-<tr><td>1300 to 1500</td><td>Course</td></tr>
-<tr><td>1500 to 1530</td><td>Coffee break</td></tr>
-<tr><td>1530 to 1730</td><td>Course</td></tr>
-</table>
--->
 
 <a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -294,13 +282,14 @@ with one being the &quot;flagship&quot; flavour or spin.
 <li>KDE</li>
 <li>XFCE</li>
 <li>LXDE</li>
+<li>LXQt</li>
 <li>Mate</li>
 <li>Cinnamon</li>
 </ul>
 <p>
-The difference between flavours is not just in looks but also in the amount
-of resources they use. Some like XFCE are really lightweight and well suited
-for older, low spec machines.
+The difference between flavours is not just in looks but also in the amount of
+resources they use. Some like XFCE and LXQt are really lightweight and well
+suited for older, low spec machines.
 </p>
 
 <a href="nowhere" onclick='$("#whatlinux").hide("fast"); return(false)'>&#9650;</a>
@@ -366,8 +355,8 @@ the fact that a resource is shared with other VMs.</li>
 </ul>
 <p>
 We will use <em>Oracle VirtualBox</em> to provide us with a virtual machine
-on which we will now install a flavour of <em>Ubuntu</em> Linux known as
-<em>Kubuntu</em>.
+on which we will now install a flavour of <em>Fedora 34</em> Linux known as
+<em>LXQt</em>.
 </p>
 <p>
 If you had a new physical machine with no OS, the process of installing
@@ -423,9 +412,9 @@ areas of the disk to be read.</li>
 <h5>So...</h5>
 <ul>
 <li>It is usual to boot from a live image and then do a full install.</li>
-<li>The boot image we will be using is <em>Kubuntu 18.04.3 LTS</em>.</li>
+<li>The boot image we will be using is <em>LXQt spin of Fedora 34</em>.</li>
 <li>It has been downloaded from
-<a href="https://kubuntu.org/" target = "_blank">kubuntu.org</a></li>
+<a href="https://spins.fedoraproject.org/" target = "_blank">spins.fedoraproject.org</a></li>
 </ul>
 <a href="nowhere" onclick='$("#firstboot").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -439,12 +428,13 @@ areas of the disk to be read.</li>
 <div class="slide" id="winvd">
 <ul>
 <li>Press the tab key once while keeping the windows key pressed. 
-I will refer to this as the <em>Meta-tab</em> combination from now on.</li>
+In Linux and Unix literature and documentation this key is often referred to as
+the <em>super key</em>.</li>
 <li>Then click on the &quot;+ New Desktop&quot; icon in the lower right part
 of the screen.</li>
 <li>Do the above again to end up with a total of 3 virtual desktops.</li>
 <li>Click on the first one.</li>
-<li>You can also use the Meta-Control-Arrow key combination to switch between
+<li>You can also use the Super-Control-Arrow key combination to switch between
 the virtual desktops.</li>
 </ul>
 <a href="nowhere" onclick='$("#winvd").hide("fast"); return(false)'>&#9650;</a>
@@ -468,8 +458,8 @@ it disabled.
 &rarr; Host Key Combination
 </li>
 <li>Set this to the Alt key on the right of the space bar.</li>
-<li>Ask for a new virtual machine. Give it a name. (We suggest &quot;ku20&quot;)</li>
-<li>Change the type to Linux and Version to 64bit Ubuntu.</li>
+<li>Ask for a new virtual machine. Give it a name. (We suggest &quot;lxqt&quot;)</li>
+<li>Change the type to Linux and Version to 64bit Fedora.</li>
 <li>Specify the amount of memory you want it to use.
 We will use 8192 MB.</li>
 <li>Create a <em>virtual hard disk</em>.</li>
@@ -477,16 +467,16 @@ We will use 8192 MB.</li>
 <li>We will use a fixed storage size of 20 GB and create the
 virtual hard disk.</li>
 <li>In settings, we increase the number of processors to use to 3 and
-the video memory to about 84 MB.</li>
+the video memory to about 64 MB.</li>
 <li>A virtual optical drive is provided and we will put our bootable
 image file in it.<br/>
-<em>C:/coursefiles/IntroLinux/kubuntu-20.04.3-desktop-amd64.iso</em></li>
+<em>C:/coursefiles/IntroLinux/Fedora-LXQt-Live-x86_64-34-1.2.iso</em></li>
 <li>Rest of the default settings are fine.</li>
 <li>Click on the green arrow labelled &quot;Start&quot; to boot the VM and wait till you
 get something like below.</li>
 </ul>
 <br/>
-<img src = "install_button.jpg" width = "600 px"/>
+<img src = "liveboot.jpg" width = "800 px"/>
 <br/>
 <a href="nowhere" onclick='$("#ovb").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -494,10 +484,10 @@ get something like below.</li>
 <!-- }}} -->
 
 
-<!-- {{{ Installing Kubuntu 18.04 LTS -->
-<h4>Installing Kubuntu 18.04 LTS</h4>
-<a href="nowhere" onclick='$("#kuinst").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="kuinst">
+<!-- {{{ Installing Fedora 34 (LXQt) -->
+<h4>Installing Fedora 34 (LXQt)</h4>
+<a href="nowhere" onclick='$("#linuxinst").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="linuxinst">
 <!--
 <ul>
 <li>Ask for a new virtual machine. Give it a name.</li>
@@ -508,6 +498,9 @@ I will talk you through the installation process as I do it and you
 should follow the steps on your machines. Hopefully, at the end of it
 we will all have Linux running in our VMs.
 </p>
+<ul>
+  <li>Set the regular user you create to be an administrator as well.</li>
+</ul>
 
 <p>
 Example username: stu26 (use whatever you like but not too long)<br/>
@@ -519,7 +512,7 @@ Suggested hostname: vlin
 It is important to remember the password you use here.
 </p>
 
-<a href="nowhere" onclick='$("#kuinst").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#linuxinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -530,30 +523,40 @@ It is important to remember the password you use here.
 <a href="nowhere" onclick='$("#postinst").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="postinst">
 <ul>
-<li>Set screen resolution to 1680x1050 for now.</li>
 <li>Make <span class="code">sudo</span> passwordless.</li>
 </ul>
+<pre class="code">
+sudo EDITOR=nano visudo
+</pre>
 <ul>
 <li>Update all the software packages.</li>
 </ul>
 <pre class="code">
-sudo apt update
-sudo apt upgrade
+sudo dnf check-update
+sudo dnf update
 </pre>
 
-While the packages are being upgraded we will
 <ul>
-<li>Configure Virtual desktops and switching shortcuts.</li>
-<li>Configure the task manager.</li>
+<li>While the packages are being upgraded we will</li>
+<ul class="lev2">
+<li>Increase the number of virtual desktops to four.</li>
+<li>Configure the task manager to show only tasks from the current desktop.</li>
+<li>And make a new user group named <em>training</em> and modify our login to
+make ourself a member of this group.</li>
+</ul>
+<pre class="code">
+sudo groupadd training
+sudo usermod -a -G training sco
+</pre>
 </ul>
 
-Before we can install VirtualBox Gest Additions we need install GCC and make,
+<!--
+Before we can install VirtualBox Guest Additions we need install GCC and make,
 and reboot the virtual machine.
 <ul>
 <li>Install <span class="code">GCC</span> and <span class="code">make</span></li>
 <li><span class="code">sudo reboot</span></li>
 </ul>
-
 
 <ul>
 <li>VirtualBox Guest Additions.</li>
@@ -562,48 +565,45 @@ and reboot the virtual machine.
 cd /media/stu26/VBox_GAs_6.0.14
 sudo ./VBoxLinuxAdditions.run 
 </pre>
+-->
 
+<ul>
+  <li>Once the updates are done we will shut down the virtual machine by one of
+    the following commands</li>
+</ul>
+<pre class="code">
+sudo poweroff
+sudo shutdown -h now
+# sudo reboot # Do not use now.
+</pre>
+
+<p>
+After the reboot, go to the virtual desktop 3 and start the Falkon web browser.
+In the browser go to this <br/>
+http://streptomyces.org.uk/customers/training/linux/nov2021/<br/>
+URL. This is to minimise the need to switch between Windows and our
+Linux virtual machine.
+</p>
 
 <ul>
 <li>Install <em>parallel</em></li>
 </ul>
 <pre class="code">
-sudo apt install parallel
+sudo dnf install parallel
 </pre>
 
 <ul>
-<li>Search and install <em>NCBI Blast+</em></li>
+<li>Install <em>NCBI Blast+</em></li>
 </ul>
-<pre class="code">
-sudo apt search ncbi-blast
-sudo apt install ncbi-blast+
-</pre>
-
-<ul>
-<li>Make a new user group named <em>training</em> and add yourself to it.</li>
-</ul>
-<pre class="code">
-sudo addgroup training
-sudo addgroup stu26 training
-</pre>
-
-<ul>
-<li>Reboot.</li>
-</ul>
-<pre class="code">
-sudo reboot
-</pre>
-
 <p>
-After the reboot, go to the virtual desktop 3 and start Firefox.
-In Firefox, go to this <br/>
-http://streptomyces.org.uk/customers/training/linux/
-URL. This is to minimise the need to switch between Windows and our
-Kubuntu virtual machine.
-</p>
-<p>
-If you have not already done so, make your virtual machine full screen.
-</p>
+<a href="https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/" target="_blank">
+  From here</a> you can get the following FTP url<br/>
+<em>https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.12.0+-1.x86_64.rpm</em><br/>
+which can be fed to <em>dnf</em> directly.
+<pre class="code">
+sudo dnf install \
+https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.12.0+-1.x86_64.rpm
+</pre>
 
 <a href="nowhere" onclick='$("#postinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -616,11 +616,11 @@ If you have not already done so, make your virtual machine full screen.
 <a href="nowhere" onclick='$("#gui").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="gui">
 <ul>
-<li>The desktop and the window manager.</li>
-<li>Several desktop environments are available e.g. KDE, Gnome, XFCE, LXDE</li>
+<li>The desktop environment and the window manager.</li>
+<li>Several desktop environments are available e.g. KDE, Gnome, XFCE, LXDE, LXQt.</li>
 <li>They come with their window managers.</li>
-<li>KDE (at this time) uses a window manager known as Plasma.</li>
-<li>At work I use KDE but with a different window manager (i3wm).</li>
+<li>LXQt uses a window manager known as Openbox.</li>
+<li>I usually use KDE but replace the default Plasma window manager with i3wm.</li>
 <li>If you use start using Linux regularly it is worth trying out some
 of the other desktops / window managers. You might find something better suited
 to your style of working.</li>
@@ -641,6 +641,20 @@ that yourself.</li>
 <a href="nowhere" onclick='$("#OS").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="OS">
 <img src = "architecture.jpg"><br/>
+<ul>
+  <li>Kernel is the only layer that can talk to the hardware.</li>
+  <li>Processes make requests to the kernel using <em>system calls</em>.</li>
+  <li>Programmers have access to system calls via an <em>Application
+      Programming Interface</em> which is available in the form of a <em>C
+      library</em> which in case of Linux happens to be <em>glibc</em>.</li>
+  <li>The application layer is itself multilayered.</li>
+  <ul class="lev2">
+  <li>BASH provides you with a user interface in the form of commands it recognizes.</li>
+  <li>It interprets and translates your commands into system calls for the kernel.</li>
+  <li>The kernel get the hardware to do what is needed.</li>
+  </ul>
+  <li>A byte compiled language such as Java has an additional layer.</li>
+</ul>
 <div class="instructor">
 * Memory is volatile, storage is permanent.
 * The processor has a tiny amount of memory (registers and caches).
@@ -664,7 +678,7 @@ that yourself.</li>
 <ul>
 <li>Commands are typed in a <em>terminal</em>.</li>
 <li>They are interpreted by a <em>command interpreter</em>.</li>
-<li>The program providing us with a terminal in Kubuntu is <em>Konsole</em>.</li>
+<li>The program providing us with a terminal <em>Qterminal</em>.</li>
 </ul>
 <a href="nowhere" onclick='$("#cli").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -678,14 +692,14 @@ that yourself.</li>
 <div class="slide" id="newterm">
 <ul>
 <li>It is quite common to be working in more than one terminal at the same time.</li>
-<li>You can use the menu in an existing Konsole terminal to get a new terminal.</li>
+<li>You can use the menu in an existing Qterminal to get a new terminal.</li>
 <li>Or, you can use the Control-Shift-N key combination.</li>
 <li>As a convenience, the new terminal has the same current directory
 as the old one.</li>
 </ul>
 <hr class="thin"/>
 <ul>
-<li>To close a Konsole terminal you can use the menu.</li>
+<li>To close a Qterminal you can use the menu.</li>
 <li>Or, the Control-Shift-W key combination.</li>
 <li>Or, the Control-D key combination.</li>
 </ul>
@@ -693,7 +707,7 @@ as the old one.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>Use the start menu to get a Konsole terminal.</li>
+<li>Use the start menu to get a Qterminal.</li>
 <li>From the existing terminal, use both means described above
 to get two new terminals.</li>
 <li>Kill one of the new terminals with one key combination mentioned above.</li>
@@ -1027,7 +1041,7 @@ e.g. <span class="code">help history</span>.
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>Get a new Konsole terminal and view the man page for
+<li>Get a new Qterminal and view the man page for
 <span class="code">ls</span> in it.</li>
 <li>Search for the string &quot;file size&quot; to figure out the option
 you need to sort your directory listing by file size.</li>
@@ -1061,11 +1075,11 @@ directory.</li>
 <pre class="code">
 man -Tps find &gt; man_find.ps
 ps2pdf man_find.ps man_find.pdf
-okular man_find.pdf
+qpdfview-qt5 man_find.pdf
 </pre>
 <ul>
-<li>Use the okular menu or control-q to quit okular.</li>
-<li>PDF files are searchable but Postscript files are not (at least in okular).</li>
+<li>Use the qpdfview-qt5 menu or control-q to quit qpdfview-qt5.</li>
+<li>PDF files are searchable but Postscript files are not (at least in qpdfview-qt5).</li>
 </ul>
 <a href="nowhere" onclick='$("#help").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -1153,7 +1167,7 @@ Shared Folders Settings.</li>
 <li>In &quot;Folder Path&quot; find the host (Windows) directory you wish to share.</li>
 <li>&quot;Folder Name&quot; will fill itself. You may change it, but remember
 the name. Click &quot;OK&quot;.</li>
-<li>Back in Kubuntu, in a terminal, I will talk you through the following
+<li>Back in Linux, in a terminal, I will talk you through the following
 commands.</li>
 <li class="code">cd</li>
 <li class="code">mkdir winshared</li>

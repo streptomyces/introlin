@@ -34,6 +34,14 @@ The actual modeline can be determined by
 
 usermod -G docker,vboxusers,wheel,users sco
 
+=head2 Sat 06 Nov 2021
+
+ syncer () {
+ rsync -uvi index.html scripting.html *jpg \
+ sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/nov2021/
+ }
+
+
 
 =cut
 
