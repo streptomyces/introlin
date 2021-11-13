@@ -41,6 +41,17 @@ usermod -G docker,vboxusers,wheel,users sco
  sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/nov2021/
  }
 
+introlin.zip goes in the same directory as the html files
+but here it is kept at one level above.
+
+ zipsyncer () {
+ cd /home/sco/mnt/smoke/training_ground/
+ zip --exclude \*.sw[op] introlin/.git/\* -r introlin introlin
+ rsync -uvi --checksum introlin.zip  \
+ sco@v0262.nbi.ac.uk:/var/www/nondb/html/customers/training/linux/nov2021/
+ cd /home/sco/mnt/smoke/training_ground/linux
+ }
+
 
 
 =cut

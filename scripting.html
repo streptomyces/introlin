@@ -492,7 +492,6 @@ if [[ $x == $y ]]; then
   else
   echo $x is not less than $y
 fi
-
 </pre>
 
 <p>
@@ -500,7 +499,41 @@ Use the right type of comparison for the right type of variables.<br/>
 Otherwise the logic is difficult to interpret.<br/>
 </p>
 
+<h6 class="diy">Regular expressions</h6>
+<pre class="code">
+IFS=$'\n';
+shopt -u nocasematch
+for line in $(cat $2); do
+  if [[ $line =~ $1 ]]; then
+    echo $line;
+  fi
+done
+</pre>
+Save the above as regex.sh then run as below.
+<pre class="code">
+bash regex.sh silver WildAnimals.txt
+</pre>
 
+<p>
+Below is the same thing done in awk. 
+</p>
+
+<pre class="code">
+awk '$0 ~ /silver/ {print $0}' WildAnimals.txt
+awk '$0 ~ /silver/ {print $0}' IGNORECASE=1 WildAnimals.txt
+</pre>
+
+<pre class="code"> 
+BEGIN { IGNORECASE=1; }
+{ if ( $0 ~ /silver/ ) print $0; }
+# END { print "DONE" }
+</pre>
+
+Save the above as case_ins.awk then run as below.
+<pre class="code">
+awk -f case_ins.awk WildAnimals.txt
+awk -f case_ins.awk IGNORECASE=0 WildAnimals.txt
+</pre>
 
 <a href="nowhere" onclick='$("#Conditionals").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -526,7 +559,8 @@ x=10;
 
 while (( x &gt; 0 )); do
   echo $x;
-  : $(( --x ))
+  (( --x ))
+  # let --x
   done
 
 </pre>
@@ -540,7 +574,7 @@ x=10;
 
 until (( x &lt;= 0 )); do
   echo $x;
-  : $(( --x ))
+  (( --x ))
   done
 
 </pre>
@@ -552,7 +586,7 @@ until (( x &lt;= 0 )); do
 unset x;
 declare -i x;
 while (( 1 == 1 )); do
-: $(( x+=1 ));
+  let x+=1;
 echo $x;
 if (( x &gt; 50 )); then
   break;
@@ -567,7 +601,7 @@ done
 unset x;
 declare -i x;
 while (( x &lt; 20 )); do
-: $(( x+=1 ));
+  let x+=1;
 
 if (( x &gt; 5 &amp;&amp; x &lt;= 10 )); then
   continue;
@@ -613,9 +647,9 @@ three separate files.</li>
 <h6>Do the following yourself.</h6>
 <ol>
 <li>After making sure that you are in the <span class="fn">introlin</span> directory,
-start kate using the command <code class="blue">kate &amp;</code></li>
+start featherpad using the command <code class="blue">featherpad &amp;</code></li>
 
-<li>Type the three commands below in kate and save them
+<li>Type the three commands below in featherpad and save them
 as a file named <span class="fn">commands.txt</span>.</li>
 
 <pre class = "code">
@@ -628,7 +662,7 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 <li>Try to following different ways of using commands.txt</li>
 
 <ul class="diy">
-<li>Cut and paste from kate into the terminal.</li>
+<li>Cut and paste from featherpad into the terminal.</li>
 <li><span class="code">bash &lt; commands.txt</span></li>
 <li><span class="code">bash commands.txt</span></li>
 <li class="code">source commands.txt</li>
@@ -709,7 +743,7 @@ Run as: <code>./byStrain2.sh</code>
 and sorted them before writing them out to a new file. This was done using
 a pipeline.</li>
 <li>The same task can be done using a script.</li>
-<li>Type the following lines of code in kate and save as <em>script.bash</em>.</li>
+<li>Type the following lines of code in featherpad and save as <em>script.bash</em>.</li>
 </ul>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
@@ -836,7 +870,7 @@ fi
 <li>Change to your home directory.</li>
 <li>Save a copy of <span class="fn">~/.bashrc</span> as
 <span class="fn">dotbashrc</span></li>
-<li>Using <span class="code">kate</span> edit your
+<li>Using <span class="code">featherpad</span> edit your
 <span class="fn">~/.bashrc</span> file and add the following at the
 end of the file.</li>
 <pre class="code">
@@ -924,9 +958,9 @@ echo ${!aarr[@]}   # listing all keys.
 <ul>
 <li><a href="http://en.flossmanuals.net/command-line/">
 The FSF manual for the command line for beginners</a>.</li>
-<li>Advanced Bash Scripting Guide by Mendel Cooper is available from
-various sites on the internet. Just search for it. It is completely
-free, very big and very good.</li>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">
+    The official GNU Bash reference manual</a>.
+</li>
 <li>Start using Linux on a regular basis.</li>
   <ul class="lev2">
   <li>Linux is bigger and more capable than what I have demonstrated.</li>
@@ -942,13 +976,15 @@ free, very big and very good.</li>
   <li>It is not a bad way to start.</li>
   <li>But, don't let it prevent you from evolving your own style
   of working.</li>
+  <li>It is best to let your command line skills grow gradually according
+  to your own needs.</li>
   </ul>
 
 <li>General purpose programming</li>
   <ul class="lev2">
   <li>Perl</li>
   <li>Python</li>
-  <li>Ruby</li>
+  <li>Julia</li>
   <li>Java</li>
   <li>C++</li>
   <li>Choose the one for which you can get help (mentoring) most easily.</li>

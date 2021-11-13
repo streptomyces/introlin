@@ -132,6 +132,12 @@ color: #aa0000;
 em, .blue {
   color: #0000aa
 }
+.bolder {
+  font-weight: bolder;
+}
+.bold {
+  font-weight: bold;
+}
 .instructor {
 font-family: monospace;
 font-size: small;
@@ -202,7 +208,11 @@ written on your computer.</li>
 <li>Then start Firefox and go to the URL shown below.</li>
 </ul>
 <h2>http://streptomyces.org.uk/customers/training/linux/nov2021/</h2>
-<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
+<h3>or</h3>
+<h2>https://bit.ly/3c8HuAV</h2>
+<ul>
+  <li>Both the above point to the same page.</li>
+</ul>
 <h5>Some requests</h5>
 <ul>
 <li>Put your phones away during the course. There is a break every 90 minutes.
@@ -212,6 +222,7 @@ the exercises.
 <em>But please stop all conversation when the instructor begins to speak</em>.</li>
 <li>Ask if something is not clear.</li>
 </ul>
+<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -271,12 +282,25 @@ of his own and makes it freely accessible.</td></tr>
 <li>GNU components</li>
 <li>Non-GNU components</li>
 <li>Package management system</li>
+<li>Some well known distros</li>
+<ul class="lev2">
+<li>Debian</li>
+<li>Ubuntu</li>
+<li>Mint</li>
+<li>SUSE</li>
+<li>Arch Linux</li>
+<li>Gentoo</li>
+<li>Fedora / Red Hat (recently acquired by IBM)</li>
+</ul>
 </ul>
 
 <p>
-Most distributions come in several <em>flavours</em>, also known as <em>spins</em>,
-with one being the &quot;flagship&quot; flavour or spin.
+Most distributions come in a few different <em>flavours</em>, also known as
+<em>spins</em>, with one being the &quot;flagship&quot; flavour or spin.
+The difference is in the <em>Desktop Environment</em> (often heavily customised)
+that they use and the software packages bundled together.
 </p>
+
 <ul>
 <li>Gnome</li>
 <li>KDE</li>
@@ -289,7 +313,8 @@ with one being the &quot;flagship&quot; flavour or spin.
 <p>
 The difference between flavours is not just in looks but also in the amount of
 resources they use. Some like XFCE and LXQt are really lightweight and well
-suited for older, low spec machines.
+suited for older, low spec machines. This is primarily achieved by avoiding
+heavy-weight packages such as LibreOffice and using a simpler <em>Window Manager</em>.
 </p>
 
 <a href="nowhere" onclick='$("#whatlinux").hide("fast"); return(false)'>&#9650;</a>
@@ -355,7 +380,7 @@ the fact that a resource is shared with other VMs.</li>
 </ul>
 <p>
 We will use <em>Oracle VirtualBox</em> to provide us with a virtual machine
-on which we will now install a flavour of <em>Fedora 34</em> Linux known as
+on which we will install a flavour of <em>Fedora 34</em> Linux known as
 <em>LXQt</em>.
 </p>
 <p>
@@ -457,6 +482,8 @@ it disabled.
 <li>Tools &rarr; Preferences &rarr; Input &rarr; Virtual Machine
 &rarr; Host Key Combination
 </li>
+<li>Settings &rarr; Advanced &rarr; Shared Clipboard &rarr; Bidirectional
+</li>
 <li>Set this to the Alt key on the right of the space bar.</li>
 <li>Ask for a new virtual machine. Give it a name. (We suggest &quot;lxqt&quot;)</li>
 <li>Change the type to Linux and Version to 64bit Fedora.</li>
@@ -470,7 +497,7 @@ virtual hard disk.</li>
 the video memory to about 64 MB.</li>
 <li>A virtual optical drive is provided and we will put our bootable
 image file in it.<br/>
-<em>C:/coursefiles/IntroLinux/Fedora-LXQt-Live-x86_64-34-1.2.iso</em></li>
+<em>C:/CourseFiles/IntroLinux/Fedora-LXQt-Live-x86_64-34-1.2.iso</em></li>
 <li>Rest of the default settings are fine.</li>
 <li>Click on the green arrow labelled &quot;Start&quot; to boot the VM and wait till you
 get something like below.</li>
@@ -502,14 +529,15 @@ we will all have Linux running in our VMs.
   <li>Set the regular user you create to be an administrator as well.</li>
 </ul>
 
-<p>
-Example username: stu26 (use whatever you like but not too long)<br/>
-Suggested password: -1mouse (minus one mouse)<br/>
-Suggested hostname: vlin
-</p>
+<table>
+  <tr><td>Suggested password for root</td><td> <span class="bolder">flxq@34T</span></td></tr>
+  <tr><td>Example username</td><td><span class="bolder">stu26</span> (use whatever you like but not too long)</td></tr>
+<tr><td>Suggested password</td><td><span class="bolder">star300meR</span></td></tr>
+<tr><td>Suggested hostname</td><td><span class="bolder">lxqt</span></td></tr>
+</table>
 
 <p class = "red">
-It is important to remember the password you use here.
+It is important to remember the passwords you use here.
 </p>
 
 <a href="nowhere" onclick='$("#linuxinst").hide("fast"); return(false)'>&#9650;</a>
@@ -589,7 +617,8 @@ Linux virtual machine.
 <li>Install <em>parallel</em></li>
 </ul>
 <pre class="code">
-sudo dnf install parallel
+dnf search featherpad
+sudo dnf install parallel featherpad qpdfview-qt5
 </pre>
 
 <ul>
@@ -732,7 +761,7 @@ to play with. To do that, run the commands exactly as shown below.
 <pre class="code">
 cd
 
-wget http://streptomyces.org.uk/customers/training/linux/introlin.zip
+wget http://streptomyces.org.uk/customers/training/linux/nov2021/introlin.zip
 
 unzip introlin.zip
 
@@ -904,104 +933,81 @@ separating the commands with semicolons (;).
 <li>Comments (beginning with <code>#</code>) are ignored by Bash.</li>
 </ul>
 </ul>
-
-
-<!-- {{{ -->
-<!--
-<h5>Tasks</h5>
-
-<ul>
-<li>
-Try out the commands below for interrogating the filesystem
-and moving around in it.
-</li>
-
-<ul class="lev2">
-<li class="code">cd</li>
-<li class="code">cd introlin</li>
-<li class="code">cd ..</li>
-<li class="code">pwd</li>
-<li class="code">cd .</li>
-<li class="code">pwd</li>
-<li class="code">cd introlin</li>
-<li class="code">ls</li>
-<li class="code">ls -l</li>
-<li class="code">ls -l -h</li>
-<li class="code">ls -lh</li>
-<li class="code">ls -lht</li>
-<li class="code">ls -lhtr</li>
-<li class="code">ls --group-directories-first -lh</li>
-<li class="code">ls --format=single-column</li>
-</ul>
-
-<li>
-Some commands for making directories and copying and moving
-files between directories.
-</li>
-<ul class="lev2">
-<li class="code">pwd</li>
-<li class="code">mkdir tempdir</li>
-<li class="code">cp small.tsv tempdir</li>
-<li class="code">ls tempdir</li>
-<li class="code">ls -lh tempdir</li>
-<li class="code">cd tempdir</li>
-<li class="code">ls -lh</li>
-<li class="code">ls -lh ..</li>
-<li class="code">cd; cd introlin;</li>
-<li class="code">cp small.tsv justafile</li>
-<li class="code">mv justafile tempdir # move to the directory named tempdir</li>
-<li class="code">cd tempdir</li>
-<li class="code">ls</li>
-
-<li class="code">##########################</li>
-<li class="code">rm justafile</li>
-<li class="code">ls</li>
-<li class="code">cd ..</ls>
-<li class="code">rmdir tempdir</li>
-<li class="code">##########################</li>
-
-<li class="code">cd; cd introlin;</li>
-<li class="code">mkdir tempdir</li>
-<li class="code">cp small.tsv tempdir</ls>
-<li class="code">ls tempdir</ls>
-<li class="code">rm -rf tempdir</li>
-<li class="code">ls</ls>
-<li class="code">##########################</li>
-
-<li class="code">cp small.tsv justafile</li>
-<li class="code">mv justafile renamedfile # mv used for renaming a file.</li>
-<li class="code">ls</li>
-<li class="code">cd; cd introlin;</li>
-</ul>
-
-<li>find again</li>
-<ul class="lev2">
-<li class="code">mkdir tsvs</li>
-<li class="code">find . -iname '*.tsv' -exec cp {} tsvs \;</li>
-<li class="code">ls tsvs</li>
-</ul>
-
-<li>head (and tail) again</li>
-<ul class="lev2">
-<li class="code">head large.tsv</li>
-<li class="code">head -n 3 large.tsv</li>
-
-<li class="code">tail large.tsv</li>
-<li class="code">tail -n 3 large.tsv</li>
-
-<li class="code">head -n 3 *.tsv</li>
-<li class="code">tail -n 3 *.tsv</li>
-</ul>
-
-</ul>
--->
-<!-- }}} -->
-
 <div class="instructor">
 * Use ls frequently.
 * Always be aware of the directory you are in. Use pwd frequently.
 </div>
 <a href="nowhere" onclick='$("#commands").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Getting help BASH internal commands -->
+<h4>Getting help on BASH internal commands</h4>
+<a href="nowhere" onclick='$("#internalhelp").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="internalhelp">
+<ul>
+<li class="code">help</li>
+<li class="code">help pwd</li>
+</ul>
+<p>
+Just <span class="code">help</span> is good for listing all the internal
+commands.
+</p>
+<ul>
+<li>The <span class="code">man</span> command uses a pager to display
+the help text.</li>
+<li>Usually this is a text file viewer known as <span class="code">
+less</span>.</li>
+<li>Within <span class="code">less</span>, use <span class="code">/</span>
+to start searching and <span class="code">n</span> or
+<span class="code">N</span> to jump to the next and previous
+occurrences respectively.</li>
+<li>Use <span class="code">q</span> to get out of
+<span class="code">less</span>.</li>
+<li>(Instructor to demonstrate using color option of ls).</li>
+<li>All builtin commands are bundled into one man page.</li>
+<li>Use <span class="code">help</span> to see their documentation.
+e.g. <span class="code">help history</span>.
+</li>
+</ul>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li class="code">help variables</li>
+<li><span class="code">echo </span> some of the variable names listed by
+  the above command.</li>
+</ol>
+</div>
+<p>
+If you use a command often then it is a good idea to read its
+documentation in some detail. You will almost certainly find
+useful options you were not aware of.
+</p>
+
+<div class="diy">
+<h6>Do the following yourself.</h6>
+<ol>
+<li>Inside <span class="fn">introlin</span> there is a directory
+named <span class="fn">--optbreak</span>. List the contents of this
+directory.</li>
+</ol>
+</div>
+
+<div class="diy">
+<h6>Getting a pdf file for a man page</h6>
+<pre class="code">
+man -Tps find &gt; man_find.ps
+ps2pdf man_find.ps man_find.pdf
+qpdfview-qt5 man_find.pdf
+</pre>
+<ul>
+<li>Use the qpdfview-qt5 menu or control-q to quit qpdfview-qt5.</li>
+<li>PDF files are searchable but Postscript files are not (at least in qpdfview-qt5).</li>
+</ul>
+<a href="nowhere" onclick='$("#internalhelp").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -1134,7 +1140,7 @@ qpdfview-qt5 man_find.pdf
 <!-- }}} -->
 
 <hr class="thin"/>
-<h5>Instructor to demonstrate / explain all of the below</h5>
+<h5>Instructor to demonstrate and explain all of the below</h5>
 <ul>
 <li>Different meanings of / (forward slash).</li>
 <li>Home directory.</li>
@@ -1666,8 +1672,8 @@ by lots of programs in addition to the one writing it.</li>
   <li>Syntax highlighting.</li>
   <li>Whatever they may look like, for a given text, they
   will produce the same files.</li>
-  <li>We have an editor called <em>kate</em>.
-  We also have <em>vim</em> but <em>kate</em> is much easier to use.
+  <li>We have an editor called <em>featherpad</em>.
+  We also have <em>vim</em> but <em>featherpad</em> is much easier to use.
   </li>
   </ul>
 
@@ -2102,7 +2108,6 @@ to <span class="fn">/dev/null</span>. Then kill it.</li>
 <hr/>
 </div>
 <!-- }}} -->
-
 
 </body>
 </html>
