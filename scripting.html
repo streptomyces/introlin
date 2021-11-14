@@ -194,70 +194,129 @@ below.
 <!-- }}} -->
 
 
-<!-- {{{ Timing commented out -->
-<!--
-<h4>Timing</h4>
-<a href="nowhere" onclick='$("#timing").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="timing">
-<h6>Friday 23 March 2018</h6>
-<table>
-<tr><td>0930 to 1100</td><td>Course</td></tr>
-<tr><td>1100 to 1300</td><td>Coffee break, Firday Seminar and
-Lunch break (lunch not provided)</td></tr>
-<tr><td>1300 to 1500</td><td>Course</td></tr>
-<tr><td>1500 to 1530</td><td>Coffee break</td></tr>
-<tr><td>1530 to 1730</td><td>Course</td></tr>
-</table>
-<a href="nowhere" onclick='$("#timing").hide("fast"); return(false)'>&#9650;</a>
+<!-- {{{ Shell parameters -->
+<h4>Shell parameters</h4>
+<a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="shelpar">
+
+<ul>
+<li>Positional parameters</li>
+<li>Special parameters</li>
+<li>Variables (named shell parameters)</li>
+</ul>
+<h5>Keep in mind</h5>
+<ul>
+<li>Shell parameter are not typed to begin with and are treated
+as strings or characters by default.</li>
+<li>Unless exported, variables are not available in child processes.</li>
+<li>Variables can have attributes in addition to a value.</li>
+</ul>
+<hr class="thin">
+<br/>
+
+<pre class="code">
+echo '$0 is the name of the script'
+echo $0
+echo
+echo '$* is all the positional arguments'
+echo $*
+echo
+echo '$@ is all the positional arguments'
+echo $@
+echo
+echo '$# is the number of positional arguments'
+echo $#
+echo
+echo '$$ is the process id for the script or shell'
+echo $$
+echo
+echo
+echo '$1 is the first positional argument: ' $1
+echo
+echo '$2 is the second positional argument: ' $2
+echo
+echo '$3 is the third positional argument: ' $3
+echo
+echo '$4 is the fourth positional argument: ' $4
+echo
+echo '$9 is the fourth positional argument: ' $9
+shift 1
+echo
+echo '$9 is the fourth positional argument: ' $9
+echo
+echo '$# is the number of positional arguments'
+echo $#
+</pre>
+<p>Save the above as <span class="fn">para.sh</span> make it executable then run as below.</p>
+<pre class="code">
+para.sh a b c d e f g h i j
+</pre>
+<a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
--->
 <!-- }}} -->
 
 
-<!-- {{{ Files to play with. commented out.
-<h4>Some files to play with</h4>
-<h5 style="color: #aa0000">Not required on the second day</h5>
-<a href="nowhere" onclick='$("#prep").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="prep">
-<p>
-First we will copy some files from somewhere so that we have something
-to play with. To do that, run the commands exactly as shown below.<br/>
-<em>Capitalisation is significant and spaces matter.</em>
-</p>
+<!-- {{{ Attributes -->
+<h4>Attributes</h4>
+<a href="nowhere" onclick='$("#attributes").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="attributes">
+
+<h5>Setting and removing attributes</h5>
+<ul>
+<li><span class="code">declare</span> is used for setting and
+removing attributes.</li>
+</ul>
+<h6 class="diy">Run the following in a terminal</h6>
 <pre class="code">
-cd
+var=2;
+var+=2;
+echo $var
 
-wget http://streptomyces.org.uk/customers/training/linux/introlin.zip
-
-unzip introlin.zip
-
-ls
 </pre>
-<p>
-The last command <em>(ls)</em> should show you, amongst other stuff,
-a directory named <em>introlin</em>.
-</p>
 
-<p>
-And the command below
-</p>
+<h6 class="diy">Run the following in a terminal</h6>
 <pre class="code">
-ls introlin
-</pre>
-<p>
-should show you the contents of the directory <em>introlin</em> just
-created when you extracted <em>introlin.zip</em>.
-</p>
+declare -i var1
+var1=2;
+var1+=2;
+echo $var1
 
-<div class="instructor">
-* Make sure everybody has done this successfully before
-  proceeding further.
-</div>
-<a href="nowhere" onclick='$("#prep").hide("fast"); return(false)'>&#9650;</a>
+</pre>
+
+<h6 class="diy">Run the following in a terminal</h6>
+<pre class="code">
+var2=2;
+declare -i var2
+var2+=2;
+echo $var2
+
+# Wait here, think, then proceed.
+
+declare +i var2
+var2+=3;
+echo $var2;
+
+</pre>
+
+
+<h6 class="diy">Run the following in a terminal</h6>
+<pre class="code">
+# Declaring a string variable to be integer.
+unset vard;
+vard=notint;
+echo $vard;
+declare -i vard;
+echo $vard;
+vard+=5;
+echo $vard;
+
+</pre>
+
+<a href="nowhere" onclick='$("#attributes").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
-}}} -->
+<!-- }}} -->
 
 
 <!-- {{{ Ordinary and environment variables -->
@@ -316,9 +375,8 @@ looping.</li>
 <li>command substitution</li>
 <li>arithmetic expansion</li>
 <li>filename expansion</li>
+<li>process substitution</li>
 </ul>
-
-<h6>File: ~/introlin/scripting/shell_expansion.sh</h6>
 
 <h5>Variable expansion</h5>
 <pre class="code">
@@ -349,7 +407,14 @@ echo $(( 6 + 2 ))
 nine=$(( 3 ** 2 ))
 echo $nine
 echo $(( 7/3 ));
+</pre>
 
+<h5>Process substitution</h5>
+<pre class="code">
+cd ~/introlin
+./cat10.pl WildAnimals.txt
+cat WildAnimals.txt | ./cat10.pl
+./cat10.pl <(cat WildAnimals.txt)
 </pre>
 
 
@@ -359,72 +424,52 @@ echo $(( 7/3 ));
 <!-- }}} -->
 
 
-<!-- {{{ Shell parameters -->
-<h4>Shell parameters</h4>
-<a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="shelpar">
-<ul>
-<li>Shell parameter are not typed to begin with and are treated
-as strings or characters by default.</li>
-<li>Unless exported, they are not available in child processes.</li>
-<li>They can have attributes in addition to a value.</li>
-</ul>
-<hr class="thin">
-<br/>
-
-<h5>Setting and removing attributes</h5>
-<h6>File: ~/introlin/scripting/attributes.sh</h6>
-<ul>
-<li><span class="code">declare</span> is used for setting and
-removing attributes.</li>
-</ul>
-<h6 class="diy">Run the following in a terminal</h6>
+<!-- {{{ Parameter expansions -->
+<h4>Parameter expansions</h4>
+<a href="nowhere" onclick='$("#paraexp").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="paraexp">
+  
 <pre class="code">
-var=2;
-var+=2;
-echo $var
+# If unset, substitute without assignment.
+wolf="Lobo The King"
+echo ${wolf:-foursocks}
+unset wolf
+echo ${wolf:-foursocks}
 
-</pre>
+# Assign if unset
+dog=Buddy
+echo ${dog:=Benjy}
+echo $dog
+###
+unset dog
+echo ${dog:=Benjy}
+echo $dog
 
-<h6 class="diy">Run the following in a terminal</h6>
-<pre class="code">
-declare -i var1
-var1=2;
-var1+=2;
-echo $var1
 
-</pre>
+# Substitute if set.
+dog=Benjy
+echo ${dog:+Buddy}
+echo $dog
+###
+unset dog
+echo ${dog:+Buddy}
 
-<h6 class="diy">Run the following in a terminal</h6>
-<pre class="code">
-var2=2;
-declare -i var2
-var2+=2;
-echo $var2
+# Substring
+wolf="Lobo The King"
+echo ${wolf:5}
+echo ${wolf:0:4}
 
-# Wait here, think, then proceed.
+# Pattern substitution
+fn=DSCF_1234.JPG
+echo ${fn/JPG/jpg}
+echo ${fn/%JPG/jpg}
+echo ${fn/#JPG/jpg}
 
-declare +i var2
-var2+=3;
-echo $var2;
 
 </pre>
 
 
-<h6 class="diy">Run the following in a terminal</h6>
-<pre class="code">
-# Declaring a string variable to be integer.
-unset vard;
-vard=notint;
-echo $vard;
-declare -i vard;
-echo $vard;
-vard+=5;
-echo $vard;
-
-</pre>
-
-<a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
+<a href="nowhere" onclick='$("#paraexp").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -509,7 +554,7 @@ for line in $(cat $2); do
   fi
 done
 </pre>
-Save the above as regex.sh then run as below.
+Save the above as <span class="fn">regex.sh</span> then run as below.
 <pre class="code">
 bash regex.sh silver WildAnimals.txt
 </pre>
@@ -529,7 +574,7 @@ BEGIN { IGNORECASE=1; }
 # END { print "DONE" }
 </pre>
 
-Save the above as case_ins.awk then run as below.
+Save the above as <span class="fn">case_ins.awk</span> then run as below.
 <pre class="code">
 awk -f case_ins.awk WildAnimals.txt
 awk -f case_ins.awk IGNORECASE=0 WildAnimals.txt
@@ -551,7 +596,7 @@ awk -f case_ins.awk IGNORECASE=0 WildAnimals.txt
 <hr class="thin">
 <br/>
 
-<h6>File: ~/introlin/scripting/il_while.sh</h6>
+<h5>while</h5>
 <pre class="code">
 unset x;
 declare -i x;
@@ -566,7 +611,7 @@ while (( x &gt; 0 )); do
 </pre>
 
 
-<h6>File: ~/introlin/scripting/il_until.sh</h6>
+<h5>until</h5>
 <pre class="code">
 unset x;
 declare -i x;
@@ -581,7 +626,7 @@ until (( x &lt;= 0 )); do
 
 
 
-<h6>File: ~/introlin/scripting/il_break.sh</h6>
+<h5>break</h5>
 <pre class="code">
 unset x;
 declare -i x;
@@ -596,7 +641,7 @@ done
 </pre>
 
 
-<h6>File: ~/introlin/scripting/il_continue.sh</h6>
+<h5>continue</h5>
 <pre class="code">
 unset x;
 declare -i x;
@@ -614,13 +659,16 @@ done
 </pre>
 
 
-<h6>File: ~/introlin/scripting/il_for.sh</h6>
+<h5>for</h5>
 <pre class="code">
 
 for var in one two three four; do
   echo $var;
 done
 
+for file in $(ls --color=never photos/*.JPG); do
+echo mv $file ${file/%JPG/jpg}
+done
 </pre>
 
 
@@ -665,8 +713,8 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 <li>Cut and paste from featherpad into the terminal.</li>
 <li><span class="code">bash &lt; commands.txt</span></li>
 <li><span class="code">bash commands.txt</span></li>
-<li class="code">source commands.txt</li>
-<li class="code">. commands.txt # same as source.</li>
+<li><span class="code">source commands.txt</span></li>
+<li><span class="code">. commands.txt # same as source.</span></li>
 </ul>
 
 </ol>
@@ -743,7 +791,8 @@ Run as: <code>./byStrain2.sh</code>
 and sorted them before writing them out to a new file. This was done using
 a pipeline.</li>
 <li>The same task can be done using a script.</li>
-<li>Type the following lines of code in featherpad and save as <em>script.bash</em>.</li>
+<li>Type the following lines of code in featherpad and save as <span
+    class="fn">script.bash</span>.</li>
 </ul>
 <pre class="code">
 <span class="hashcol">#!/bin/bash</span>
@@ -825,7 +874,7 @@ parallel blastp -query {} -db bldb/sven15 -out blout/{/.}.blastp -outfmt 6 \
 <li><span class="code">blastdbcmd -db bldb/sven15 -line_length 60 -entry SVEN15_2573</span></li>
 <li><span class="code">blastdbcmd -db bldb/sven15 -range 50-60 -entry SVEN15_2573</span></li>
 </ul>
-
+</div>
 <a href="nowhere" onclick='$("#scriptpara").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>

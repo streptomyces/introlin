@@ -976,38 +976,46 @@ e.g. <span class="code">help history</span>.
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li class="code">help variables</li>
+  <li><span class="code">help variables</span></li>
 <li><span class="code">echo </span> some of the variable names listed by
   the above command.</li>
 </ol>
 </div>
-<p>
-If you use a command often then it is a good idea to read its
-documentation in some detail. You will almost certainly find
-useful options you were not aware of.
-</p>
-
-<div class="diy">
-<h6>Do the following yourself.</h6>
-<ol>
-<li>Inside <span class="fn">introlin</span> there is a directory
-named <span class="fn">--optbreak</span>. List the contents of this
-directory.</li>
-</ol>
-</div>
-
-<div class="diy">
-<h6>Getting a pdf file for a man page</h6>
-<pre class="code">
-man -Tps find &gt; man_find.ps
-ps2pdf man_find.ps man_find.pdf
-qpdfview-qt5 man_find.pdf
-</pre>
-<ul>
-<li>Use the qpdfview-qt5 menu or control-q to quit qpdfview-qt5.</li>
-<li>PDF files are searchable but Postscript files are not (at least in qpdfview-qt5).</li>
-</ul>
 <a href="nowhere" onclick='$("#internalhelp").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ BASH Options -->
+<h4>BASH options</h4>
+<a href="nowhere" onclick='$("#bashopt").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashopt">
+<p>
+Several options are available to fine tune the behaviour of BASH
+according to your needs. Two commands allow you to alter two
+different sets of options.
+</p>
+<ul>
+  <li><span class="code">help set</span></li>
+  <li><span class="code">help shopt</span></li>
+</ul>
+<p>
+<span class="code">shopt -o</span> will show you the options which should be
+set using <span class="code">set</span>.
+</p>
+<ul>
+  <li><span class="code">shopt</span> uses <span class="code">-s</span> and
+    <span class="code">-u</span> to set and unset options.</li>
+  <li><span class="code">shopt -p nocasematch</span></li> 
+  <li><span class="code">shopt -u nocasematch</span></li> 
+  <li><span class="code">set</span> use <span class="code">-o</span> and
+    <span class="code">+o</span> to set and unset options.</li>
+  <li><span class="code">set -o history</span></li> 
+  <li><span class="code">set +o history</span></li> 
+</ul>
+
+<a href="nowhere" onclick='$("#bashopt").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -1087,6 +1095,7 @@ qpdfview-qt5 man_find.pdf
 <li>Use the qpdfview-qt5 menu or control-q to quit qpdfview-qt5.</li>
 <li>PDF files are searchable but Postscript files are not (at least in qpdfview-qt5).</li>
 </ul>
+</div>
 <a href="nowhere" onclick='$("#help").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -2032,6 +2041,7 @@ All other processes descend from this one.</li>
 </div>
 <!-- }}} -->
 
+
 <!-- {{{ Backgrounding -->
 <h4>Stopping, backgrounding and foregrounding processes</h4>
 <a href="nowhere" onclick='$("#bgproc").toggle(); return(false)'>&#9660;&#9650;</a>
@@ -2100,6 +2110,7 @@ to <span class="fn">/dev/null</span>. Then kill it.</li>
 <hr/>
 </div>
 <!-- }}} -->
+
 
 <!-- {{{ Continue -->
 <h4>Continue</h4>
