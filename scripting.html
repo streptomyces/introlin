@@ -239,13 +239,12 @@ echo '$3 is the third positional argument: ' $3
 echo
 echo '$4 is the fourth positional argument: ' $4
 echo
-echo '$9 is the fourth positional argument: ' $9
-shift 1
+echo '$9 is the ninth positional argument: ' $9
 echo
-echo '$9 is the fourth positional argument: ' $9
+echo '$10 is not the tenth positional argument: ' $10
 echo
-echo '$# is the number of positional arguments'
-echo $#
+echo '${10} is the tenth positional argument: ' ${10}
+echo
 </pre>
 <p>Save the above as <span class="fn">para.sh</span> make it executable then run as below.</p>
 <pre class="code">

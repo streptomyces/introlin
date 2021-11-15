@@ -955,23 +955,6 @@ separating the commands with semicolons (;).
 Just <span class="code">help</span> is good for listing all the internal
 commands.
 </p>
-<ul>
-<li>The <span class="code">man</span> command uses a pager to display
-the help text.</li>
-<li>Usually this is a text file viewer known as <span class="code">
-less</span>.</li>
-<li>Within <span class="code">less</span>, use <span class="code">/</span>
-to start searching and <span class="code">n</span> or
-<span class="code">N</span> to jump to the next and previous
-occurrences respectively.</li>
-<li>Use <span class="code">q</span> to get out of
-<span class="code">less</span>.</li>
-<li>(Instructor to demonstrate using color option of ls).</li>
-<li>All builtin commands are bundled into one man page.</li>
-<li>Use <span class="code">help</span> to see their documentation.
-e.g. <span class="code">help history</span>.
-</li>
-</ul>
 
 <div class="diy">
 <h6>Do the following yourself.</h6>
@@ -1007,8 +990,9 @@ set using <span class="code">set</span>.
 <ul>
   <li><span class="code">shopt</span> uses <span class="code">-s</span> and
     <span class="code">-u</span> to set and unset options.</li>
-  <li><span class="code">shopt -p nocasematch</span></li> 
+  <li><span class="code">shopt -s nocasematch</span></li> 
   <li><span class="code">shopt -u nocasematch</span></li> 
+  <li><span class="code">shopt -p nocasematch</span></li> 
   <li><span class="code">set</span> use <span class="code">-o</span> and
     <span class="code">+o</span> to set and unset options.</li>
   <li><span class="code">set -o history</span></li> 
@@ -1223,11 +1207,12 @@ folder on the host (Windows) side.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>List the last 10 commands of your command history.</li>
-<li>Repeat a historical command using <span class="code">!</span>.</li>
-<li>Do <span class="code">history -w cmdhist</span> and then
-view the contents of the file <span class="fn">cmdhist</span>
-using <span class="code">less</span>.</li>
+  <li><span class="code">shopt -o history</span></li>
+  <li>Use the <span class="code">set</span> command to turn history recording off.</li>
+  <li><span class="code">echo Secret code to arm the nukes</span></li>
+  <li><span class="code">echo Secret code to launch the nukes</span></li>
+  <li><span class="code">history</span></li>
+  <li>Use the <span class="code">set</span> command to turn history recording back on.</li>
 </ol>
 </div>
 
@@ -1417,6 +1402,10 @@ ensures that the right thing gets done for the underlying kind of file or device
 <li>List <span class="fn">bad*fn</span> so that only one file gets listed.</li>
 </ol>
 </div>
+
+<pre class="code">
+</pre>
+
 <a href="nowhere" onclick='$("#globs").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -2008,12 +1997,6 @@ awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
 sort -n -k 4 -o local_sorted.sam
 </pre>
 
-
-
-<div class="instructor">
-* Note the breaking of long commands over multiple lines.
-</div>
-
 <a href="nowhere" onclick='$("#pipelines").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -2031,82 +2014,91 @@ sort -n -k 4 -o local_sorted.sam
 process named <span class="fn">init</span> or <span class="fn">systemd</span>.
 All other processes descend from this one.</li>
 <li>When a child process finishes, control is handed back to its parent.</li>
-</ul>
-<br/>
-<ul class="try">
-</ul>
-<br/>
-<a href="nowhere" onclick='$("#processes").hide("fast"); return(false)'>&#9650;</a>
-<hr/>
-</div>
-<!-- }}} -->
-
-
-<!-- {{{ Backgrounding -->
-<h4>Stopping, backgrounding and foregrounding processes</h4>
-<a href="nowhere" onclick='$("#bgproc").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="bgproc">
-<ul>
 <li>You can start processes in the background
 by putting an &quot;&amp;&quot; at the end of the command.</li>
 <li>You can stop (suspend) a process by the <span class="fn">control-z</span>
 combination.</li>
 <li><span class="code">jobs</span> shows you a list of jobs running in
 the background in the current session of Bash.</li>
-<li><span class = "code">fg %1</span> is used to restart a suspended job
-in the foreground.</li>
-<li><span class = "code">bg %1</span> is used to restart a suspended job
-in the background.</li>
-<li><span class="code">yes</span> prints an endless stream of &quot;y&quot; (or
-any string argument) on the terminal.</li>
-<li>To stop <span class="code">yes</span> you have to use the
-<span class="fn">control-c</span> combination. Known as killing a process.</li>
-<li><span class="fn">/dev/null</span> is a file which behaves
-like a sink of infinite size.</li>
+<li><span class = "code">bg %&lt;jobid&gt;</span> and <span class = "code">fg %&lt;jobid&gt;</span>
+are used to background a suspended job and foreground a backgrounded job respectively.</li>
 </ul>
-<br/>
-<hr class="thin">
-<ul class="try">
+<a href="nowhere" onclick='$("#processes").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
+</div>
+<!-- }}} -->
+
+
+<!-- {{{ Aliases -->
+<h4>Aliases</h4>
+<a href="nowhere" onclick='$("#aliases").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="aliases">
+<ul>
+  <li>The first word of a command is subject to alias lookup.</li>
+  <ul class="lev2">
+    <li>Useful for installations not in PATH.</li>
+    <li><span class="code">alias orjava="/home/sco/installs/jdk-16.0.1/bin/java"</span></li>
+    <li>Commands with frequently used options.</li>
+    <li><span class="code">alias lesss="less -S"</span></li>
+    <li>Commands with frequently used arguments.</li>
+    <li><span class="code">alias cdi="cd ~/introlin"</span></li>
+  </ul>
+  <li>Just <span class="code">alias</span> will show you all the aliases currently defined.</li>
+  <li>Or, <span class="code">alias lesss</span> will show you the definition of a particular alias.</li>
 </ul>
-
-<div class="diy">
-<h6>Do the following yourself.</h6>
-<ol>
-<li>Find out the process id of the current bash process by doing <br/>
-<span class = "code">echo $$</span>
-.</li>
-<li>Start the python3 interpreter in the background.</li>
-<li><span class = "code">ps -f -C python3</span> to see the process id and
-the parent process id (PPID) of the python3 interpreter.</li>
-<li>Bring the python3 process to the foreground and end it by control-d.</li>
-</ol>
+<a href="nowhere" onclick='$("#aliases").hide("fast"); return(false)'>&#9650;</a>
+<hr/>
 </div>
-<hr class="thin"/>
+<!-- }}} -->
 
-<div class="diy">
-<h6>Do the following with the instructor.</h6>
-<ol>
-<li>Start <span class="code">yes</span> and then kill it (with control-c).</li>
-<li>Start <span class="code">yes</span> and redirect the output
-to <span class="fn">/dev/null</span>. Then kill it.</li>
-<li>Start <span class="code">yes one</span> and redirect the output to
-<span class="fn">/dev/null</span>, but in the background this time.</li>
-<li>Start <span class="code">yes two</span> and redirect the output to
-<span class="fn">/dev/null</span>, but in the background this time.</li>
-<li>Examine the output of <span class="code">jobs</span>.</li>
-<li>Bring job 1 to the foreground and suspend it using control-z.</li>
-<li>Examine the output of <span class="code">jobs</span>.</li>
-<li>Bring job 2 to the foreground and suspend it using control-z.</li>
-<li>Examine the output of <span class="code">jobs</span>.</li>
-<li>Restart job 1 in the background.</li>
-<li>Examine the output of <span class="code">jobs</span>.</li>
-<li>Bring job 2 to the forground and kill it.</li>
-<li>Bring job 1 to the forground and kill it.</li>
-<li>Examine the output of <span class="code">jobs</span>.</li>
-</ol>
-</div>
 
-<a href="nowhere" onclick='$("#bgproc").hide("fast"); return(false)'>&#9650;</a>
+<!-- {{{ Functions -->
+<h4>Functions</h4>
+<a href="nowhere" onclick='$("#functions").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="functions">
+
+<pre class="code">
+<span class="hashcol"># process the whole file local.sam.</span>
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
+sort -n -k 4 -o local_sorted.sam
+</pre>
+
+<pre class="code">
+<span class="hashcol"># Wrapped in a function named samclip</span>
+function samclip () {
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
+sort -n -k 4 -o local_sorted.sam
+}
+
+samclip
+</pre>
+
+
+<pre class="code">
+<span class="hashcol"># input and output filenames as variables</span>
+function samclip () {
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' $insam | \
+sort -n -k 4 -o $outsam
+}
+
+insam="local.sam";
+outsam="scout.sam"
+samclip;
+</pre>
+
+
+<pre class="code">
+<span class="hashcol"># input and output filenames as positional parameters</span>
+function samclip () {
+awk '$6 ~ /[1-9][0-9]S/ { print $0 }' $1 | \
+sort -n -k 4 -o $2
+}
+</pre>
+
+
+
+
+<a href="nowhere" onclick='$("#functions").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -2122,5 +2114,6 @@ to <span class="fn">/dev/null</span>. Then kill it.</li>
 
 </body>
 </html>
+
 
 
