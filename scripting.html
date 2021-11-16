@@ -178,17 +178,24 @@ Instructor hints show / hide</button> -->
 <h2>Introduction to the Linux command line interface</h2>
 <!-- }}} -->
 
+<!-- {{{ Bash as a programming language -->
+<h4>Bash as a programming language</h4>
+<a href="nowhere" onclick='$("#bashaspl").toggle(); return(false)'>&#9660;&#9650;</a>
+<div class="slide" id="bashaspl">
 
-<!-- {{{ On arrival -->
-<h4>Start</h4>
-<a href="nowhere" onclick='$("#onarrival").toggle(); return(false)'>&#9660;&#9650;</a>
-<div class="slide" id="onarrival">
-<p>
-As soon as you arrive, please point your browser to the URL shown
-below.
-</p>
-<h2>http://streptomyces.org.uk/customers/training/linux/scripting.html</h2>
-<a href="nowhere" onclick='$("#onarrival").hide("fast"); return(false)'>&#9650;</a>
+<ul>
+<li>Bash is a reasonably capable programming language.</li>
+
+<li>At the simplest level, all the commands you have run so far could be
+written in text files and run simply by telling Bash to read its commands from
+that file.</li>
+
+<li>It also has features of more formal programming such as conditionals and
+looping.</li>
+
+<li>It is quirky but for housekeeping its utility is undeniable.</li>
+</ul>
+<a href="nowhere" onclick='$("#bashaspl").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
 <!-- }}} -->
@@ -198,7 +205,6 @@ below.
 <h4>Shell parameters</h4>
 <a href="nowhere" onclick='$("#shelpar").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="shelpar">
-
 <ul>
 <li>Positional parameters</li>
 <li>Special parameters</li>
@@ -248,7 +254,7 @@ echo
 </pre>
 <p>Save the above as <span class="fn">para.sh</span> make it executable then run as below.</p>
 <pre class="code">
-para.sh a b c d e f g h i j
+./para.sh a b c d e f g h i j
 </pre>
 <a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -322,16 +328,6 @@ echo $vard;
 <h4>Ordinary and environment variables</h4>
 <a href="nowhere" onclick='$("#ordenv").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="ordenv">
-<ul>
-<li>Bash is a reasonably capable programming language.</li>
-
-<li>At the simplest level, all the commands you have runs so far could be
-written in text files and run simply by telling Bash to read its commands from
-that file.</li>
-
-<li>It also has features of more formal programming such as conditionals and
-looping.</li>
-</ul>
 
 <h5>Ordinary variables</h5>
 

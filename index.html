@@ -207,11 +207,11 @@ As soon as you arrive
 written on your computer.</li>
 <li>Then start Firefox and go to the URL shown below.</li>
 </ul>
-<h2>http://streptomyces.org.uk/customers/training/linux/nov2021/</h2>
-<h3>or</h3>
 <h2>https://bit.ly/3c8HuAV</h2>
+<h3>or, if the above does not work</h3>
+<h2>http://streptomyces.org.uk/customers/training/linux/nov2021/</h2>
 <ul>
-  <li>Both the above point to the same page.</li>
+  <li>Both point to the same page.</li>
 </ul>
 <h5>Some requests</h5>
 <ul>
@@ -340,8 +340,6 @@ kept separate from it.</li>
 to be able to run in the virtual environment.</li>
 <li>Hardware-assisted virtualisation: Hardware components, especially main processors,
 designed to make virtualisation efficient.</li>
-<li>Emulation is something different. Processors are often emulated
-for the purpose of development and testing on different architectures.</li>
 </ul>
 <a href="nowhere" onclick='$("#virt").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -482,9 +480,10 @@ it disabled.
 <li>Tools &rarr; Preferences &rarr; Input &rarr; Virtual Machine
 &rarr; Host Key Combination
 </li>
-<li>Settings &rarr; Advanced &rarr; Shared Clipboard &rarr; Bidirectional
-</li>
 <li>Set this to the Alt key on the right of the space bar.</li>
+<li>Settings &rarr; Advanced &rarr; Shared Clipboard &rarr;
+</li>
+<li>Set this to the <em>Host To Guest</em>.</li>
 <li>Ask for a new virtual machine. Give it a name. (We suggest &quot;lxqt&quot;)</li>
 <li>Change the type to Linux and Version to 64bit Fedora.</li>
 <li>Specify the amount of memory you want it to use.
@@ -540,6 +539,16 @@ we will all have Linux running in our VMs.
 It is important to remember the passwords you use here.
 </p>
 
+<p>
+Once the installation is complete.
+</p>
+<ul>
+  <li>Shutdown the virtual machine.</li> 
+  <li>In VirtualBox, remove the Fedora 34 iso from the virtual drive.</li> 
+  <li>Check the settings</li> 
+  <li>Restart the machine.</li> 
+</ul>
+
 <a href="nowhere" onclick='$("#linuxinst").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -563,12 +572,12 @@ sudo EDITOR=nano visudo
 sudo dnf check-update
 sudo dnf update
 </pre>
-
 <ul>
-<li>While the packages are being upgraded we will</li>
-<ul class="lev2">
 <li>Increase the number of virtual desktops to four.</li>
 <li>Configure the task manager to show only tasks from the current desktop.</li>
+</ul>
+
+<ul>
 <li>And make a new user group named <em>training</em> and modify our login to
 make ourself a member of this group.</li>
 </ul>
@@ -576,7 +585,6 @@ make ourself a member of this group.</li>
 sudo groupadd training
 sudo usermod -a -G training sco
 </pre>
-</ul>
 
 <!--
 Before we can install VirtualBox Guest Additions we need install GCC and make,
@@ -602,14 +610,20 @@ sudo ./VBoxLinuxAdditions.run
 <pre class="code">
 sudo poweroff
 sudo shutdown -h now
-# sudo reboot # Do not use now.
 </pre>
+<ul>
+  <li>Or use the menu to shutdown the virtual machine.</li>
+</ul>
+
 
 <p>
 After the reboot, go to the virtual desktop 3 and start the Falkon web browser.
 In the browser go to this <br/>
+https://bit.ly/3c8HuAV<br/>
+or<br/>
 http://streptomyces.org.uk/customers/training/linux/nov2021/<br/>
-URL. This is to minimise the need to switch between Windows and our
+<br/>
+This is to minimise the need to switch between Windows and our
 Linux virtual machine.
 </p>
 
@@ -761,7 +775,8 @@ to play with. To do that, run the commands exactly as shown below.
 <pre class="code">
 cd
 
-wget http://streptomyces.org.uk/customers/training/linux/nov2021/introlin.zip
+wget -O introlin.zip \
+http://streptomyces.org.uk/customers/training/linux/nov2021/introlin.zip
 
 unzip introlin.zip
 
@@ -991,7 +1006,7 @@ set using <span class="code">set</span>.
   <li><span class="code">shopt -s nocasematch</span></li> 
   <li><span class="code">shopt -u nocasematch</span></li> 
   <li><span class="code">shopt -p nocasematch</span></li> 
-  <li><span class="code">set</span>uses<span class="code">-o</span> and
+  <li><span class="code">set</span> uses <span class="code">-o</span> and
     <span class="code">+o</span> to set and unset options.</li>
   <li><span class="code">set -o history</span></li> 
   <li><span class="code">set +o history</span></li> 
@@ -1523,7 +1538,7 @@ home directory.<br/>
 <li>Copy the file <span class="fn">small.tsv</span> to the testdir directory you just made.</li>
 <li>Change to the <span class="fn">testdir</span> directory.</li>
 <li>List. Then copy <span class="fn">small.tsv</span> to a file named
-<span class="fn">.findme.tsv</span>. Note that the name begins
+<span class="fn">.small.tsv</span>. Note that the name begins
 with a &quot;.&quot;</li>
 <li>Do a listing.</li>
 <li>Do a listing with <span class="code"> ls -A</span></li>
