@@ -840,7 +840,7 @@ for file in $(ls --color=never queries/*faa); do
   bn=$(basename $file .faa);
   ofn="blout/"$bn".blastp";
   echo blastp -query $file -db bldb/sven15 -out $ofn -outfmt 6
-  : $(( bcnt++ ));
+  (( bcnt++ ));
   if (( bcnt &gt; 10 )); then
     break;
   fi

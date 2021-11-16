@@ -678,7 +678,7 @@ that yourself.</li>
       library</em> which in case of Linux happens to be <em>glibc</em>.</li>
   <li>The application layer is itself multilayered.</li>
   <ul class="lev2">
-  <li>BASH provides you with a user interface in the form of commands it recognizes.</li>
+  <li>Bash provides you with a user interface in the form of commands it recognizes.</li>
   <li>It interprets and translates your commands into system calls for the kernel.</li>
   <li>The kernel get the hardware to do what is needed.</li>
   </ul>
@@ -809,12 +809,9 @@ a form which the kernel understands. Command interpreter.</li>
 interpreter (Bash in this case) for you which then prompts you for commands.</li>
 <li>Usually, Bash returns the prompt back to you only after your last
 command has finished.</li>
-<li>It is possible to set a command running in the background.</li>
-  <ul class="lev2">
-  <li>We will see this later.</li>
-  </ul>
-<li>Bash functions (shell functions). Usually defined by the user in the
-current environment.</li>
+<li>It is possible to set commands running in the background so
+that we get the prompt back immediately.</li>
+<li>Bash functions (shell functions).</li>
 <li>Builtin commands (Bash builtins). Bash knows what you mean and does it.
 (<code class="blue">cd, pwd, echo</code>).</li>
 <li>Otherwise, it looks for an executable file in $PATH and runs it for you.</li>
@@ -844,7 +841,8 @@ looked for and, if found, executed.</li>
 <ul>
 <li>Command names are always single words</li>
   <ul class="lev2">
-  <li>BASH separates the words given to it on the command line</li>
+  <li>Bash uses characters in IFS to separate the what is given to
+    it on the command line</li>
   <li>Starts a process running the command in the first word</li>
   <li>Passes the rest of the words to this process as arguments</li>
   </ul>
@@ -859,7 +857,7 @@ looked for and, if found, executed.</li>
   </ul>
 
 <li>Options: commands often interpret their arguments as options.</li>
-<li>This happens in the command. BASH has nothing to do with this.</li>
+<li>This happens in the command. Bash has nothing to do with this.</li>
 <li>The prefix &quot;-&quot; and &quot;--&quot; are used to indicate options.</li>
   <ul class="lev2">
   <li>Boolean option e.g. <span class="code">ls -l -h</span></li>
@@ -943,8 +941,8 @@ separating the commands with semicolons (;).
 <!-- }}} -->
 
 
-<!-- {{{ Getting help BASH internal commands -->
-<h4>Getting help on BASH internal commands</h4>
+<!-- {{{ Getting help Bash internal commands -->
+<h4>Getting help on Bash internal commands</h4>
 <a href="nowhere" onclick='$("#internalhelp").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="internalhelp">
 <ul>
@@ -960,7 +958,7 @@ commands.
 <h6>Do the following yourself.</h6>
 <ol>
   <li><span class="code">help variables</span></li>
-<li><span class="code">echo </span> some of the variable names listed by
+<li><span class="code">echo</span> some of the variable names listed by
   the above command.</li>
 </ol>
 </div>
@@ -970,12 +968,12 @@ commands.
 <!-- }}} -->
 
 
-<!-- {{{ BASH Options -->
-<h4>BASH options</h4>
+<!-- {{{ Bash Options -->
+<h4>Bash options</h4>
 <a href="nowhere" onclick='$("#bashopt").toggle(); return(false)'>&#9660;&#9650;</a>
 <div class="slide" id="bashopt">
 <p>
-Several options are available to fine tune the behaviour of BASH
+Several options are available to fine tune the behaviour of Bash
 according to your needs. Two commands allow you to alter two
 different sets of options.
 </p>
@@ -993,7 +991,7 @@ set using <span class="code">set</span>.
   <li><span class="code">shopt -s nocasematch</span></li> 
   <li><span class="code">shopt -u nocasematch</span></li> 
   <li><span class="code">shopt -p nocasematch</span></li> 
-  <li><span class="code">set</span> use <span class="code">-o</span> and
+  <li><span class="code">set</span>uses<span class="code">-o</span> and
     <span class="code">+o</span> to set and unset options.</li>
   <li><span class="code">set -o history</span></li> 
   <li><span class="code">set +o history</span></li> 
@@ -1014,9 +1012,8 @@ set using <span class="code">set</span>.
 <li class="code">man cp</li>
 </ul>
 <p>
-There is also a utility named <span class="code">info</span>. A lot of
-documentation is written in the &quot;info&quot; format for reading
-with this tool. I will not be able to demonstrate it to you.
+There is also a utility named <span class="code">info</span>.
+It has more features such navigation via menus and links.
 </p>
 <ul>
 <li>The <span class="code">man</span> command uses a pager to display
