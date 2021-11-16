@@ -1216,6 +1216,23 @@ folder on the host (Windows) side.</li>
 </ol>
 </div>
 
+<h5>Mounting your U drive</h5>
+
+<pre class="code">
+mkdir ~/jicu # make the mount point.
+
+set +o history # set history off.
+
+sudo mount -o vers=1.0,sec=ntlm,domain=nr4,user=replaceme,pass=replaceme \
+-t cifs //nbi-ufiles/replaceme ~/jicu
+
+ls ~/jicu
+
+set -o history # set history on
+
+# sudo umount ~/jicu # to unmount the file system.
+</pre>
+
 <a href="nowhere" onclick='$("#history").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -1404,6 +1421,9 @@ ensures that the right thing gets done for the underlying kind of file or device
 </div>
 
 <pre class="code">
+<span class="hashcol"># Using option noglob.</span>
+set -o noglob
+ls bad*fn
 </pre>
 
 <a href="nowhere" onclick='$("#globs").hide("fast"); return(false)'>&#9650;</a>
@@ -2064,7 +2084,7 @@ sort -n -k 4 -o local_sorted.sam
 </pre>
 
 <pre class="code">
-<span class="hashcol"># Wrapped in a function named samclip</span>
+<span class="hashcol"># Wrapped in a function named samclip. Hardcoded filenames.</span>
 function samclip () {
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
 sort -n -k 4 -o local_sorted.sam
@@ -2093,6 +2113,12 @@ function samclip () {
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' $1 | \
 sort -n -k 4 -o $2
 }
+
+samclip local.sam scout2.sam
+</pre>
+
+<pre class="code">
+type samclip
 </pre>
 
 

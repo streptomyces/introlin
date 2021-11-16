@@ -53,7 +53,5 @@ but here it is kept at one level above.
  cd /home/sco/mnt/smoke/training_ground/linux
  }
 
-
-
 =cut
 
