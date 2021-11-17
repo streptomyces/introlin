@@ -205,7 +205,7 @@ As soon as you arrive
 <li>Log into one of the computers with your usual user ID.</li>
 <li>If you do not have a user id, use the student account id
 written on your computer.</li>
-<li>Then start Firefox and go to the URL shown below.</li>
+<li>Then start a web browser and go to the URL shown below.</li>
 </ul>
 <h2>https://bit.ly/3c8HuAV</h2>
 <h3>or, if the above does not work</h3>
@@ -1315,7 +1315,7 @@ have a <span class="code">+</span> prefixed.</li>
 </ul>
 
 <h6>Code for demo</h6>
-<pre>
+<pre class="code">
 dirs -c
 cd
 pushd introlin
@@ -1332,21 +1332,6 @@ dirs -v
 popd +3
 dirs -v
 </pre>
-
-<div class="diy">
-<h6>Do the following yourself.</h6>
-<ol>
-<li>Use <span class="code">cd</span> to change to your home directory.</li>
-<li>Use <span class="code">dirs -c</span> to clear the directory stack.</li>
-<li>Use <span class="code">pushd</span> to change to <span class="fn">introlin</span>.</li>
-<li>Use <span class="code">pushd</span> again to change to
-<span class="fn">introlin2</span>.</li>
-<li>Use <span class="code">dirs -v</span> to view the directory stack.</li>
-<li>Use a single <span class="code">pushd</span> command to go to your home directory.</li>
-<li>View the directory stack once again, then issue a single
-<span class="code">popd</span> command and see what directory you end up in.</li>
-</ol>
-</div>
 
 <a href="nowhere" onclick='$("#dirstack").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -2055,6 +2040,15 @@ the background in the current session of Bash.</li>
 <li><span class = "code">bg %&lt;jobid&gt;</span> and <span class = "code">fg %&lt;jobid&gt;</span>
 are used to background a suspended job and foreground a backgrounded job respectively.</li>
 </ul>
+
+<h5>Environment</h5>
+<ul>
+<li>Processes run in an environment.</li>
+<li>We can tweak this environment when starting a process.</li>
+<li><span class="code"># sudo EDITOR=nano visudo</span></li>
+</ul>
+
+
 <a href="nowhere" onclick='$("#processes").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -2073,11 +2067,28 @@ are used to background a suspended job and foreground a backgrounded job respect
     <li>Commands with frequently used options.</li>
     <li><span class="code">alias lesss="less -S"</span></li>
     <li>Commands with frequently used arguments.</li>
-    <li><span class="code">alias cdi="cd ~/introlin"</span></li>
+    <li><span class="code">alias cdil="cd ~/introlin"</span></li>
   </ul>
   <li>Just <span class="code">alias</span> will show you all the aliases currently defined.</li>
   <li>Or, <span class="code">alias lesss</span> will show you the definition of a particular alias.</li>
 </ul>
+
+<h5>Ignoring aliases</h5>
+<ul>
+  <li><span class="code">alias less="less -S"</span></li>
+  <li><span class="code">\less WildAnimals.txt</span></li>
+  <li><span class="code">"less" WildAnimals.txt</span></li>
+  <li><span class="code">command less WildAnimals.txt</span></li>
+</ul>
+<h5><span class="code">unalias</span></h5>
+<ul>
+  <li><span class="code">unalias less</span></li>
+</ul>
+<p>
+<span class="code">unalias</span> removes the alias permanently from the current session of Bash.
+</p>
+
+
 <a href="nowhere" onclick='$("#aliases").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -2097,7 +2108,7 @@ sort -n -k 4 -o local_sorted.sam
 
 <pre class="code">
 <span class="hashcol"># Wrapped in a function named samclip. Hardcoded filenames.</span>
-function samclip () {
+function samclip {
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam | \
 sort -n -k 4 -o local_sorted.sam
 }
@@ -2108,7 +2119,7 @@ samclip
 
 <pre class="code">
 <span class="hashcol"># input and output filenames as variables</span>
-function samclip () {
+samclip () {
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' $insam | \
 sort -n -k 4 -o $outsam
 }
@@ -2121,7 +2132,7 @@ samclip;
 
 <pre class="code">
 <span class="hashcol"># input and output filenames as positional parameters</span>
-function samclip () {
+function samclip {
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' $1 | \
 sort -n -k 4 -o $2
 }

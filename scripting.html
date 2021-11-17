@@ -252,10 +252,13 @@ echo
 echo '${10} is the tenth positional argument: ' ${10}
 echo
 </pre>
-<p>Save the above as <span class="fn">para.sh</span> make it executable then run as below.</p>
-<pre class="code">
-./para.sh a b c d e f g h i j
-</pre>
+<ol>
+<li>Start the text editor <em>featherpad</em> from the menu.</li>
+<li>Save the above as <span class="fn">para.sh</span>. Make sure you save it
+  in the <span class="fn">introlin</span> directory.</li>
+<li>Make <span class="fn">para.sh</span> executable.</li>
+<li>Run as <span class="code">./para.sh a b c d e f g h i j</span> </li>
+</ol>
 <a href="nowhere" onclick='$("#shelpar").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
 </div>
@@ -689,11 +692,10 @@ three separate files.</li>
 <div class="diy">
 <h6>Do the following yourself.</h6>
 <ol>
-<li>After making sure that you are in the <span class="fn">introlin</span> directory,
-start featherpad using the command <code class="blue">featherpad &amp;</code></li>
 
 <li>Type the three commands below in featherpad and save them
-as a file named <span class="fn">commands.txt</span>.</li>
+as a file named <span class="fn">commands.txt</span>. Make sure
+that the file is saved in the <span class="fn">introlin</span> directory.</li>
 
 <pre class = "code">
 awk '$1 ~ /mutant1/ {print $0}' large.tsv &gt; mutant1.out
@@ -702,7 +704,7 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 </pre>
 
 
-<li>Try to following different ways of using commands.txt</li>
+<li>Try the following different ways of running commands.txt</li>
 
 <ul class="diy">
 <li>Cut and paste from featherpad into the terminal.</li>
@@ -742,23 +744,20 @@ awk '$1 ~ /wildtype/ {print $0}' large.tsv &gt; wildtype.out
 <hr class="thin" />
 Save the below as byStrain.sh.<br/>
 <pre class="code">
-<span class="hashcol">#!/bin/bash</span>
+<span class="hashcol">#!/usr/bin/bash</span>
 for file in $(ls *tsv)
   do
      awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
   done
 </pre>
-Grant execute permisson: <code>chmod ug+x byStrain.sh</code>
-<br/>
-Run as: <code>./byStrain.sh</code> 
-<br/>
+Make executable and run as: <code>./byStrain.sh</code> 
 <br/>
 <hr class="thin" />
 
 Save the below as byStrain2.sh.<br/>
 <pre class="code">
-<span class="hashcol">#!/bin/bash</span>
-    rm mutant[12].out wildtype.out
+<span class="hashcol">#!/usr/bin/bash</span>
+rm mutant[12].out wildtype.out
 for file in $(ls *tsv)
   do
  awk '$1 ~ /mutant1/ {print $0}' $file &gt;&gt; mutant1.out
@@ -766,10 +765,7 @@ for file in $(ls *tsv)
  awk '$1 ~ /wildtype/ {print $0}' $file &gt;&gt; wildtype.out
   done
 </pre>
-Grant execute permisson: <code>chmod ug+x byStrain2.sh</code>
-<br/>
-Run as: <code>./byStrain2.sh</code> 
-<br/>
+Make executable and run as: <code>./byStrain2.sh</code> 
 <br/>
 <a href="nowhere" onclick='$("#scripting1").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -787,18 +783,17 @@ and sorted them before writing them out to a new file. This was done using
 a pipeline.</li>
 <li>The same task can be done using a script.</li>
 <li>Type the following lines of code in featherpad and save as <span
-    class="fn">script.bash</span>.</li>
+    class="fn">softclipped.bash</span>.</li>
 </ul>
 <pre class="code">
-<span class="hashcol">#!/bin/bash</span>
+<span class="hashcol">#!/usr/bin/bash</span>
 tempfn=$(mktemp -p ./ forsort.XXXXXX)
 awk '$6 ~ /[1-9][0-9]S/ { print $0 }' local.sam &gt; $tempfn
 sort -n -k 4 -o local_sorted.sam $tempfn
 rm $tempfn
 </pre>
-<ul class="lev2">
-<li class="code">chmod a+x script.bash</li>
-<li class="code">./script.bash</li>
+<ul>
+  <li>Make executable then run as <span class="code">./softclipped.bash</span></li>
 </ul>
 <a href="nowhere" onclick='$("#scripting2").hide("fast"); return(false)'>&#9650;</a>
 <hr/>
@@ -830,7 +825,7 @@ Save the script below in a file named <span class="fn">blaster.sh</span> in the
 <span class="fn">forblast</span> directory.
 </li>
 <pre class="code">
-#!/bin/bash
+#!/usr/bin/bash
 declare -i bcnt=0;
 for file in $(ls --color=never queries/*faa); do
   bn=$(basename $file .faa);
@@ -919,8 +914,9 @@ fi
 end of the file.</li>
 <pre class="code">
 <span class="hashcol"># some aliases.</span>
-alias cdl="cd; cd introlin;"
-alias pd=pushd;
+alias cdil="cd ~/introlin;"
+alias cetime='TZ="Europe/Paris" date'
+alias lesss="less -S"
 </pre>
 <li>Now open a new terminal and try out the aliases you
 have just defined in <span class="fn">~/.bashrc</span></li>
